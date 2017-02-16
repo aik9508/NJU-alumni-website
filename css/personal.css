@@ -1,0 +1,45 @@
+header {
+    background-color: #63065f;
+    padding: 30px;
+}
+.header-right {
+    float: right;
+    text-align: right;
+    margin-top: 10px;
+}
+.glyphicon {
+    color: #ffffff;
+    margin: 10px;
+}
+#menu {
+    background-color: #73116f;
+    padding: 10px 0px 10px 0px;
+    font-size: larger;
+}
+.menu-item {
+    margin: 0px 20px 0px 20px;
+    font-size: large;
+    color: #ffffff;
+    text-align: center;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+.footer-top {
+    display: block;
+    background-color: #63065f;
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    vertical-align: baseline;
+}
+.friendly-links {
+    text-align: left;
+}
+.foot-logo {
+    text-align: center;
+}
+.follow-links {
+    text-align: right;
+}
+.footer-bottom {
+    background-color: #7A5678;
+}
