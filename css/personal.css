@@ -1,19 +1,27 @@
+/* HEADER */
 header {
     background-color: #63065f;
-    padding: 30px;
+    padding: 20px;
+}
+#association {
+    color: #ffffff;
+    font-size: 35px;
+    margin-left: -40px;
+    margin-top: 15px;
 }
 .header-right {
     float: right;
     text-align: right;
-    margin-top: 10px;
+    margin-top: 20px;
+    padding-right: 45px;
 }
-.glyphicon {
+header .glyphicon {
     color: #ffffff;
     margin: 10px;
 }
 #menu {
     background-color: #73116f;
-    padding: 10px 0px 10px 0px;
+    padding: 5px 0px 5px 0px;
     font-size: larger;
 }
 .menu-item {
@@ -23,13 +31,102 @@ header {
     text-align: center;
     font-family: 'Source Sans Pro', sans-serif;
 }
-.footer-top {
+body{
+    background-color: #edeadf;
+}
+/* END OF HEADER */
+
+/*  HOME */
+.jumbotron {
+    /*height: 70vh;*/
+    padding: 0px;
+    margin: auto;
+    width: 90%;
     display: flex;
     justify-content: center;
+}
+.jumbotron > .container {
+    width: 100%;
+    padding: 0px;
+    margin: 0px;
+    box-shadow: 0 0 40px #63065f;
+}
+.jumbotron img {
+    width: 100%;
+}
+.jumbotron .glyphicon {
+    color: #ffffff;
+}
+.carousel-control {
+    background: none;
+}
+.block-tile {
+    padding: 40px 30px 10px 30px;
+}
+.bighr {
+    margin-top: 2px;
+    margin-bottom: 2px;
+    height: 5px;
+    border: none;
+    background-color: #63065f;
+}
+.glyphicon {
+    margin-left: 5px;
+    margin-right: 20px;
+    color: #63065f;
+}
+.activity {
+    padding: 8px 15px 0px 15px;
+    height: 120px;
+}
+.activity  div {
+    height: 100%;
+}
+.activity-description {
+    margin-left: -30px;
+}
+.greybgd {
+    background-color: #e0d9c9;
+}
+.block-tile .row {
+    padding: 8px 15px 8px 15px;
+}
+.information-tile {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+p {
+    word-wrap: break-word;
+    margin-bottom: 0px;
+}
+#statistic {
+    text-align: left;
+    padding-left: 50px;
+}
+.count-number {
+    font-size: 55px;
+    color: #63065f;
+    font-family: 'OpenSans', sans-serif;
+}
+.count-name {
+    font-size: 35px;
+    color: #63065f;
+    font-family: 'OpenSans', sans-serif;
+}
+
+
+/* ENF OF HOME */
+
+/* FOOTER */
+.footer-top {
     background-color: #63065f;
     margin: 0px;
     padding: 0px;
-    width: 100%;
+}
+
+.footer-top .row {
+    display: flex;
+    justify-content: center;
 }
 
 .vertical-center{
@@ -60,27 +157,18 @@ header {
 }
 
 .friendly-links .icon-href .icon1{
-    background-position: -507px -7px;
-}
-
-.friendly-links .icon-href .icon2{
-    opacity: 0.5;
-    background-position: -10px -7px;
-}
-
-.friendly-links .icon-href .icon3{
-    background-position: -106px -7px;
-}
-
-.friendly-links .icon-href .icon4{
-    background-position: -204px -7px;
-}
-
-.friendly-links .icon-href .icon5{
     background-position: -312px -7px;
 }
 
-.friendly-links .icon-href .icon6{
+.friendly-links .icon-href .icon2{
+    background-position: -204px -7px;
+}
+
+.friendly-links .icon-href .icon3{
+    background-position: -312px -7px;
+}
+
+.friendly-links .icon-href .icon4{
     background-position: -407px -7px;
 }
 
@@ -88,12 +176,14 @@ header {
     text-align: center;
     margin-top: -5px;
     margin-bottom: 0px;
-    color: white;
+    color: #7A5678;
+    font-family: "Microsoft YaHei";
+    font-size: 12px;
 }
 
 .follow-links .icon-href{
     float: right;
-    margin-right: 15px;
+    margin-right: 20px;
 }
 
 .follow-links .icon-href .icon{
@@ -132,5 +222,10 @@ header {
     text-align: right;
 }
 .footer-bottom {
-    background-color: #7A5678;
+    color: #7A5678;
+    text-align: center;
+    background-color: #390336;
+    font-family: "Microsoft YaHei";
+    font-size: 12px;
 }
+/* ENF OF FOOTER */
