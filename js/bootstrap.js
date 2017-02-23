@@ -1830,7 +1830,7 @@ if (typeof jQuery === 'undefined') {
     $tip.removeClass('fade top bottom left right in')
 
     // IE8 doesn't accept hiding via the `:empty` pseudo selector, we have to do
-    // this manually by checking the contents.
+    // this manually by checking the snippets.
     if (!$tip.find('.popover-title').html()) $tip.find('.popover-title').hide()
   }
 

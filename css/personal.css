@@ -1,42 +1,53 @@
 /* HEADER */
+
 header {
     background-color: #63065f;
     padding: 20px;
 }
+
 #association {
     color: #ffffff;
     font-size: 35px;
     margin-left: -40px;
     margin-top: 15px;
 }
+
 .header-right {
     float: right;
     text-align: right;
     margin-top: 20px;
     padding-right: 45px;
 }
+
 header .glyphicon {
     color: #ffffff;
     margin: 10px;
 }
+
 #menu {
     background-color: #73116f;
     padding: 5px 0px 5px 0px;
     font-size: larger;
 }
+
 .menu-item {
-    margin: 0px 20px 0px 20px;
+    margin: 0px 40px 0px 10px;
     font-size: large;
     color: #ffffff;
     text-align: center;
     font-family: 'Source Sans Pro', sans-serif;
 }
-body{
+
+body {
     background-color: #edeadf;
 }
+
+
 /* END OF HEADER */
 
+
 /*  HOME */
+
 .jumbotron {
     /*height: 70vh;*/
     padding: 0px;
@@ -45,24 +56,30 @@ body{
     display: flex;
     justify-content: center;
 }
-.jumbotron > .container {
+
+.jumbotron>.container {
     width: 100%;
     padding: 0px;
     margin: 0px;
     box-shadow: 0 0 40px #63065f;
 }
+
 .jumbotron img {
     width: 100%;
 }
+
 .jumbotron .glyphicon {
     color: #ffffff;
 }
+
 .carousel-control {
     background: none;
 }
+
 .block-tile {
     padding: 40px 30px 10px 30px;
 }
+
 .bighr {
     margin-top: 2px;
     margin-bottom: 2px;
@@ -70,44 +87,81 @@ body{
     border: none;
     background-color: #63065f;
 }
+
 .glyphicon {
     margin-left: 5px;
     margin-right: 20px;
     color: #63065f;
 }
-.activity {
-    padding: 8px 15px 0px 15px;
-    height: 120px;
-}
-.activity  div {
-    height: 100%;
-}
+
 .activity-description {
     margin-left: -30px;
 }
+
 .greybgd {
     background-color: #e0d9c9;
 }
-.block-tile .row {
-    padding: 8px 15px 8px 15px;
-}
+
 .information-tile {
     padding-top: 5px;
     padding-bottom: 5px;
 }
+
+.activity-tile {
+    height: 120px;
+    padding: 10px 10px 10px 5px;
+}
+
+.block-tile ul {
+    list-style-type: none;
+    list-style-position: outside;
+    padding: 0px;
+    margin-bottom: 0px;
+}
+
 p {
     word-wrap: break-word;
     margin-bottom: 0px;
 }
+
+#right-column {
+    float: right;
+    width: 380px;
+}
+
+#information {
+    width: 380px;
+    padding-right: 0px;
+}
+
+#activities {
+    width: auto;
+    padding-right: 380px;
+    padding-left: 0px;
+}
+
 #statistic {
     text-align: left;
-    padding-left: 50px;
+    padding-left: 40px;
+    padding-top: 18px;
 }
+
+.activity-thumnail {
+    width: 100px;
+    float: left;
+    clear: left;
+}
+
+.activity-description {
+    width: auto;
+}
+
 .count-number {
     font-size: 55px;
     color: #63065f;
     font-family: 'OpenSans', sans-serif;
 }
+
 .count-name {
     font-size: 35px;
     color: #63065f;
@@ -117,7 +171,9 @@ p {
 
 /* ENF OF HOME */
 
+
 /* FOOTER */
+
 .footer-top {
     background-color: #63065f;
     margin: 0px;
@@ -129,7 +185,7 @@ p {
     justify-content: center;
 }
 
-.vertical-center{
+.vertical-center {
     align-self: center;
 }
 
@@ -137,42 +193,42 @@ p {
     text-align: left;
 }
 
-.friendly-links .icon-href{
+.friendly-links .icon-href {
     float: left;
-    margin-left: 10px;
+    margin-left: 20px;
     text-align: center;
 }
 
-.friendly-links .icon-href .icon:hover{
-    opacity: 1; 
+.friendly-links .icon-href .icon:hover {
+    opacity: 1;
     filter: alpha(opacity=100);
 }
 
-.friendly-links .icon-href .icon{
+.friendly-links .icon-href .icon {
     width: 50px;
     height: 50px;
     display: inline-block;
     opacity: 0.75;
-    background-image: url(../sources/icon.png);
+    background-image: url(../images/icon.png);
 }
 
-.friendly-links .icon-href .icon1{
+.friendly-links .icon-href .icon1 {
     background-position: -312px -7px;
 }
 
-.friendly-links .icon-href .icon2{
+.friendly-links .icon-href .icon2 {
     background-position: -204px -7px;
 }
 
-.friendly-links .icon-href .icon3{
+.friendly-links .icon-href .icon3 {
     background-position: -312px -7px;
 }
 
-.friendly-links .icon-href .icon4{
+.friendly-links .icon-href .icon4 {
     background-position: -407px -7px;
 }
 
-.friendly-links .icon-href p{
+.friendly-links .icon-href p {
     text-align: center;
     margin-top: -5px;
     margin-bottom: 0px;
@@ -181,46 +237,48 @@ p {
     font-size: 12px;
 }
 
-.follow-links .icon-href{
+.follow-links .icon-href {
     float: right;
     margin-right: 20px;
 }
 
-.follow-links .icon-href .icon{
+.follow-links .icon-href .icon {
     width: 40px;
     height: 40px;
     display: inline-block;
     opacity: 0.75;
-    background-image: url(../sources/shares.png);
+    background-image: url(../images/shares.png);
 }
 
-.follow-links .icon-href .icon:hover{
-    opacity: 1; 
+.follow-links .icon-href .icon:hover {
+    opacity: 1;
     filter: alpha(opacity=100);
 }
 
-.follow-links .icon-href .icon1{
-    background-position: -63px -2px; 
+.follow-links .icon-href .icon1 {
+    background-position: -63px -2px;
 }
 
-.follow-links .icon-href .icon2{
-    background-position: -114px -2px; 
+.follow-links .icon-href .icon2 {
+    background-position: -114px -2px;
 }
 
-.follow-links .icon-href .icon3{
-    background-position: -171px -2px; 
+.follow-links .icon-href .icon3 {
+    background-position: -171px -2px;
 }
 
-.follow-links .icon-href .icon4{
-    background-position: -13px -2px; 
+.follow-links .icon-href .icon4 {
+    background-position: -13px -2px;
 }
 
 .foot-logo {
     text-align: center;
 }
+
 .follow-links {
     text-align: right;
 }
+
 .footer-bottom {
     color: #7A5678;
     text-align: center;
@@ -228,4 +286,48 @@ p {
     font-family: "Microsoft YaHei";
     font-size: 12px;
 }
-/* ENF OF FOOTER */
+
+#gotop {
+    position: absolute;
+    right: 0px;
+    top: 700px;
+}
+
+
+/* END OF FOOTER */
+
+
+/* PROFILE PAGE */
+
+#profile-menu {
+    width: 300px;
+    float: left;
+}
+
+#profile-content {
+    width: auto;
+    background-color: #0f0f0f;
+}
+
+.head-picture {
+    width: 100%;
+}
+
+.head-picture img {
+    width: 100%;
+}
+
+.profile-menu-tile {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+#profile-content-container {
+    padding-left: 300px;
+    padding-top: 40px;
+    padding-bottom: 10px;
+    padding-right: 0px;
+}
+
+
+/* END OD PROFILE PAGE */
