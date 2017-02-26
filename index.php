@@ -12,7 +12,6 @@
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.js"></script>
     <script src="js/ajax-utils.js"></script>
-
 </head>
 <body>
 <header>
@@ -25,26 +24,51 @@
                 <span>法国校友会</span>
             </div>
             <div class="header-right col-lg-2">
-                <div id="button-inscription" class="glyphicon glyphicon-user"></div>
-                <div id="button-language" class="glyphicon glyphicon-globe"></div>
+                <div id="button-inscription" class="popup-trigger">
+                    <div class="glyphicon glyphicon-user"></div>
+                    <div id="popup-login" class="popup-content">
+                        <button id="button-signin" type="button">Sign in</button><br>
+                        <button id="button-signup" type="button">Sign up</button>
+                    </div>
+                </div>
+                <div id="button-lang" class="popup-trigger">
+                    <div class="glyphicon glyphicon-globe"></div>
+                    <div id="popup-lang" class="popup-content">
+                        <button id="button-zh" type="button">中文</button>
+                        <button id="button-fr" type="button">Français</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </header>
 <div id="menu" class="collapse navbar-collapse">
     <div class="container">
-        <ul class="nav navbar-nav">
-            <li id="button-accueil" class="menu-item">ACCUEIL</li>
-            <li id="button-profile" class="menu-item">NOTRE PROFIL</li>
-            <li id="button-activity" class="menu-item">ACTIVITÉS</li>
-            <li id="button-community" class="menu-item">COMMUNAUTÉ</li>
-            <li id="button-contact" class="menu-item">CONTACTEZ-NOUS</li>
+        <ul id="menu-list">
+            <li id="button-accueil" class="menu-item"><a href="index.php">ACCUEIL</a></li>
+            <li id="button-profile" class="menu-item"><a href="index.php?page=profile">NOTRE PROFIL</a></li>
+            <li id="button-activity" class="menu-item"><a href="index.php?page=activity">ACTIVITÉS</a></li>
+            <li id="button-community" class="menu-item"><a href="index.php?page=community">COMMUNAUTÉ</a></li>
+            <li id="button-contact" class="menu-item"><a href="#contact">CONTACTEZ-NOUS</a></li>
         </ul>
     </div>
 </div>
 
 <!-- Here insert main contents of each page -->
 <div id="main-content">
+    <?php
+    if (!(isset($_GET['page'])) || $_GET['page']=='home')
+        require 'snippets/home-snippet.php';
+    else if ($_GET['page']=='profile')
+        require 'snippets/profile-snippet.php';
+    else if ($_GET['page']=='activity')
+        require 'snippets/activity-snippet.php';
+    else if ($_GET['page']=='community')
+        require 'snippets/community-snippet.php';
+    else
+        echo "<h1>No Such Page</h1>";
+    ?>
+
 
 </div><!--Here ends the main contents-->
 
@@ -82,7 +106,7 @@
                 <!--end foot logo-->
 
                 <!--start follow links-->
-                <div class="follow-links col-sm-4 col-md-5 vertical-center">
+                <div id='contact' class="follow-links col-sm-4 col-md-5 vertical-center">
                     <a class="icon-href" href="#">
                         <span class="icon icon1"></span>
                     </a>

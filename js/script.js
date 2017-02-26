@@ -1,8 +1,9 @@
 (function (global) {
     var homePhp = "snippets/home-snippet.php";
     var profilePhp = "snippets/profile-snippet.php";
+    var actpagePhp = "snippets/activity-snippet.php";
 
-// Convenience function for inserting innerHTML for 'select'
+// Convenience function for inserting for 'select'
     var insertPhp = function (selector, phpfile) {
         var targetElem = $(selector);
         targetElem.load(phpfile);
@@ -45,40 +46,76 @@
     };
 
 
-    // $(document).ready(function () {
+
+    // $('#button-accueil').click(function () {
     //     showLoading("#main-content");
     //     $ajaxUtils.sendGetRequest(
     //         homePhp,
-    //         insertPhp("#main-content", homePhp),
+    //         function () {
+    //             $('#main-content').load(homePhp)
+    //         },
     //         false);
     // });
-    $('#button-accueil').click(function () {
-        showLoading("#main-content");
-        $ajaxUtils.sendGetRequest(
-            homePhp,
-            insertPhp("#main-content", homePhp),
-            false);
-    });
+    //
+    // // Load the profile page when menu button clicked
+    // $('#button-profile').click(function () {
+    //     showLoading("#main-content");
+    //     $ajaxUtils.sendGetRequest(
+    //         profilePhp,
+    //         function () {
+    //             $('#main-content').load(profilePhp)
+    //         },
+    //         false);
+    // });
+    //
+    // // Load the activity page when menu button clicked
+    // $('#button-activity').click(function () {
+    //     showLoading("#main-content");
+    //     $ajaxUtils.sendGetRequest(
+    //         actpagePhp,
+    //         function () {
+    //             $('#main-content').load(actpagePhp)
+    //         },
+    //         false);
+    // });
 
-    $('#button-profile').click(function () {
-        showLoading("#main-content");
-        $ajaxUtils.sendGetRequest(
-            profilePhp,
-            insertPhp("#main-content", profilePhp),
-            false);
-    });
+    // // Page scrolls to the follow-links when the contact button clicked
+    // $('#button-contact').click(function(){
+    //     var height = $('.follow-links').offset().top;
+    //     var scrolleddistance = $(window).scrollTop();
+    //     var scrolldistance = (height-scrolleddistance);
+    //     $("html,body").animate({scrollTop: scrolldistance.toString() + 'px'}, 200);
+    // });
 
-
-    $(window).scroll(function () {  //只要窗口滚动,就触发下面代码
-        // var scrollt = document.documentElement.scrollTop + document.body.scrollTop; //获取滚动后的高度
-        if ($(window).scrollTop() > 150) {  //判断滚动后高度超过200px,就显示
-            $("#gotop").fadeIn(400); //淡入
+    // Gotop button appears and disappears
+    $('#gotop').ready($('#gotop').fadeOut(0)); // Initially non visible
+    $(window).scroll(function () {
+        if ($(window).scrollTop() > 150) { // 150: when the menu bar disappears
+            $("#gotop").fadeIn(400);
         } else {
-            $("#gotop").stop().fadeOut(400); //如果返回或者没有超过,就淡出.必须加上stop()停止之前动画,否则会出现闪动
+            $("#gotop").stop().fadeOut(400); // stop the previous animation to prevent conflict
         }
     });
-    $("#gotop").click(function () { //当点击标签的时候,使用animate在200毫秒的时间内,滚到顶部
-        $("html,body").animate({scrollTop: "0px"}, 200);
+    // Page scrolls to top when gotop button clicked
+    $("#gotop").click(function () {
+        $("html,body").animate({scrollTop: "0px"}, 200);// during 200ms
+    });
+
+    $('#button-inscription').mouseover(function () {
+        var popup = document.getElementById("popup-login");
+        popup.classList.toggle("show");
+    });
+    $('#button-inscription').mouseout(function () {
+        var popup = document.getElementById("popup-login");
+        popup.classList.toggle("show");
+    });
+    $('#button-lang').mouseover(function () {
+        var popup = document.getElementById("popup-lang");
+        popup.classList.toggle("show");
+    });
+    $('#button-lang').mouseout(function () {
+        var popup = document.getElementById("popup-lang");
+        popup.classList.toggle("show");
     });
 
 })(window);

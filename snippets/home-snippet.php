@@ -41,7 +41,7 @@
 </div>
 
 <div class="container">
-    <div id="right-column">
+    <div id="home-right-column">
         <div id="information" class="block-tile fix-block">
             <div id="information-title">
                 <span class="glyphicon glyphicon-chevron-right"></span>
