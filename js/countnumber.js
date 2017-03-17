@@ -25,7 +25,6 @@
                 i = i + step1;
                 if (i > alumni) {
                     clearInterval(count_1);
-                    console.log(alumni);
                     $('#alumni-number').html(parseInt(alumni, 10).toLocaleString('fr-FR'));
 
                 }

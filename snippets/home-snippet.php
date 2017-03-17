@@ -57,8 +57,7 @@
                 echo <<<EOT
                     <li class="information-tile $greyBgd">
                         <span  class="glyphicon glyphicon-paperclip"></span>
-                        <span>
-                            Une phrase de titre d'information
+                        <span id="news$i">
                         </span>
                     </li>
 EOT;
