@@ -118,4 +118,18 @@
         popup.classList.toggle("show");
     });
 
+    $('#button-signin').click(function () {
+        $('#loginform-container').css('display','block');
+    });
+
+    $('#close-login').click(function () {
+        $('#loginform-container').css('display','none');
+    });
+
+    $('#loginform-container').click(function (event) {
+        if (event.target == this){
+            $('#loginform-container').css('display','none');
+        }
+    });
+
 })(window);

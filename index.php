@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -13,6 +14,7 @@
     <script src="js/bootstrap.js"></script>
     <script src="js/ajax-utils.js"></script>
 </head>
+
 <body>
 <header>
     <div class="container">
@@ -27,7 +29,8 @@
                 <div id="button-inscription" class="popup-trigger">
                     <div class="glyphicon glyphicon-user"></div>
                     <div id="popup-login" class="popup-content">
-                        <button id="button-signin" type="button">Sign in</button><br>
+                        <button id="button-signin" type="button">Sign in</button>
+                        <br>
                         <button id="button-signup" type="button">Sign up</button>
                     </div>
                 </div>
@@ -53,24 +56,49 @@
         </ul>
     </div>
 </div>
+<?php
+$actual_link = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+echo <<<EOT
+<div id="loginform-container" class="modal">
+    <form id="loginform" action="$actual_link">
+        <div class="imgcontainer">
+            <span id='close-login' class="close" title="Close Modal">&times;</span>
+            <img src="img_avatar2.png" alt="Avatar" class="avatar">
+        </div>
 
+        <label><b>Username</b></label>
+        <input type="text" placeholder="Enter Username" name="uname" required>
+
+        <label><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="psw" required>
+
+
+        <button type="submit">Login</button>
+
+<!--        <span id="forgetpsw">Forgot <a href="#">password?</a></span>-->
+        <input type="checkbox" checked="checked"> Remember me
+    </form>
+</div>
+EOT
+?>
 <!-- Here insert main contents of each page -->
 <div id="main-content">
     <?php
-    if (!(isset($_GET['page'])) || $_GET['page']=='home')
+    if (!(isset($_GET['page'])) || $_GET['page'] == 'home')
         require 'snippets/home-snippet.php';
-    else if ($_GET['page']=='profile')
+    else if ($_GET['page'] == 'profile')
         require 'snippets/profile-snippet.php';
-    else if ($_GET['page']=='activity')
+    else if ($_GET['page'] == 'activity')
         require 'snippets/activity-snippet.php';
-    else if ($_GET['page']=='community')
+    else if ($_GET['page'] == 'community')
         require 'snippets/community-snippet.php';
     else
         echo "<h1>No Such Page</h1>";
     ?>
 
 
-</div><!--Here ends the main contents-->
+</div>
+<!--Here ends the main contents-->
 
 <div id="gotop"><img src="images/gotop.png"></div>
 <footer>
@@ -122,9 +150,12 @@
                     <!-- <img src="sources/shares.png"> -->
                 </div>
                 <!--end follow links-->
-            </div> <!--end footer-top row-->
-        </div><!--end footer-top container-->
-    </div><!--end footer-top-->
+            </div>
+            <!--end footer-top row-->
+        </div>
+        <!--end footer-top container-->
+    </div>
+    <!--end footer-top-->
 
     <!--start footer-botton-->
     <div class="footer-bottom">
@@ -134,4 +165,5 @@
 </footer>
 <script src="js/script.js"></script>
 </body>
+
 </html>
