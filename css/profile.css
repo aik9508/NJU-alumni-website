@@ -1,0 +1,60 @@
+.float-left{
+    float: left;
+}
+
+.float-right{
+    float: right;
+}
+
+.profil{
+    width: 630px;
+    min-height: 400px;
+    margin: 0 auto;
+    border: 1px solid rgba(204,204,204,0.75);
+}
+
+.profil-info{
+    width: 430px;
+    padding: 15px;
+    height: 100%;
+    float: left;
+}
+
+.profil-photo{
+    float: left;
+    width: 190px;
+}
+
+.profil-photo img{
+    max-width: 190px;
+    max-height: 400px;
+}
+
+.profil-info a{
+    text-decoration: none;
+}
+
+.edit{
+    width:100%;
+    height: 250px;
+    border-top: solid 1px rgba(204,204,204,0.75);
+}
+
+#contact{
+    overflow: hidden;
+}
+
+#name{
+    font-size: 24px;
+}
+
+hr{
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+#diplomas ul{
+    list-style-type: none;
+    padding-left: 0;
+}
+

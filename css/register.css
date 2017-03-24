@@ -1,0 +1,137 @@
+.input-main{
+    width: 370px;
+    margin: 0 auto;
+    background-color: white;
+    border-radius: 5px;
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+.control-label.col-xs-3{
+    padding-top: 7px;
+}
+
+.form-group.container{
+    width: auto;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.form-group .col-xs-6,.col-xs-4,.col-xs-8{
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.form-group .input-left{
+    padding-right: 7px;
+}
+
+.form-group .input-right{
+    padding-left: 7px;
+}
+
+#input-valider{
+    width: 300px;
+    align-self: center
+}
+
+#success-container{
+    display: none;
+}
+
+.success-container{
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.75);
+}
+
+.success-inner p{
+    font-size: 20px;
+}
+
+.success-inner a{
+    text-decoration: none;
+}
+
+.success-inner{
+    height: 30%;
+    max-width: 60%;
+}
+
+body{
+    height: 100%;
+}
+
+@media screen and (min-width: 900px){
+    #container-backgroud{
+        background-image: url('../sources/NJU_register_background_small.png');
+        background-position-x: -100px;
+        width: 1200px;
+        height: 855px;
+        margin: 0px auto;
+    }
+
+    #header{
+        min-width: 1200px;
+    }
+
+    .input-main{
+        width: 400px;
+        height: 100%;
+        float: right;
+    }
+}
+
+#header{
+    width: 100%;
+    height: 100px;
+    background-color: #63065f;
+    padding: 0 34px;
+}
+
+#logo {
+    float: left;
+    margin-top: 12px;
+}
+
+#connecter,#langue{
+    float: right;
+    margin-left: 15px;
+    margin-top: 40px;
+}
+
+#header .glyphicon-user,.glyphicon-globe{
+    color: white;
+}
+
+.grad {
+    background: #63065f; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(top,rgba(99,6,95,0),rgba(99,6,95,1)); /*Safari 5.1-6*/
+    background: -o-linear-gradient(bottom,rgba(99,6,95,0),rgba(99,6,95,1)); /*Opera 11.1-12*/
+    background: -moz-linear-gradient(bottom,rgba(99,6,95,0),rgba(99,6,95,1)); /*Fx 3.6-15*/
+    background: linear-gradient(to bottom,rgba(99,6,95,0),rgba(99,6,95,1)); /*Standard*/
+}
+
+/***************************************/
+.vertical-center-parent{
+    display: flex;
+    justify-content: center;
+}
+
+.vertical-center{
+    align-self: center;
+}
+
+.footer-bottom {
+    color: #7A5678;
+    text-align: center;
+    background-color: #63065f;
+    font-family: "Microsoft YaHei";
+    font-size: 12px;
+    height: 30px;
+    border-top: 1px solid rgba(204,204,204,0.5);
+}

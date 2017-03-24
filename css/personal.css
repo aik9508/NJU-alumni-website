@@ -14,9 +14,18 @@ header {
 
 .header-right {
     float: right;
+    width: auto;
     text-align: right;
     margin-top: 20px;
     padding-right: 45px;
+}
+
+.header-right div{
+    display: inline-block;
+}
+
+.header-right div span{
+    color: white;
 }
 
 header .glyphicon {
@@ -69,17 +78,22 @@ body {
     position: relative;
     display: inline-block;
     cursor: pointer;
-    -webkit-user-select: none;
+    /*-webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
-    user-select: none;
+    user-select: none;*/
 }
 
 
 /* The actual popup */
 
+.popup-trigger form{
+    margin: 0
+}
+
 .popup-trigger .popup-content {
-    visibility: hidden;
+    /*visibility: hidden;*/
+    display: none;
     width: 160px;
     background-color: #edeadf;
     color: #fff;
@@ -89,14 +103,15 @@ body {
     border-color: #ffffff;
     padding: 8px 0;
     position: absolute;
-    z-index: 1;
+    z-index: 100;
     top: 33px;
     left: 50%;
     margin-left: -80px;
 }
 
 #button-signin,
-#button-signup {
+#button-signup,
+#button-signout{
     border: none;
     background-color: #63065f;
     color: #ffffff;

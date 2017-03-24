@@ -57,9 +57,6 @@
                 echo <<<EOT
                     <li class="information-tile $greyBgd">
                         <span  class="glyphicon glyphicon-paperclip"></span>
-                        <span>
-                            Une phrase de titre d'information
-                        </span>
                     </li>
 EOT;
             }
@@ -116,3 +113,4 @@ EOT;
     </div><!--End of activities block-->
 </div><!--End of home snippet-->
 <script src="js/countnumber.js"></script>
+<script src="js/BBS.js"></script>

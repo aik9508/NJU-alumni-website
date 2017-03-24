@@ -1,0 +1,88 @@
+.animate_div{
+    position: absolute;
+    top: 400px;
+    width: 76px;
+    height: 50px;
+    background: #92B901;
+    color: #ffffff;
+    position: relative;
+    font-weight: bold;
+    font-size: 20px;
+    padding: 10px;
+    margin: 20px;
+    float: left;
+    animation-name: example;
+    animation-duration: 2s;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    display: none;
+}
+
+
+/* The animation code */
+@keyframes example {
+    0%   {left:0px; top:0px; transform: rotate(0deg);}
+    70%  {left:0px; top:400px; transform : rotate(360deg);}
+    75%  {left:0px; top:400px; transform : rotate(340deg);}
+    80%  {left:0px; top:400px; transform : rotate(375deg);}
+    85%  {left:0px; top:400px; transform : rotate(350deg);}
+    90%  {left:0px; top:400px; transform : rotate(365deg);}
+    95%  {left:0px; top:400px; transform : rotate(357deg);}
+    100% {left:0px; top:400px; transform : rotate(360deg);}
+}
+
+.wrap{
+    width: 5000px;
+}
+
+.block_container{
+    position: relative;
+    height: 800px;
+    overflow: hidden;
+    float: left;
+    width: 952px;
+    border: 1px solid #ddd;
+}
+
+.album{
+    position: relative;
+    top:150px;
+    left: 100px;
+    width: 300px;
+    height: 300px;
+}
+
+
+.mask{
+    position: relative;
+    top: -180px;
+    left: 70px;
+    width: 500px;
+    height:500px;
+    overflow: hidden;
+}
+
+.inner{
+    float: right;
+    margin-top: -80px;
+    margin-right: 143px;
+    width: 150px;
+    height: 700px;
+    -moz-transform: rotate(-30deg);
+    -webkit-transform: rotate(-30deg);
+    -o-transform: rotate(-30deg);
+    overflow: hidden;
+}
+
+.content{
+    width: 500px;
+    height: 500px;
+    background-image: url("../sources/葛布.jpg");
+    background-position-x: -400px;
+    background-position-y: -250px;
+    -moz-transform: rotate(30deg);
+    -webkit-transform: rotate(30deg);
+    -o-transform: rotate(30deg);
+    margin-left: -160px;
+    margin-top: 90px;
+}
