@@ -43,7 +43,7 @@
 <div class="container">
     <div id="home-right-column">
         <div id="information" class="block-tile fix-block">
-            <div id="information-title">
+            <div id="information-title" class="block-title">
                 <span class="glyphicon glyphicon-chevron-right"></span>
                 <span>INFORMATIONS</span>
             </div>
@@ -81,7 +81,7 @@ EOT;
     </div>
 
     <div id="activities" class="block-tile flex-block">
-        <div id="activity-title">
+        <div id="activity-title" class="block-title">
             <span class="glyphicon glyphicon-chevron-right"></span>
             <span>ACTIVITÉS</span>
         </div>

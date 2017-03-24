@@ -1,37 +1,37 @@
-(function (global) {
+(function(global) {
     var homePhp = "snippets/home-snippet.php";
     var profilePhp = "snippets/profile-snippet.php";
     var actpagePhp = "snippets/activity-snippet.php";
 
-// Convenience function for inserting for 'select'
-    var insertPhp = function (selector, phpfile) {
+    // Convenience function for inserting for 'select'
+    var insertPhp = function(selector, phpfile) {
         var targetElem = $(selector);
         targetElem.load(phpfile);
     };
 
-    var insertHtml = function (selector, html) {
+    var insertHtml = function(selector, html) {
         var targetElem = document.querySelector(selector);
         targetElem.innerHTML = html;
     };
 
-// Show loading icon inside element identified by 'selector'.
-    var showLoading = function (selector) {
+    // Show loading icon inside element identified by 'selector'.
+    var showLoading = function(selector) {
         var html = "<div class='text-center'>";
         html += "<img src='images/ajax-loader.gif'></div>";
         insertHtml(selector, html);
     };
 
-// Return substitute of '{{propName}}'
-// with propValue in given 'string'
-    var insertProperty = function (string, propName, propValue) {
+    // Return substitute of '{{propName}}'
+    // with propValue in given 'string'
+    var insertProperty = function(string, propName, propValue) {
         var propToReplace = "{{" + propName + "}}";
         string = string
             .replace(new RegExp(propToReplace, "g"), propValue);
         return string;
     };
 
-// Remove the class 'active' from home and switch to Menu button
-    var switchMenuToActive = function () {
+    // Remove the class 'active' from home and switch to Menu button
+    var switchMenuToActive = function() {
         // Remove 'active' from home button
         var classes = document.querySelector("#navHomeButton").className;
         classes = classes.replace(new RegExp("active", "g"), "");
@@ -89,7 +89,7 @@
 
     // Gotop button appears and disappears
     $('#gotop').ready($('#gotop').fadeOut(0)); // Initially non visible
-    $(window).scroll(function () {
+    $(window).scroll(function() {
         if ($(window).scrollTop() > 150) { // 150: when the menu bar disappears
             $("#gotop").fadeIn(400);
         } else {
@@ -97,39 +97,46 @@
         }
     });
     // Page scrolls to top when gotop button clicked
-    $("#gotop").click(function () {
-        $("html,body").animate({scrollTop: "0px"}, 200);// during 200ms
+    $("#gotop").click(function() {
+        $("html,body").animate({ scrollTop: "0px" }, 200); // during 200ms
     });
 
-    $('#button-inscription').mouseover(function () {
+    $('#button-inscription').mouseover(function() {
         var popup = document.getElementById("popup-login");
         popup.classList.toggle("show");
     });
-    $('#button-inscription').mouseout(function () {
+    $('#button-inscription').mouseout(function() {
         var popup = document.getElementById("popup-login");
         popup.classList.toggle("show");
     });
-    $('#button-lang').mouseover(function () {
+    $('#button-lang').mouseover(function() {
         var popup = document.getElementById("popup-lang");
         popup.classList.toggle("show");
     });
-    $('#button-lang').mouseout(function () {
+    $('#button-lang').mouseout(function() {
         var popup = document.getElementById("popup-lang");
         popup.classList.toggle("show");
     });
 
-    $('#button-signin').click(function () {
-        $('#loginform-container').css('display','block');
+    $('#button-signin').click(function() {
+        $('#loginform-container').css('display', 'block');
     });
 
-    $('#close-login').click(function () {
-        $('#loginform-container').css('display','none');
+    $('#close-login').click(function() {
+        $('#loginform-container').css('display', 'none');
     });
 
-    $('#loginform-container').click(function (event) {
-        if (event.target == this){
-            $('#loginform-container').css('display','none');
+    $('#loginform-container').click(function(event) {
+        if (event.target == this) {
+            $('#loginform-container').css('display', 'none');
         }
+    });
+    $('#profile-menu>ul>li').each(function(i) {
+        $(this).attr('id', 'profile-item' + i);
+        $('#profile-item' + i).click(function() {
+            $($('.profile-content-title>span')[1]).html($('#profile-item' + i + ">span")[1].innerHTML);
+            $('#profile-content').load("snippets/" + $('#profile-item' + i + ">span")[1].getAttribute("name") + "-snippet.php");
+        });
     });
 
 })(window);
