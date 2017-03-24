@@ -41,9 +41,9 @@
 </div>
 
 <div class="container">
-    <div id="right-column">
+    <div id="home-right-column">
         <div id="information" class="block-tile fix-block">
-            <div id="information-title">
+            <div id="information-title" class="block-title">
                 <span class="glyphicon glyphicon-chevron-right"></span>
                 <span>INFORMATIONS</span>
             </div>
@@ -57,8 +57,6 @@
                 echo <<<EOT
                     <li class="information-tile $greyBgd">
                         <span  class="glyphicon glyphicon-paperclip"></span>
-                        <span id="news$i">
-                        </span>
                     </li>
 EOT;
             }
@@ -80,7 +78,7 @@ EOT;
     </div>
 
     <div id="activities" class="block-tile flex-block">
-        <div id="activity-title">
+        <div id="activity-title" class="block-title">
             <span class="glyphicon glyphicon-chevron-right"></span>
             <span>ACTIVITÉS</span>
         </div>
@@ -115,3 +113,4 @@ EOT;
     </div><!--End of activities block-->
 </div><!--End of home snippet-->
 <script src="js/countnumber.js"></script>
+<script src="js/BBS.js"></script>

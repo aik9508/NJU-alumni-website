@@ -11,7 +11,7 @@ if($_POST['$sexe']=="Homme"){
     $sexe=1;
 }
 User::insertUser($dbh, $_POST['nom'], $_POST['prenom'], $_POST['email'], $_POST['mdp'], $_POST['num'], $sexe, $licence, $master, $doctorat);
-$id= User::getIDByEmail($dbh, $_POST['email'])[0];
+$id= User::getIDByEmail($dbh, $_POST['email']);
 if($licence){
     Diploma::insertDiplomas($dbh, $id, 0 , $_POST['promo_licence'], $_POST['dept_licence']);
 }

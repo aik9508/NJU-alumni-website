@@ -115,8 +115,8 @@
             </div>
         </div>
         <footer>
-            <div class="footer-bottom vertical-center-parent">
-                <span class="vertical-center">Copyright@Ke WANG & Shiwen XIA</span>
+            <div class="footer-bottom">
+                <span>Copyright@Ke WANG & Shiwen XIA</span>
             </div>
         </footer>
     </body>

@@ -17,6 +17,11 @@ $alumnus = User::getUserByID($dbh, $id);
         <meta charset="utf-8">
         <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../css/profile.css">
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+        <script src="http://malsup.github.com/jquery.form.js"></script> 
+        <script>
+            window.jQuery || document.write("<script type='text/javascript' src='../js/jquery.js'><\/script>");
+        </script>
         <title>Profil : <?php echo "$alumnus->prenom $alumnus->nom" ?></title>
     </head>
     <body>
@@ -37,42 +42,62 @@ $alumnus = User::getUserByID($dbh, $id);
                 <div id="diplomas">
                     <ul>
                         <?php
-                            $diplomas=Diploma::getDiplomas($dbh, $id);
-                            foreach ($diplomas as $diploma) {
-                                $text="$diploma->promotion : ";
-                                if($diploma->diplome==0){
-                                    $text=$text.'licence ';
-                                }else if($diploma->diplome==1){
-                                    $text=$text.'master ';
-                                }else{
-                                    $text=$text.'doctorat ';
-                                }
-                                $text=$text."($diploma->departement)";
-                                echo "<li>$text</li>";
+                        $diplomas = Diploma::getDiplomas($dbh, $id);
+                        foreach ($diplomas as $diploma) {
+                            $text = "$diploma->promotion : ";
+                            if ($diploma->diplome == 0) {
+                                $text = $text . 'licence ';
+                            } else if ($diploma->diplome == 1) {
+                                $text = $text . 'master ';
+                            } else {
+                                $text = $text . 'doctorat ';
                             }
+                            $text = $text . "($diploma->departement)";
+                            echo "<li>$text</li>";
+                        }
                         ?>
                     </ul>
                 </div>
                 <hr/>
-                 <div class="edit" contenteditable="true">
-                
-                </div>
-                <script>
+                <div class="edit" contenteditable="true">
 
-                </script>
+                </div>
             </div>
             <div class="profil-photo text-center">
-                <img <?php
-                    if($alumnus->sexe==0){
+                <div>
+                    <img <?php
+                    if ($alumnus->sexe == 0) {
                         echo "src='../sources/homme.jpg'";
-                    }else if($alumnus->sexe==1){
+                    } else if ($alumnus->sexe == 1) {
                         echo "src='../sources/femme.jpg'";
-                    }else{
+                    } else {
                         echo "src='../sources/autre.jpg'";
                     }
                     ?> alt="photo" id="photo"/>
+                </div>
+                <form id="upload_form" action="save_photo.php" method="post" enctype="multipart/form-data">
+                    <input type="button" id="upload_photo" value="Choisir ma photo" class="btn btn-primary">
+                    <input type="file" name="photoFile" id="imgFile" accept="image/*" style="display: none">
+                </form>
+                <div id="photo_info"></div>
             </div>
         </div>
+        <script>
+            $(document).ready(function () {
+                $('#upload_photo').click(function () {
+                    $('#imgFile').click();
+                });
+                $('#imgFile').change(function () {
+                    if ($(this)[0].files && $(this)[0].files[0]) {
+                        var file = $(this)[0].files[0];
+                        $("#photo").attr("src", window.URL.createObjectURL(file));
+                        $("#upload_form").ajaxForm(
+                                {target: '#photo_info'}
+                        ).submit();
+                    }
+                });
+            });
+        </script>
     </body>
 </html>
 

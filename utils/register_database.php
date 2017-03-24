@@ -19,41 +19,42 @@ class Database {
 
 }
 
-class Diploma{
+class Diploma {
+
     public $id;
     public $diplome;
     public $promotion;
     public $departement;
-    
+
     public function __toString() {
         return "$this->id $this->diplome ($this->departement $this->promotion)";
     }
-    
-    public static function getDiplomas($dbh, $id){
+
+    public static function getDiplomas($dbh, $id) {
         $query = "SELECT * FROM `diplomas` WHERE id=?";
         $sth = $dbh->prepare($query);
-        $sth->setFetchMode(PDO::FETCH_CLASS,'Diploma');
+        $sth->setFetchMode(PDO::FETCH_CLASS, 'Diploma');
         $sth->execute(array($id));
-        if($sth->rowCount()==0){
+        if ($sth->rowCount() == 0) {
             $dbh = null;
             return null;
-        }else{
-            $diplomes=$sth->fetchAll();
-            $dbh=null;
+        } else {
+            $diplomes = $sth->fetchAll();
+            $dbh = null;
             return $diplomes;
         }
     }
 
-    public static function insertDiplomas($dbh, $id, $diplome, $promotion, $departement){
+    public static function insertDiplomas($dbh, $id, $diplome, $promotion, $departement) {
         $sth = $dbh->prepare("INSERT INTO `diplomas`(`id`,`diplome`,`promotion`,`departement`) VALUES(?,?,?,?)");
-        $sth->execute(array($id, $diplome, $promotion,$departement));
+        $sth->execute(array($id, $diplome, $promotion, $departement));
         $dbh = null;
     }
 
 }
 
 class User {
-    
+
     public $id;
     public $nom;
     public $prenom;
@@ -73,8 +74,8 @@ class User {
         } elseif ($this->sexe == 1) {
             $gender = 'F';
         }
-        $info = "$this->nom $this->prenom ($gender) email : $this->email " . (($this->numero == null) ? "" : "numero : ". $this->numero);
-        $info = $info."<br/>";
+        $info = "$this->nom $this->prenom ($gender) email : $this->email " . (($this->numero == null) ? "" : "numero : " . $this->numero);
+        $info = $info . "<br/>";
         return $info;
     }
 
@@ -83,50 +84,51 @@ class User {
         $sth = $dbh->prepare($query);
         $sth->setFetchMode(PDO::FETCH_CLASS, 'User');
         $sth->execute(array($email));
-        if ($sth->rowCount() != 1){
+        if ($sth->rowCount() != 1) {
             return null;
         }
         $user = $sth->fetch();
         $dbh = null;
         return $user;
     }
-    
+
     public static function getUserByID($dbh, $id) {
         $query = "SELECT * FROM `NJUers` WHERE id=?";
         $sth = $dbh->prepare($query);
         $sth->setFetchMode(PDO::FETCH_CLASS, 'User');
         $sth->execute(array($id));
-        if ($sth->rowCount() != 1){
+        if ($sth->rowCount() != 1) {
             return null;
         }
         $user = $sth->fetch();
         $dbh = null;
         return $user;
     }
-    
+
     public static function getUserByName($dbh, $nom, $prenom) {
         $query = "SELECT * FROM `NJUers` WHERE nom=? AND prenom=?";
         $sth = $dbh->prepare($query);
         $sth->setFetchMode(PDO::FETCH_CLASS, 'User');
         $sth->execute(array($nom, $prenom));
-        if ($sth->rowCount() == 0){
+        if ($sth->rowCount() == 0) {
             return null;
         }
         $user = $sth->fetchAll();
         $dbh = null;
         return $user;
     }
-    
+
     public static function getIDByEmail($dbh, $email) {
         $query = "SELECT `id` FROM `NJUers` WHERE email=?";
         $sth = $dbh->prepare($query);
         $sth->execute(array($email));
-        if ($sth->rowCount() != 1){
+        if ($sth->rowCount() != 1) {
             return null;
         }
+        $sth->setFetchMode(PDO::FETCH_ASSOC);
         $id = $sth->fetch();
         $dbh = null;
-        return $id;
+        return $id["id"];
     }
 
     public static function afficherTous($dbh) {
@@ -146,7 +148,7 @@ class User {
             $sth = $dbh->prepare("INSERT INTO `NJUers`(`nom`, `prenom`, `email`, `mdp`, `numero`, `sexe`, `licence`, `master`, `doctorat`) VALUES(?,?,?,?,?,?,?,?,?)");
             $sth->execute(array($nom, $prenom, $email, $mdp, $numero, $sexe, $licence, $master, $doctorat));
             return TRUE;
-        } else{
+        } else {
             return null;
         }
     }
@@ -164,3 +166,36 @@ class User {
     }
 
 }
+
+//$dbh = Database::connect();
+//$departements = ["Département de Physique", "Département de Chimie", "Département de Mathématiques", "Département d'Informatique", "Département de Biologie", "Ecole d'honneur de Kuangyamin"];
+//for ($i = 0; $i < 20; $i++) {
+//    $nom = "fu";
+//    $prenom = "yunguan";
+//    $email = "yunguan.fu_$i@163.com";
+//    $mdp = "12345678";
+//    $numero = "+33 07 47 47 47 47";
+//    $sexe = 0;
+//    $licence = $master = $doctorat = 0;
+//    while (true) {
+//        $licence = rand(0, 1);
+//        $master = rand(0, 1);
+//        $doctorat = rand(0, 1);
+//        if ($licence + $master + $doctorat != 0) {
+//            break;
+//        }
+//    }
+//    User::insertUser($dbh, $nom, $prenom, $email, $mdp, $numero, $sexe, $licence, $master, $doctorat);
+//    $id = User::getIDByEmail($dbh, $email);
+//    var_dump($id);
+//    if ($licence == 1) {
+//        Diploma::insertDiplomas($dbh, $id, 0, rand(1979, 2016), $departements[rand(0, 5)]);
+//    }
+//    if ($master == 1) {
+//        Diploma::insertDiplomas($dbh, $id, 1, rand(1979, 2016), $departements[rand(0, 5)]);
+//    }
+//    if ($doctorat == 1) {
+//        Diploma::insertDiplomas($dbh, $id, 2, rand(1979, 2016), $departements[rand(0, 5)]);
+//    }
+//}
+//$dbh = null;
