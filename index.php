@@ -56,6 +56,8 @@ if (!isset($_SESSION["DEPARTMENT_ARRAY"])) {
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <link rel="stylesheet" href="css/master.css">
         <link rel="stylesheet" href="css/personal.css">
+        <link rel="stylesheet" href="css/profile.css">
+        <link rel="stylesheet" href="css/cropper.css">
         <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
 
         <script src="js/jquery.js"></script>

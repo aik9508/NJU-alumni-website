@@ -8,9 +8,10 @@
 
 .profil{
     width: 630px;
-    min-height: 400px;
+    height: 400px;
     margin: 0 auto;
     border: 1px solid rgba(204,204,204,0.75);
+    background-color: white;
 }
 
 .profil-info{
@@ -58,3 +59,46 @@ hr{
     padding-left: 0;
 }
 
+.vertical-center-parent{
+    display: flex;
+    justify-content: center;
+}
+
+.vertical-center{
+    align-self: center;
+}
+
+#cropper-wrapper{
+    position: absolute;
+    overflow: hidden;
+    background-color: beige;
+    width: 630px;
+    height: 400px;
+    padding: 15px;
+    padding-bottom: 0px;
+    text-align: center;
+}
+
+#cropper-area{
+    width: 600px;
+    height: 345px;
+}
+
+#cropper-container{
+    max-height: 360px;
+    max-width: 630px;
+    margin-bottom: 10px;
+}
+
+#cropper-valider,
+#cropper-annuler{
+    position: relative;
+    top: 10px;
+    width: 100px;
+    height: 40px;
+    margin-left: 30px;
+    margin-right: 30px;
+    padding: 5px;
+    font-size: 20px;
+    cursor: pointer;
+}
