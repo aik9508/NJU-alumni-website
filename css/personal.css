@@ -664,5 +664,155 @@ p {
     padding-right: 0px;
 }
 
+/*community snippet*/
 
+
+/*filter*/
+
+.full-width{
+    width: 100%;
+}
+
+.table-filter{
+    vertical-align: top;
+    width: 300px;
+}
+
+.main-filter{
+    width: 300px;
+    min-height: 700px;
+    height: 100%;
+    border: solid 1px #edeadf;
+}
+
+.form-control,
+.dropdown-menu{
+    border-radius: 0px;
+}
+
+
+.form-group .promo-start,
+.form-group .promo-end{
+    width: 132px;
+    display: inline-block;
+}
+
+.form-group .promo-start{
+    margin-right: 10px;
+}
+
+.form-group .promo-end{
+    margin-left: 10px;
+}
+
+.display-none{
+    display: none;
+}
+
+.multiselect-container {
+    position: absolute;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    background-color: white;
+    border: solid 1px #000;
+    width: 300px;
+    max-height: 300px;
+}
+
+.overflow-y-scroll{
+    overflow-y: scroll;
+}
+
+.multiselect-container label{
+    padding-left: 10px;
+    cursor: pointer;
+    width: 100%;
+    margin: 0;
+    padding-bottom: 5px;
+    padding-top: 5px;
+}
+
+.multiselect-container label.active{
+    color: white;
+    background-color: #63065f;
+}
+
+.multiselect-container label.active:hover{
+    background-color: #63065f;
+}
+
+.multiselect-container label:hover{
+    background-color: #e0d9c9;
+}
+
+.multiselect-button{
+    background-color: white;
+    color: black;
+    text-align: left
+}
+
+#button-recherche{
+    width: 200px;
+}
+
+.arrow-down{
+    margin-top: 10px;
+    float: right;
+}
+
+.arrow-down:after {
+    content: '';
+    border: 4px solid transparent;
+    border-bottom: none;
+    border-top: 4px solid black;
+    height: 0px;
+    width: 0px;
+}
+
+/*results*/
+
+.results{
+    min-height: 700px;
+}
+
+#nb-results{
+    padding-left: 15px;
+    padding-bottom: 30px;
+}
+
+#response{
+    display: block;
+    overflow: hidden;
+}
+
+.profile-card{
+    width: 180px;
+    height: 185px;
+    border: 1px solid #ddd;
+    margin: 10px 10px 10px 10px;
+    padding-top: 10px;
+    display: inline-block;
+    text-align: center;
+}
+
+.profile-img-wrapper{
+    width: 100%;
+    height: 148px;
+}
+
+.profile-info{
+    padding: 3px;
+    text-align: center;
+}
+
+.profile-info a{
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.buffer{
+    padding-top: 17px;
+    height: 100px;
+}
 /* END OD PROFILE PAGE */

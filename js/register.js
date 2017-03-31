@@ -32,7 +32,7 @@ $(document).ready(function () {
 
     function isEmpty(identity) {
         if (!$("#" + identity).val()) {
-            $('#error-' + identity).html("<font color='red'>Ce champs est obligatoire!<\/font>");
+            $('#error-' + identity).html("<font color='red'>Ce champ est obligatoire!<\/font>");
             $("#" + identity).css('border-color', 'red');
             return true;
         } else {
@@ -165,10 +165,10 @@ $(document).ready(function () {
     $("#input-valider").click(function () {
         if (checkAll(diplomas)) {
             $.post('register_post.php', {
-                nom: $("#nom").val().trim(),
-                prenom: $("#prenom").val().trim(),
+                nom: $("#nom").val().trim().toLowerCase(),
+                prenom: $("#prenom").val().trim().toLowerCase(),
                 mdp: $("#mdp").val(),
-                email: $("#email").val().trim(),
+                email: $("#email").val().trim().toLowerCase(),
                 num: $("#num").val().trim(),
                 sexe: $("#sexe").val(),
                 promo_licence: $("#promo-licence").val().trim(),

@@ -1,3 +1,36 @@
+<?php
+session_start();
+if (!isset($_SESSION["DEPARTMENT_ARRAY"])) {
+    $_SESSION["DEPARTEMENT_ARRAY"] = array(
+        "Département des Sciences de l'Atmosphère",
+        "Département des Sciences Géographique et Océanographiques",
+        "Département des Sciences de la Terre",
+        "Institut des étudiants étrangers",
+        "Département de Chimie",
+        "Département Environnment",
+        "Département d'Informatique",
+        "Département d'Architecture",
+        "Insititut d'Education",
+        "Ecole d'Honneur de Kuang Yaming",
+        "Département d'Histoire",
+        "Département d'Ingénierie logiciel",
+        "Département des Sciences Commerciales",
+        "Département de Sociologie",
+        "Département des Sciences de la Vie",
+        "Département de Mathématiques",
+        "Département des Langues Etrangères",
+        "Département de Littérature",
+        "Département de Physique",
+        "Département d'Ingénierie et des Sciences Appliquées",
+        "Département de journalisme",
+        "Département des Sciences d'Information",
+        "Faculté de Médecine",
+        "Département de Philosophie",
+        "Département des Sciences Politiques"
+    );
+}
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -17,9 +50,9 @@
     </head>
     <body>
         <div id="header">
-            <a id="logo"><img src="../images/logo.png" class="img-responsive" alt="NJU"></a>
-<!--            <a id="langue"><div class="glyphicon glyphicon-globe"></div></a>
-            <a id="connecter"><div class="glyphicon glyphicon-user"></div></a>-->
+            <a id="logo"><img src="../images/nju-logo.png" class="img-responsive" alt="NJU"></a>
+            <!--            <a id="langue"><div class="glyphicon glyphicon-globe"></div></a>
+                        <a id="connecter"><div class="glyphicon glyphicon-user"></div></a>-->
         </div>
         <div class="grad">
             <div id="container-backgroud">

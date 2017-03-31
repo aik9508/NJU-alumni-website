@@ -12,6 +12,6 @@ if (isset($_SESSION["currentUser"])) {
         move_uploaded_file($tmp, $path.$newname);
         require "register_database.php";
         $dbh= Database::connect();
-        Photo::setPhoto($dbh, $_SESSION["currentUser"]["id"], $path.$newname);
+        Photo::setPhoto($dbh, $_SESSION["currentUser"]["id"], $newname);
     }
 }

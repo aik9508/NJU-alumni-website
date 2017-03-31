@@ -1,8 +1,7 @@
 <?php
 session_start();
 if (isset($_POST["signout"])) {
-    session_unset();
-    session_destroy();
+    session_unset("currentUser");
 }
 if (isset($_POST["email"]) and isset($_POST["psw"])) {
     require "utils/register_database.php";
@@ -15,6 +14,35 @@ if (isset($_POST["email"]) and isset($_POST["psw"])) {
             "prenom" => $user->prenom,
         );
     }
+}
+if (!isset($_SESSION["DEPARTMENT_ARRAY"])) {
+    $_SESSION["DEPARTEMENT_ARRAY"] = array(
+        "Département des Sciences de l'Atmosphère",
+        "Département des Sciences Géographique et Océanographiques",
+        "Département des Sciences de la Terre",
+        "Institut des étudiants étrangers",
+        "Département de Chimie",
+        "Département Environnment",
+        "Département d'Informatique",
+        "Département d'Architecture",
+        "Insititut d'Education",
+        "Ecole d'Honneur de Kuang Yaming",
+        "Département d'Histoire",
+        "Département d'Ingénierie logiciel",
+        "Département des Sciences Commerciales",
+        "Département de Sociologie",
+        "Département des Sciences de la Vie",
+        "Département de Mathématiques",
+        "Département des Langues Etrangères",
+        "Département de Littérature",
+        "Département de Physique",
+        "Département d'Ingénierie et des Sciences Appliquées",
+        "Département de journalisme",
+        "Département des Sciences d'Information",
+        "Faculté de Médecine",
+        "Département de Philosophie",
+        "Département des Sciences Politiques"
+    );
 }
 ?>
 
@@ -40,7 +68,7 @@ if (isset($_POST["email"]) and isset($_POST["psw"])) {
             <div class="container">
                 <div class="row">
                     <div id="logo" class="col-lg-3">
-                        <a href="index.php"><img src="images/logo.png" alt="logo"/></a>
+                        <a href="index.php"><img src="images/nju-logo.png" alt="logo"/></a>
                     </div>
                     <div id="association" class="col-lg-3">
                         <span>法国校友会</span>

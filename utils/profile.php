@@ -55,7 +55,7 @@ $photoPath = Photo::getPhoto($dbh, $id);
                             } else {
                                 $text = $text . 'doctorat ';
                             }
-                            $text = $text . "($diploma->departement)";
+                            $text = $text . $_SESSION['DEPARTEMENT_ARRAY'][$diploma->departement];
                             echo "<li>$text</li>";
                         }
                         $dbh = null;
@@ -71,15 +71,9 @@ $photoPath = Photo::getPhoto($dbh, $id);
                 <div>
                     <img <?php
                     if ($photoPath == null) {
-                        if ($alumnus->sexe == 0) {
-                            echo "src='../sources/homme.jpg'";
-                        } else if ($alumnus->sexe == 1) {
-                            echo "src='../sources/femme.jpg'";
-                        } else {
-                            echo "src='../sources/autre.jpg'";
-                        }
-                    }else{
-                        echo "src='$photoPath'";
+                        echo "src='../sources/default.jpg'";
+                    } else {
+                        echo "src=" . "../photoDAtaBase/" . $photoPath;
                     }
                     ?> alt="photo" id="photo"/>
                 </div>

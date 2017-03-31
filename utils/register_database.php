@@ -1,5 +1,7 @@
 <?php
 
+define("NB_DEPARTEMENTS", 25);
+
 class Database {
 
     public static function connect() {
@@ -75,11 +77,15 @@ class Photo {
             return $photo["photo"];
         }
     }
-    
-    public static function setPhoto($dbh, $id, $photoPath){
-        $query="INSERT INTO `photos`(`id`, `photo`) VALUES(?,?)";
-        $sth=$dbh->prepare($query);
-        $sth->execute(array($id, $photoPath));
+
+    public static function setPhoto($dbh, $id, $photoPath) {
+        if (Photo::getPhoto($dbh, $id) == null) {
+            $query = "INSERT INTO `photos`(`photo`, `id`) VALUES(?,?)";
+        } else {
+            $query = "UPDATE `photos` SET `photo`=? WHERE `id`=?";
+        }
+        $sth = $dbh->prepare($query);
+        $sth->execute(array($photoPath, $id));
     }
 
 }
@@ -93,9 +99,6 @@ class User {
     public $mdp;
     public $numero;
     public $sexe;
-    public $licence;
-    public $master;
-    public $doctorat;
 
     public function __toString() {
         //$info = "[" . $this->login . "] ". $this->prenom . " <b>". $this->nom . "</b>". " né(e) le ";
@@ -174,10 +177,10 @@ class User {
         }
     }
 
-    public static function insertUser($dbh, $nom, $prenom, $email, $mdp, $numero, $sexe, $licence, $master, $doctorat) {
+    public static function insertUser($dbh, $nom, $prenom, $email, $mdp, $numero, $sexe) {
         if (User::getUserByEmail($dbh, $email) == null) {
-            $sth = $dbh->prepare("INSERT INTO `NJUers`(`nom`, `prenom`, `email`, `mdp`, `numero`, `sexe`, `licence`, `master`, `doctorat`) VALUES(?,?,?,?,?,?,?,?,?)");
-            $sth->execute(array($nom, $prenom, $email, $mdp, $numero, $sexe, $licence, $master, $doctorat));
+            $sth = $dbh->prepare("INSERT INTO `NJUers`(`nom`, `prenom`, `email`, `mdp`, `numero`, `sexe`) VALUES(?,?,?,?,?,?)");
+            $sth->execute(array($nom, $prenom, $email, $mdp, $numero, $sexe));
             return TRUE;
         } else {
             return null;
@@ -196,6 +199,86 @@ class User {
         return false;
     }
 
+    public static function createQuery($nom, $prenom, $promo_start, $promo_end, $studies, $departements) {
+        $query = "";
+        if ($promo_start == "") {
+            $promo_start = 1949;
+        }
+        if ($promo_end == "") {
+            $promo_end = date("Y");
+        }
+
+        /* promotions */
+        $joined = false;
+        if (is_numeric($promo_start) AND is_numeric($promo_end) AND $promo_start <= $promo_end) {
+            if ($promo_start > 1949 OR $promo_end < date("Y")) {
+                $query = $query . " JOIN `diplomas` ON diplomas.id=NJUers.id AND diplomas.promotion>=$promo_start AND diplomas.promotion<=$promo_end";
+                $joined = true;
+            }
+        }
+
+        /* departements */
+        if ($departements != null AND count($departements) < NB_DEPARTEMENTS) {
+            if (!$joined) {
+                $query = $query . " JOIN `diplomas` ON diplomas.id=NJUers.id AND(";
+                $joined = true;
+            } else {
+                $query = $query . " AND (";
+            }
+            $query = $query . "diplomas.departement=$departements[0]";
+            for ($i = 1; $i < count($departements); $i++) {
+                $query = $query . " OR diplomas.departement=$departements[$i]";
+            }
+            $query = $query . ")";
+        }
+
+        /* diplomes */
+        if ($studies != null AND count($studies) < 3) {
+            if (!$joined) {
+                $query = $query . " JOIN `diplomas` ON diplomas.id=NJUers.id AND(";
+                $joined = true;
+            } else {
+                $query = $query . " AND (";
+            }
+            $query = $query . "diplomas.diplome=$studies[0]";
+            for ($i = 1; $i < count($studies); $i++) {
+                $query = $query . " OR diplomas.diplome=$studies[$i]";
+            }
+            $query = $query . ")";
+        }
+
+        $query = $query . " WHERE 1=1";
+        $query_array = [];
+        if ($nom != "") {
+            $query = $query . " AND nom=?";
+            array_push($query_array, $nom);
+        }
+        if ($prenom != "") {
+            $query = $query . " AND prenom=?";
+            array_push($query_array, $prenom);
+        }
+        return array($query, $query_array);
+    }
+
+    public static function searchUser($dbh, $query, $query_array, $limit1, $limit2) {
+        $query = "SELECT * FROM `NJUers`" . $query . " LIMIT " . $limit1 . " , " . $limit2;
+        $sth = $dbh->prepare($query);
+        $sth->execute($query_array);
+        $sth->setFetchMode(PDO::FETCH_CLASS, 'User');
+        $user = $sth->fetchAll();
+        if (count($user) == 0) {
+            return null;
+        }
+        return $user;
+    }
+
+    public static function countResults($dbh, $query, $query_array) {
+        $query = "SELECT COUNT(id) AS nbResults FROM `NJUers`" . $query;
+        $sth = $dbh->prepare($query);
+        $sth->execute($query_array);
+        return $sth->fetch()["nbResults"];
+    }
+
 }
 
 //$dbh = Database::connect();
@@ -203,7 +286,7 @@ class User {
 //for ($i = 0; $i < 20; $i++) {
 //    $nom = "fu";
 //    $prenom = "yunguan";
-//    $email = "yunguan.fu_$i@163.com";
+//    $email = "wang.sun_$i@gmail.com";
 //    $mdp = "12345678";
 //    $numero = "+33 07 47 47 47 47";
 //    $sexe = 0;
@@ -220,13 +303,13 @@ class User {
 //    $id = User::getIDByEmail($dbh, $email);
 //    var_dump($id);
 //    if ($licence == 1) {
-//        Diploma::insertDiplomas($dbh, $id, 0, rand(1979, 2016), $departements[rand(0, 5)]);
+//        Diploma::insertDiplomas($dbh, $id, 0, rand(1979, 2017), rand(0, 25));
 //    }
 //    if ($master == 1) {
-//        Diploma::insertDiplomas($dbh, $id, 1, rand(1979, 2016), $departements[rand(0, 5)]);
+//        Diploma::insertDiplomas($dbh, $id, 1, rand(1979, 2017), rand(0, 25));
 //    }
 //    if ($doctorat == 1) {
-//        Diploma::insertDiplomas($dbh, $id, 2, rand(1979, 2016), $departements[rand(0, 5)]);
+//        Diploma::insertDiplomas($dbh, $id, 2, rand(1979, 2017), rand(0, 25));
 //    }
 //}
 //$dbh = null;
