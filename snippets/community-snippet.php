@@ -73,6 +73,9 @@ EOT;
         </tr>
     </table>
 </div>
+<div class="modal-box">
+    
+</div>
 <script>
     class selectForm {
         constructor(button, list) {
@@ -259,8 +262,11 @@ EOT;
                     search(false);
                 }
             }
-        }
-        );
+        });
+        
+        $(".profile-info a").click(function(){
+            
+        });
     });
 </script>
 <!--<script>

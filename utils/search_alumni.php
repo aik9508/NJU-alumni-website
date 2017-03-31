@@ -32,7 +32,7 @@ if (isset($_POST)) {
                     <img src=$photo alt="photo" class="img-thumbnail"/>
                 </div>
                 <div class="profile-info">
-                    <a>$name</a>
+                    <a id=$individu->id>$name</a>
                 </div>
             </div>
 EOT;

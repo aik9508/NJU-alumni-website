@@ -24,10 +24,6 @@ header {
     display: inline-block;
 }
 
-.header-right div span{
-    color: white;
-}
-
 header .glyphicon {
     color: #ffffff;
     margin: 10px;
@@ -78,10 +74,6 @@ body {
     position: relative;
     display: inline-block;
     cursor: pointer;
-    /*-webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;*/
 }
 
 
@@ -91,9 +83,12 @@ body {
     margin: 0
 }
 
+#userName{
+    color: white;
+}
+
 .popup-trigger .popup-content {
-    /*visibility: hidden;*/
-    display: none;
+    display:none;
     width: 160px;
     background-color: #edeadf;
     color: #fff;
@@ -110,8 +105,8 @@ body {
 }
 
 #button-signin,
-#button-signup,
-#button-signout{
+#button-signout,
+#button-signup {
     border: none;
     background-color: #63065f;
     color: #ffffff;
@@ -369,6 +364,15 @@ img.avatar {
     margin-top: 2px;
     margin-bottom: 2px;
     height: 5px;
+    width: 100%;
+    border: none;
+    background-color: #63065f;
+}
+.hr {
+    margin-top: 1px;
+    margin-bottom: 1px;
+    height: 1px;
+    width: 100%;
     border: none;
     background-color: #63065f;
 }
@@ -377,10 +381,6 @@ img.avatar {
     margin-left: 5px;
     margin-right: 20px;
     color: #63065f;
-}
-
-.activity-description {
-    margin-left: -30px;
 }
 
 .greybgd {
@@ -393,8 +393,29 @@ img.avatar {
 }
 
 .activity-tile {
-    height: 120px;
-    padding: 10px 10px 10px 5px;
+    padding: 10px 10px 10px 10px;
+}
+
+.activity-tile > img {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.activity-tile .activity-tag {
+    color: #7A5678;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.activity-title {
+    font-family: "Microsoft YaHei";
+    font-size: 26px;
+}
+
+.activity-description {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 16px;
 }
 
 .block-tile ul {
@@ -434,7 +455,6 @@ p {
 .activity-thumnail {
     width: 100px;
     float: left;
-    clear: left;
     margin-right: 15px;
 }
 
@@ -633,35 +653,93 @@ p {
 
 /* PROFILE PAGE */
 
-#activities-menu {
-    width: 300px;
+#activity-menu {
+    width: 250px;
     float: left;
     padding-left: 0px;
 }
 
-#activities-content {
+#activity-content {
+    margin: 20px 10px 20px 10px;
     width: auto;
-    background-color: #0f0f0f;
 }
 
-.head-picture {
-    width: 100%;
-}
-
-.head-picture img {
-    width: 100%;
-}
-
-.activities-menu-tile {
+.activity-menu-tile {
     padding-top: 10px;
     padding-bottom: 10px;
 }
 
-#activities-content-container {
-    padding-left: 300px;
+#activity-content-container {
+    padding-left: 250px;
     padding-top: 40px;
     padding-bottom: 10px;
     padding-right: 0px;
+}
+
+#activity-content > ul {
+    list-style: none;
+    padding: 0;
+}
+
+.member-intro {
+    list-style-type: none;
+    padding-left: 0px;
+}
+
+.member-intro li {
+    height: 150px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.member-thumnail {
+    width: 170px;
+    height: 100%;
+    float: left;
+    margin-right: 20px;
+}
+.member-thumnail img {
+    max-height: 100%;
+}
+#certificat {
+    text-align: center;
+}
+
+
+/* END OD PROFILE PAGE */
+
+/* MODAL MODULE */
+.modal-box {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    border-radius: 0;
+}
+
+.modal-link {
+    background-color: #63065f;
+    color: #ffffff;
+    margin-left: 20px;
+    border-radius: 2px;
+    padding-left: 5px;
+    padding-right: 5px;
+    cursor: pointer;
 }
 
 /*community snippet*/
@@ -814,5 +892,14 @@ p {
 .buffer{
     padding-top: 17px;
     height: 100px;
+}
+
+.success-container{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255,255,255,0.75);
 }
 /* END OD PROFILE PAGE */

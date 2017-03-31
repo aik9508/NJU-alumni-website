@@ -106,7 +106,7 @@
 //        popup.classList.toggle("show");
         $("#popup-login").stop(true).fadeIn();
     });
-    
+
     $('#button-inscription').mouseout(function () {
 //        var popup = document.getElementById("popup-login");
 //        popup.classList.toggle("show");
@@ -145,5 +145,17 @@
             $('#profile-content').load("snippets/" + $('#profile-item' + i + ">span")[1].getAttribute("name") + "-snippet.php");
         });
     });
+    
+    $(".modal-link").click(function () {
+        console.log("OK");
+        $(".modal-box").css('display', 'block');
+        var num = $(this).attr('num');
+        $(".modal-content").load("snippets/activity/" + num + ".php");
+    });
 
+    $(".modal-box").click(function (event) {
+        if (event.target == this) {
+            $(".modal-box").css('display', 'none');
+        }
+    });
 })(window);

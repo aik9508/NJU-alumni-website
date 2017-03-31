@@ -47,7 +47,7 @@
                 <span class="glyphicon glyphicon-chevron-right"></span>
                 <span>INFORMATIONS</span>
             </div>
-            <div class='hr bighr'></div>
+            <div class='bighr'></div>
 
             <?php
             $nbrOfExp = 10;
@@ -61,7 +61,7 @@
 EOT;
             }
             echo "</ul>";
-            echo "<div class='hr bighr'></div>";
+            echo "<div class='bighr'></div>";
             ?>
 
         </div><!--End of information block-->
@@ -82,34 +82,56 @@ EOT;
             <span class="glyphicon glyphicon-chevron-right"></span>
             <span>ACTIVITÉS</span>
         </div>
-        <div class='hr bighr'></div>
+        <div class='bighr'></div>
+<!---->
+<!--        --><?php
+//        $nbrOfExp = 4;
+//        echo "<div><ul>";
+//        for ($i = 1; $i <= $nbrOfExp; $i++) {
+//            $greyBgd = ($i % 2 == 0) ? '' : 'greybgd';
+//            $date = '[01-10-2016]';
+//            echo <<<EOT
+//                    <li class="activity-tile $greyBgd">
+//
+//                            <div class="activity-thumnail">
+//                                <img class="img-responsive" src="images/homeface1_tn.jpg" alt="activity thumnail">
+//                            </div>
+//                            <div class="activity-description">
+//                                <p>
+//                                    BlablabalabalablabalbalablabalbaklablabalalkdkgkahgjdajflkjwoirhfgoahdkafakljfklajflBlablabalabalablabalbalablabalbaklablabalalkdkgkahgjdajflkjwoirhfgoahdkafakljfklajflBlablabalabalablabalbalablabalbaklablabalalkdkgkahgjdajflkjwoi
+//                                </p>
+//                                <p>$date</p>
+//                            </div>
+//
+//                    </li>
+//EOT;
+//        }
+//        echo "</ul></div>";
+//        ?>
 
-        <?php
-        $nbrOfExp = 4;
-        echo "<div><ul>";
-        for ($i = 1; $i <= $nbrOfExp; $i++) {
-            $greyBgd = ($i % 2 == 0) ? '' : 'greybgd';
-            $date = '[01-10-2016]';
-            echo <<<EOT
-                    <li class="activity-tile $greyBgd">
-                       
-                            <div class="activity-thumnail">
-                                <img class="img-responsive" src="images/homeface1_tn.jpg" alt="activity thumnail">
-                            </div>
-                            <div class="activity-description">
-                                <p>
-                                    BlablabalabalablabalbalablabalbaklablabalalkdkgkahgjdajflkjwoirhfgoahdkafakljfklajflBlablabalabalablabalbalablabalbaklablabalalkdkgkahgjdajflkjwoirhfgoahdkafakljfklajflBlablabalabalablabalbalablabalbaklablabalalkdkgkahgjdajflkjwoi
-                                </p>
-                                <p>$date</p>
-                            </div>
-                       
-                    </li>
-EOT;
-        }
-        echo "</ul></div>";
-        echo "<div class='hr bighr'></div>";
-        ?>
+        <ul>
+            <li class="activity-tile">
+                <img src="images/homeface1.jpg">
+                <div>
+                    <p class="activity-tag glyphicon glyphicon-tag"> 烧烤</p>
+                    <p class="activity-title">国庆聚餐烧烤</p>
+                    <div class="autherdate">
+                        <span class="auther glyphicon glyphicon-user"> xsw</span>
+                        <span class="date glyphicon glyphicon-time"> 2016-10-01</span>
+                    </div>
+                    <div class="hr"></div>
+                    <span class="activity-description">国庆佳节，南大学子齐聚会长季红家中，烧烤</span>
+                    <span class="modal-link" num="01">Read More</span>
+                </div>
+            </li>
+        </ul>
 
+
+        <div class='bighr'></div>
+        <div class="modal-box">
+            <div class="modal-content">
+            </div>
+        </div>
     </div><!--End of activities block-->
 </div><!--End of home snippet-->
 <script src="js/countnumber.js"></script>

@@ -1,7 +1,3 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: shiwen
- * Date: 3/17/2017
- * Time: 17:09
- */
+<div id="certificat">
+    <img src="images/certificat/certificat.jpg" alt="Déclaration de CREATION de l'Association">
+</div>
