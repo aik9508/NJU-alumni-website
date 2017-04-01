@@ -930,5 +930,19 @@ p {
     background-color: rgba(255, 255, 255, 0.75);
 }
 
+<<<<<<< HEAD
 
+=======
+#profile-wrapper{
+    display: none;
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: no-content; /* Enable scroll if needed */
+    background-color: rgba(255,255,255,0.75); /* Black w/ opacity */
+}
+>>>>>>> ba1ff5e45c967d6d53efc053cee61a715b99896c
 /* END OD PROFILE PAGE */

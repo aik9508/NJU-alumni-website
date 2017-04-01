@@ -77,8 +77,8 @@ EOT;
         </tr>
     </table>
 </div>
-<div class="modal-box">
-    
+<div id="profile-wrapper" class="vertical-center-parent">
+
 </div>
 <script>
     class selectForm {
@@ -175,9 +175,22 @@ EOT;
         }
     }
 
+    function addListenerToProfiles() {
+        $(".profile-info>a").each(function () {
+            $(this).click(function () {
+                $("#profile-wrapper").css('display', 'flex');
+                $.post("utils/profile.php", {
+                    alumni_id: $(this).attr("id")
+                }, function (response) {
+                    $("#profile-wrapper").html(response);
+                });
+            });
+        });
+    }
+
     $(document).ready(function () {
         var nb_results = 0;
-        var nb_total=0;
+        var nb_total = 0;
         var study_options;
         var departement_options;
         var nom_filter;
@@ -229,7 +242,6 @@ EOT;
         function search(count) {
             if (!isloading) {
                 isloading = true;
-                console.log("number " + nb_results);
                 $.post(
                         "utils/search_alumni.php",
                         {
@@ -241,25 +253,26 @@ EOT;
                             departements: departement_options,
                             limit1: nb_results,
                             limit2: 20,
-                            count : count
+                            count: count
                         },
                         function (response) {
                             $("#loader").hide();
                             $("#response").append(response);
-                            if(count){
-                                nb_total=$("#count").html();
-                                $("#nb-results").html(nb_total+" résultats trouvés :");
+                            if (count) {
+                                nb_total = $("#count").html();
+                                $("#nb-results").html(nb_total + " résultats trouvés :");
                             }
                             nb_results = $(".profile-card").length;
                             console.log("after search " + nb_results);
                             isloading = false;
+                            addListenerToProfiles();
                         }
                 );
             }
         }
 
         $(window).scroll(function () {
-            if (nb_results >= 20 && nb_results<nb_total && !isloading) {
+            if (nb_results >= 20 && nb_results < nb_total && !isloading) {
                 var buffer = $(".buffer");
                 if (isShow(buffer)) {
                     $("#loader").show();
@@ -267,9 +280,12 @@ EOT;
                 }
             }
         });
-        
-        $(".profile-info a").click(function(){
-            
+
+        $("#profile-wrapper").click(function (event) {
+            if (event.target == this) {
+                $(this).css('display', 'none');
+                $(this).html("");
+            }
         });
     });
 </script>
