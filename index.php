@@ -45,8 +45,6 @@ if (!isset($_SESSION["DEPARTMENT_ARRAY"])) {
     );
 }
 ?>
-
-<<<<<<< HEAD
   <!doctype html>
   <html lang="en">
 
@@ -99,71 +97,6 @@ if (isset($_SESSION["currentUser"])) {
 }
 ?>
 </span>
-=======
-<!doctype html>
-<html lang="en">
-
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport"
-              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <link rel="stylesheet" href="css/master.css">
-        <link rel="stylesheet" href="css/personal.css">
-        <link rel="stylesheet" href="css/profile.css">
-        <link rel="stylesheet" href="css/cropper.css">
-        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
-
-        <script src="js/jquery.js"></script>
-        <script src="js/bootstrap.js"></script>
-        <script src="js/ajax-utils.js"></script>
-    </head>
-
-    <body>
-        <header>
-            <div class="container">
-                <div class="row">
-                    <div id="logo" class="col-lg-3">
-                        <a href="index.php"><img src="images/nju-logo.png" alt="logo"/></a>
-                    </div>
-                    <div id="association" class="col-lg-3">
-                        <span>法国校友会</span>
-                    </div>
-                    <div class="header-right col-lg-2">
-                        <div id="button-inscription" class="popup-trigger">
-                            <div class="glyphicon glyphicon-user"></div>
-                            <div id="popup-login" class="popup-content">
-                                <?php if (isset($_SESSION["currentUser"])) { ?>
-                                    <form action="index.php" method="post">
-                                        <input id='button-signout' name="signout" value="Sign out" type='submit'/>
-                                    </form>
-                                <?php } else { ?>
-                                    <button id='button-signin' type='button'>Sign in</button>
-                                    <br/>
-                                    <button id='button-signup' type='button'>Sign up</button>
-                                    <?php
-                                }
-                                ?>
-                            </div>
-                        </div>
-                        <div id="userName">
-                            <span><?php
-                                if (isset($_SESSION["currentUser"])) {
-                                    echo $_SESSION["currentUser"]["prenom"] . " " . $_SESSION["currentUser"]["nom"];
-                                }
-                                ?>
-                            </span>
-                        </div>
-                        <div id="button-lang" class="popup-trigger">
-                            <div class="glyphicon glyphicon-globe"></div>
-                            <div id="popup-lang" class="popup-content">
-                                <button id="button-zh" type="button">中文</button>
-                                <button id="button-fr" type="button">Français</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
->>>>>>> ba1ff5e45c967d6d53efc053cee61a715b99896c
             </div>
             <div id="button-lang" class="popup-trigger">
               <div class="glyphicon glyphicon-globe"></div>
