@@ -1,3 +1,7 @@
+<div class="head-picture">
+    <img src="images/community_jumbotron.jpg" alt="Picture">
+</div>
+
 <div class="container">
     <table class="full-width">
         <tr>

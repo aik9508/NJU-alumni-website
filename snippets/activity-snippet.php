@@ -21,7 +21,7 @@
 
         <ul>
             <?php
-            $items = array("Activ", "PhotoVideo");
+            $items = array("event", "photo");
             $i = 0;
             $names = (!isset($_GET["lang"]) || $_GET["lang"] == "zh") ? array("活动交流", "相册影集") : array("Activités", "Photos & Vidéos");
             foreach ($items as $item) {
@@ -49,27 +49,9 @@ EOT;
         </div>
         <div class='bighr'></div>
         <div id="activity-content">
-            <ul>
-                <li class="activity-tile">
-                    <img src="images/homeface1.jpg">
-                    <div>
-                        <p class="activity-tag glyphicon glyphicon-tag"> 烧烤</p>
-                        <p class="activity-title">国庆聚餐烧烤</p>
-                        <div class="autherdate">
-                            <span class="auther glyphicon glyphicon-user"> xsw</span>
-                            <span class="date glyphicon glyphicon-time"> 2016-10-01</span>
-                        </div>
-                        <div class="hr"></div>
-                        <span class="activity-description">国庆佳节，南大学子齐聚会长季红家中，烧烤</span>
-                        <span class="modal-link" num="01">Read More</span>
-                    </div>
-                </li>
-            </ul>
-
-            <div class="modal-box">
-                <div class="modal-content">
-                </div>
-            </div>
+            <?php
+            require 'snippets/photo-snippet.php';
+            ?>
 
         </div>
         <div class='bighr'></div>
