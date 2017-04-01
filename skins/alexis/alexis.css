@@ -1,9 +1,6 @@
 
 /*------ Unite Gallery Alexis Skin -------*/
 
-
-.---------Slider_Arrows--------{}
-
 .ug-arrow-left.ug-skin-alexis,
 .ug-arrow-right.ug-skin-alexis{
 	width:35px;
@@ -27,7 +24,6 @@
 }
 
 
-.---------Slider_Bullets--------{}
 
 .ug-bullets.ug-skin-alexis .ug-bullet{
 	width:28px;
@@ -42,7 +38,6 @@
 }
 
 
-.---------Slider_Buttons--------{}
 
 /* --- play button -- */
 .ug-button-play.ug-skin-alexis{
@@ -90,7 +85,6 @@
 }
 
 
-.---------Zoom_Panel--------{}
 
 /* --- zoom panel --- */
 
@@ -128,9 +122,6 @@
     background-position: 0px -70px;
     cursor:default;
 }
-
-
-.---------Grid_Panel_Arrows--------{}
 
 /*--- down arrow ---*/
 
@@ -243,7 +234,6 @@
 }
 
 
-.---------Strip_Panel_Arrows--------{}
 
 /* left and right arrows */
 
@@ -310,7 +300,6 @@
 	filter: alpha(opacity = 50);
 }
 
-.---------Panel_Handle_Tip--------{}
 
 /* left and right handle */
 .ug-gallery-wrapper .ug-handle-tip-left.ug-skin-alexis,

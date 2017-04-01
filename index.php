@@ -53,6 +53,8 @@ if (!isset($_SESSION["DEPARTMENT_ARRAY"])) {
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/master.css">
+    <link rel="stylesheet" href="css/profile.css">
+    <link rel="stylesheet" href="css/cropper.css">
     <link rel="stylesheet" href="css/personal.css?<?php echo date('l jS \of F Y h:i:s A'); ?>">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
     <link href="css/unite-gallery.css" rel="stylesheet">
@@ -60,6 +62,7 @@ if (!isset($_SESSION["DEPARTMENT_ARRAY"])) {
 
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.js"></script>
+    <script src="js/cropper.js"></script>
 
   </head>
 

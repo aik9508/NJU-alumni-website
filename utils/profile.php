@@ -54,11 +54,11 @@ $photoPath = Photo::getPhoto($dbh, $id);
     </div>
     <div class="profil-photo text-center">
         <div>
-            <img <?php
+            <img class="thumbnail" <?php
             if ($photoPath == null) {
                 echo "src='sources/default.jpg'";
             } else {
-                echo "src=" . "photoDAtaBase/" . $photoPath;
+                echo "src=photoDAtaBase/" . $photoPath;
             }
             ?> alt="photo" id="photo"/>
         </div>

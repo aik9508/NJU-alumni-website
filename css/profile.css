@@ -26,9 +26,11 @@
     width: 190px;
 }
 
-.profil-photo img{
+.profil-photo img.thumbnail{
     max-width: 190px;
     max-height: 400px;
+    margin-top: 15px;
+    margin-bottom: 15px;
 }
 
 .profil-info a{
