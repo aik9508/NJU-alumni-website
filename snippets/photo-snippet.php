@@ -1,13 +1,19 @@
-
-<div id="gallery" style="display:none;">
-  <img src="images/activity20160625/m01.jpg" data-image="images/activity20160625/m01.jpg">
+<div style="overflow:hidden">
   <?php
-for ($i=1;$i<=20;$i++) {
-    $num = ($i<10)?("0".$i):($i);
-    $path = "images/activity20160625/m".$num.".jpg";
-    echo "<img src=$path data-image=$path>";
+$numOfGaalleries = 3; // need to be changed according to number of events
+for ($i=1;$i<=$numOfGaalleries;$i++) {
+    $activity_name = "activity-name";
+    echo "<div id='gallery-trigger".$i."' class='photo-modal-link col-md-6 col-sm-6 col-xm-12'>
+    <img src='images/activity".$i."/m1.jpg'>"."<p>".$activity_name."</p></div>";
 }
 ?>
 
 </div>
 
+<div class="modal-box">
+  <div class="modal-content">
+    <div id="gallery" style="display:none;">
+      <!--<?php require "snippets/photo/1.php"; ?>-->
+    </div>
+  </div>
+</div>

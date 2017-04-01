@@ -50,7 +50,7 @@ EOT;
         <div class='bighr'></div>
         <div id="activity-content">
             <?php
-            require 'snippets/photo-snippet.php';
+            require 'snippets/event-snippet.php';
             ?>
 
         </div>

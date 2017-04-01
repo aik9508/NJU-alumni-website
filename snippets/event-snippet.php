@@ -10,7 +10,7 @@
       </div>
       <div class="hr"></div>
       <span class="activity-description">国庆佳节，南大学子齐聚会长季红家中，烧烤</span>
-      <span class="modal-link" num="01">Read More</span>
+      <span class="activity-modal-link" num="1">Read More</span>
     </div>
   </li>
 </ul>

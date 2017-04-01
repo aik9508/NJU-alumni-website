@@ -109,19 +109,25 @@ $(document).ready(function() {
         });
     });
 
-    $(".modal-link").click(function() {
+    $(document).on("click", ".activity-modal-link", function() {
         $(".modal-box").css('display', 'block');
         var num = $(this).attr('num');
         $(".modal-content").load("snippets/activity/" + num + ".php");
     });
 
-    $(".modal-box").click(function(event) {
+
+    $(document).on("click", ".photo-modal-link", function() {
+        $(".modal-box").css('display', 'block');
+        $("#gallery").unitegallery({
+            theme_enable_text_panel: false
+        });
+    });
+
+    $(document).on("click", ".modal-box", function() {
         if (event.target == this) {
             $(".modal-box").css('display', 'none');
         }
     });
 
-    $("#gallery").unitegallery({
-        theme_enable_text_panel: false
-    });
+
 });
