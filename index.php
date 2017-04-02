@@ -230,7 +230,7 @@ else
         </div>
         <!--end footer-bottom-->
       </footer>
-      <script src="js/script.js"></script>
+      <script src="js/script.js?<?php echo date('l jS \of F Y h:i:s A'); ?>"></script>
       <script src="js/unitegallery.min.js"></script>
       <script src="js/ug-theme-default.js"></script>
   </body>

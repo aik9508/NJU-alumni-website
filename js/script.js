@@ -118,8 +118,11 @@ $(document).ready(function() {
 
     $(document).on("click", ".photo-modal-link", function() {
         $(".modal-box").css('display', 'block');
-        $("#gallery").unitegallery({
-            theme_enable_text_panel: false
+        var num = $(this).attr('num');
+        $.when($("#gallery").load("snippets/photo/" + num + ".php")).done(function() {
+            $("#gallery").unitegallery({
+                theme_enable_text_panel: false
+            });
         });
     });
 
