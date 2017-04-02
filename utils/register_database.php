@@ -47,10 +47,36 @@ class Diploma {
         }
     }
 
+    public static function getDiploma($dbh, $id, $diplome) {
+        $query = "SELECT * FROM `diplomas` WHERE id=? AND diplome=?";
+        $sth = $dbh->prepare($query);
+        $sth->setFetchMode(PDO::FETCH_CLASS, 'Diploma');
+        $sth->execute(array($id, $diplome));
+        if ($sth->rowCount() == 0) {
+            $dbh = null;
+            return null;
+        } else {
+            $result = $sth->fetch();
+            $dbh = null;
+            return $result;
+        }
+    }
+
     public static function insertDiplomas($dbh, $id, $diplome, $promotion, $departement) {
         $sth = $dbh->prepare("INSERT INTO `diplomas`(`id`,`diplome`,`promotion`,`departement`) VALUES(?,?,?,?)");
         $sth->execute(array($id, $diplome, $promotion, $departement));
         $dbh = null;
+    }
+
+    public static function delete($dbh, $id, $diplome) {
+        $sth = $dbh->prepare("DELETE FROM `diplomas` WHERE `id`=? AND `diplome`=? ");
+        $sth->execute(array($id, $diplome));
+        $dbh = null;
+    }
+
+    public static function update($dbh, $query, $query_array) {
+        $sth = $dbh->prepare($query);
+        $sth->execute($query_array);
     }
 
 }
@@ -74,6 +100,7 @@ class Photo {
             return null;
         } else {
             $photo = $sth->fetch();
+            $dbh = null;
             return $photo["photo"];
         }
     }
@@ -86,6 +113,50 @@ class Photo {
         }
         $sth = $dbh->prepare($query);
         $sth->execute(array($photoPath, $id));
+        $dbh = null;
+    }
+
+}
+
+class Info {
+
+    public $id;
+    public $type;
+    public $content;
+
+    public function __toString() {
+        return "$this->content";
+    }
+
+    public static function getInfo($dbh, $id, $type) {
+        $query = "SELECT `content` FROM `infos` WHERE id=? AND type=?";
+        $sth = $dbh->prepare($query);
+        $sth->execute(array($id, $type));
+        if ($sth->rowCount() == 0) {
+            $dbh = null;
+            return null;
+        } else {
+            $content = $sth->fetch();
+            $dbh = null;
+            return $content["content"];
+        }
+    }
+    
+    public static function delete($dbh, $id, $type){
+        $sth = $dbh->prepare("DELETE FROM `infos` WHERE `id`=? AND `type`=? ");
+        $sth->execute(array($id, $type));
+        $dbh = null;
+    }
+
+    public static function setInfo($dbh, $id, $type, $content) {
+        if (Info::getInfo($dbh, $id, $type) == null) {
+            $query = "INSERT INTO `infos`(`content`,`type`, `id`) VALUES(?,?,?)";
+        } else {
+            $query = "UPDATE `infos` SET `content`=? WHERE `type`=? AND `id`=?";
+        }
+        $sth = $dbh->prepare($query);
+        $sth->execute(array($content, $type, $id));
+        $dbh = null;
     }
 
 }
@@ -199,6 +270,11 @@ class User {
         return false;
     }
 
+    public static function update($dbh, $query, $query_array) {
+        $sth = $dbh->prepare($query);
+        $sth->execute($query_array);
+    }
+
     public static function createQuery($nom, $prenom, $promo_start, $promo_end, $studies, $departements) {
         $query = "";
         if ($promo_start == "") {
@@ -206,45 +282,6 @@ class User {
         }
         if ($promo_end == "") {
             $promo_end = date("Y");
-        }
-
-        /* promotions */
-        $joined = false;
-        if (is_numeric($promo_start) AND is_numeric($promo_end) AND $promo_start <= $promo_end) {
-            if ($promo_start > 1949 OR $promo_end < date("Y")) {
-                $query = $query . " JOIN `diplomas` ON diplomas.id=NJUers.id AND diplomas.promotion>=$promo_start AND diplomas.promotion<=$promo_end";
-                $joined = true;
-            }
-        }
-
-        /* departements */
-        if ($departements != null AND count($departements) < NB_DEPARTEMENTS) {
-            if (!$joined) {
-                $query = $query . " JOIN `diplomas` ON diplomas.id=NJUers.id AND(";
-                $joined = true;
-            } else {
-                $query = $query . " AND (";
-            }
-            $query = $query . "diplomas.departement=$departements[0]";
-            for ($i = 1; $i < count($departements); $i++) {
-                $query = $query . " OR diplomas.departement=$departements[$i]";
-            }
-            $query = $query . ")";
-        }
-
-        /* diplomes */
-        if ($studies != null AND count($studies) < 3) {
-            if (!$joined) {
-                $query = $query . " JOIN `diplomas` ON diplomas.id=NJUers.id AND(";
-                $joined = true;
-            } else {
-                $query = $query . " AND (";
-            }
-            $query = $query . "diplomas.diplome=$studies[0]";
-            for ($i = 1; $i < count($studies); $i++) {
-                $query = $query . " OR diplomas.diplome=$studies[$i]";
-            }
-            $query = $query . ")";
         }
 
         $query = $query . " WHERE 1=1";
@@ -257,14 +294,50 @@ class User {
             $query = $query . " AND prenom=?";
             array_push($query_array, $prenom);
         }
+
+        /* promotions */
+        $joined = false;
+        if (is_numeric($promo_start) AND is_numeric($promo_end) AND $promo_start <= $promo_end) {
+            $joined = true;
+            if ($promo_start > 1949 OR $promo_end < date("Y")) {
+                $query = $query . " AND diplomas.promotion>=$promo_start AND diplomas.promotion<=$promo_end";
+                $joined = true;
+            }
+        }
+
+        /* departements */
+        if ($departements != null AND count($departements) < NB_DEPARTEMENTS) {
+            $joined = true;
+            $query = $query . " AND (diplomas.departement=$departements[0]";
+            for ($i = 1; $i < count($departements); $i++) {
+                $query = $query . " OR diplomas.departement=$departements[$i]";
+            }
+            $query = $query . ")";
+        }
+
+        /* diplomes */
+        if ($studies != null AND count($studies) < 3) {
+            $joined = true;
+            $query = $query . " AND (diplomas.diplome=$studies[0]";
+            for ($i = 1; $i < count($studies); $i++) {
+                $query = $query . " OR diplomas.diplome=$studies[$i]";
+            }
+            $query = $query . ")";
+        }
+
+        if ($joined) {
+            $query = "JOIN `diplomas` ON diplomas.id=NJUers.id " . $query;
+        }
+
+        $query = $query . " ORDER BY `NJUers`.`id` ASC";
+
         return array($query, $query_array);
     }
 
     public static function searchUser($dbh, $query, $query_array, $limit1, $limit2) {
-        $query = "SELECT * FROM `NJUers`" . $query . " LIMIT " . $limit1 . " , " . $limit2;
+        $query = "SELECT DISTINCT `NJUers`.`id`, `nom`, `prenom` FROM `NJUers`" . $query . " LIMIT " . $limit1 . " , " . $limit2;
         $sth = $dbh->prepare($query);
         $sth->execute($query_array);
-        $sth->setFetchMode(PDO::FETCH_CLASS, 'User');
         $user = $sth->fetchAll();
         if (count($user) == 0) {
             return null;
@@ -273,43 +346,10 @@ class User {
     }
 
     public static function countResults($dbh, $query, $query_array) {
-        $query = "SELECT COUNT(`NJUers`.id) AS nbResults FROM `NJUers`" . $query;
+        $query = "SELECT COUNT(DISTINCT(`NJUers`.id)) AS nbResults FROM `NJUers`" . $query;
         $sth = $dbh->prepare($query);
         $sth->execute($query_array);
         return $sth->fetch()["nbResults"];
     }
 
 }
-
-//$dbh = Database::connect();
-//$departements = ["Département de Physique", "Département de Chimie", "Département de Mathématiques", "Département d'Informatique", "Département de Biologie", "Ecole d'honneur de Kuangyamin"];
-//for ($i = 0; $i < 20; $i++) {
-//    $nom = "fu";
-//    $prenom = "yunguan";
-//    $email = "wang.sun_$i@gmail.com";
-//    $mdp = "12345678";
-//    $numero = "+33 07 47 47 47 47";
-//    $sexe = 0;
-//    $licence = $master = $doctorat = 0;
-//    while (true) {
-//        $licence = rand(0, 1);
-//        $master = rand(0, 1);
-//        $doctorat = rand(0, 1);
-//        if ($licence + $master + $doctorat != 0) {
-//            break;
-//        }
-//    }
-//    User::insertUser($dbh, $nom, $prenom, $email, $mdp, $numero, $sexe, $licence, $master, $doctorat);
-//    $id = User::getIDByEmail($dbh, $email);
-//    var_dump($id);
-//    if ($licence == 1) {
-//        Diploma::insertDiplomas($dbh, $id, 0, rand(1979, 2017), rand(0, 25));
-//    }
-//    if ($master == 1) {
-//        Diploma::insertDiplomas($dbh, $id, 1, rand(1979, 2017), rand(0, 25));
-//    }
-//    if ($doctorat == 1) {
-//        Diploma::insertDiplomas($dbh, $id, 2, rand(1979, 2017), rand(0, 25));
-//    }
-//}
-//$dbh = null;
