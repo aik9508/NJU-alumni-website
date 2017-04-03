@@ -52,6 +52,7 @@ if (!isset($_SESSION["DEPARTMENT_ARRAY"])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.svg" />
     <link rel="stylesheet" href="css/master.css">
     <link rel="stylesheet" href="css/profile.css">
     <link rel="stylesheet" href="css/cropper.css">
@@ -104,8 +105,16 @@ if (isset($_SESSION["currentUser"])) {
             <div id="button-lang" class="popup-trigger">
               <div class="glyphicon glyphicon-globe"></div>
               <div id="popup-lang" class="popup-content">
-                <button id="button-zh" type="button">中文</button>
-                <button id="button-fr" type="button">Français</button>
+                <?php
+                $actual_link = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"; 
+                echo "<a href=".$actual_link."?lang=zh>";
+                ?>
+                <button id="button-zh" type="button">中文</button></a>
+                <?php
+                $actual_link = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"; 
+                echo "<a href=".$actual_link."?lang=fr>";
+                ?>
+                <button id="button-fr" type="button">Français</button></a>
               </div>
             </div>
           </div>

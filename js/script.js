@@ -115,18 +115,10 @@ $(document).ready(function() {
         $(".modal-content").load("snippets/activity/" + num + ".php");
     });
 
-    $(document).on("click", ".photo-modal-link", function() {  
+    $(document).on("click", ".photo-modal-link", function() {
         var num = $(this).attr('num');
-        console.log("OKkkk"+num);
-        $("#gallery").load("snippets/photo/" + num + ".php");
-        setTimeout(function(){
-            $("#gallery").unitegallery({
-                theme_enable_text_panel: false
-            });
-            $(".modal-box").css('display', 'block');
-            console.log("OK");
-        }, 50);
-         console.log("OKkkk");
+        $("#gallery-container").load("snippets/photo/" + num + ".php");
+
     });
 
     $(document).on("click", ".modal-box", function() {
