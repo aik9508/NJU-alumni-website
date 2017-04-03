@@ -1,11 +1,13 @@
 <ul>
 
   <?php
+
 require __DIR__.'/../utils/register_database.php';
 $dbh = Database::connect();
 $totalnum = ActivityList::getActivityNumber($dbh);
 
 for ($i=$totalnum;$i>=1;$i--) {
+
   $act = ActivityList::getActivityInfo($dbh,$i);
   ?>
 <li class='activity-tile'>

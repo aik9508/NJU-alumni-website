@@ -115,10 +115,9 @@ $(document).ready(function() {
         $(".modal-content").load("snippets/activity/" + num + ".php");
     });
 
-    $(document).on("click", ".photo-modal-link", function() {
+    $(document).on("click", ".photo-modal-link", function() {  
         var num = $(this).attr('num');
         $("#gallery-container").load("snippets/photo/" + num + ".php");
-
     });
 
     $(document).on("click", ".modal-box", function() {
