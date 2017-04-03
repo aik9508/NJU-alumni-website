@@ -13,112 +13,76 @@ if (isset($_POST['alumni_id'])) {
 }
 $photoPath = Photo::getPhoto($dbh, $id);
 ?>
-<div class="profil vertical-center">
-    <div class='profil-info'>
-        <div class="text-center">
-            <p id="name"><b><?php echo"$alumnus->prenom $alumnus->nom" ?></b></p>
-        </div>
-        <div id="contact">
+<div id="profil" class="vertical-center">
+    <div class="profil-header">
+        <div class="profil-title">
+            <span id="profil-name"><?php echo ucfirst($alumnus->prenom) . " " . ucfirst($alumnus->nom); ?></span>
             <?php
-            echo "<a href='#' class='float-left'>$alumnus->email</a>";
             if ($alumnus->numero != null) {
-                echo "<span class='float-right'><i>Mob</i> : $alumnus->numero</span>";
+                echo "<span id='profil-tel'><i>Mob</i> : $alumnus->numero</span>";
             }
             ?>
         </div>
-        <hr/>
-        <div id="diplomas">
-            <ul>
-                <?php
-                $diplomas = Diploma::getDiplomas($dbh, $id);
-                foreach ($diplomas as $diploma) {
-                    $text = "$diploma->promotion : ";
-                    if ($diploma->diplome == 0) {
-                        $text = $text . 'licence ';
-                    } else if ($diploma->diplome == 1) {
-                        $text = $text . 'master ';
-                    } else {
-                        $text = $text . 'doctorat ';
-                    }
-                    $text = $text . $_SESSION['DEPARTEMENT_ARRAY'][$diploma->departement];
-                    echo "<li>$text</li>";
+        <div class="mask">
+            <div id="img-container">
+                <img class="thumbnail"<?php
+                if ($photoPath == null) {
+                    echo "src=sources/default.jpg";
+                } else {
+                    echo "src=photoDAtaBase/" . $photoPath;
                 }
-                $dbh = null;
-                ?>
-            </ul>
-        </div>
-        <hr/>
-        <div class="edit" contenteditable="true">
-
+                ?> alt="photo" id="photo"/>
+            </div>
+            <span id="profil-email"><?php echo "<a href='#' >$alumnus->email</a>"; ?></span>
         </div>
     </div>
-    <div class="profil-photo text-center">
-        <div>
-            <img class="thumbnail" <?php
-            if ($photoPath == null) {
-                echo "src='sources/default.jpg'";
-            } else {
-                echo "src=photoDAtaBase/" . $photoPath;
+    <div class="profil-info">
+        <p><span>Diplômes :</span></p>
+        <ul>
+            <?php
+            $diplomas = Diploma::getDiplomas($dbh, $id);
+            $licence = $master = $doctorat = 0;
+            foreach ($diplomas as $diploma) {
+                $text = "$diploma->promotion : ";
+                if ($diploma->diplome == 0) {
+                    $licence = $diploma;
+                    $text = $text . 'licence ';
+                } else if ($diploma->diplome == 1) {
+                    $master = $diploma;
+                    $text = $text . 'master ';
+                } else {
+                    $doctorat = $diploma;
+                    $text = $text . 'doctorat ';
+                }
+                $text = $text . $_SESSION['DEPARTEMENT_ARRAY'][$diploma->departement];
+                echo "<li>$text</li>";
             }
-            ?> alt="photo" id="photo"/>
-        </div>
-        <form id="upload_form" action="save_photo.php" method="post" enctype="multipart/form-data">
-            <input type="button" id="upload_photo" value="Choisir ma photo" class="btn btn-primary">
-            <input type="file" name="photoFile" id="imgFile" accept="image/*" style="display: none">
-        </form>
-        <div id="photo_info"></div>
-    </div>
-    <div id="cropper-wrapper" class="display-none">
-        <div id="cropper-area" class="vertical-center-parent"></div>
-        <div>
-            <span id="cropper-valider">Valider</span>
-            <span id="cropper-annuler">Annuler</span>
-        </div>
+            ?>
+        </ul>
+        <?php
+        $fonction = Info::getInfo($dbh, $id, 1);
+        $entreprise = Info::getInfo($dbh, $id, 2);
+        if ($fonction || $entreprise) {
+            echo "<p><span>Profession : </span></p><ul>";
+            if ($entreprise) {
+                echo "<li> Entreprise : " . $entreprise . "</li>";
+            }
+            if ($fonction) {
+                echo "<li> Fonction &nbsp;&nbsp;: " . $fonction . "</li>";
+            }
+            echo "</ul>";
+        }
+        ?>
+        <p><span>Contact : </span></p>
+        <ul>
+            <li><?php echo $alumnus->email ?></li>
+            <?php
+            $email_extra = Info::getInfo($dbh, $id, 0);
+            if ($email_extra && $email_extra != $alumnus->email) {
+                echo "<li>" . $email_extra . "</li>";
+            }
+            $dbh = null;
+            ?>
+        </ul>
     </div>
 </div>
-<script src="js/cropper.js"></script>
-<script>
-    $(document).ready(function () {
-        $('#upload_photo').click(function () {
-            console.log("OK");
-            $('#imgFile').click();
-        });
-        $('#imgFile').change(function () {
-            if ($(this)[0].files && $(this)[0].files[0]) {
-                var file = $(this)[0].files[0];
-                var photo_obj = window.URL.createObjectURL(file);
-                $("#cropper-wrapper").removeClass("display-none");
-                $("#cropper-area").html("<img class='responsive vertical-center' alt='photo' id='cropper-container'/>");
-                $("#cropper-container").attr("src", photo_obj);
-                $('#cropper-container').cropper({
-                    viewMode: 1,
-                    dragMode: 'move',
-                    aspectRatio: 1,
-                    autoCropArea: 0.5,
-                    restore: false,
-                    guides: false,
-                    highlight: false,
-                    cropBoxMovable: false,
-                    cropBoxResizable: false
-
-                });
-                //$("#photo").attr("src", window.URL.createObjectURL(file));
-//                $("#upload_form").ajaxForm(
-//                        {target: '#photo_info'}
-//                ).submit();
-            }
-        });
-        $('#cropper-valider').click(function(){
-            var croppedCanvas = $("#cropper-container").cropper('getCroppedCanvas');
-            var croppng=croppedCanvas.toDataURL("image/png");
-            $("#photo").attr("src", croppng);
-            $("#cropper-wrapper").addClass("display-none");
-            $('#imgFile').val("");
-            $.post("utils/save_photo.php",{
-                pngimageData: croppng
-            },function(response){
-                $("#photo_info").html(response);
-            });
-        });
-    });
-</script>

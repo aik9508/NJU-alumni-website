@@ -4,7 +4,7 @@
     for ($i = 1; $i <= $numOfGaalleries; $i++) {
         $activity_name = "activity-name";
         echo "<div num=" . $i . " class='photo-modal-link col-md-6 col-sm-6 col-xm-12'>
-    <img src='images/activity" . $i . "/m1.jpg'>" . "<p>" . $activity_name . "</p></div>";
+    <img src='images/activity" . $i . "/m1.jpg' class='img-responsive'>" . "<p>" . $activity_name . "</p></div>";
     }
     ?>
 
