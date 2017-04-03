@@ -5,8 +5,13 @@ if (isset($_POST['alumni_id'])) {
     require 'register_database.php';
     $dbh = Database::connect();
     $alumnus = User::getUserByID($dbh, $id);
-} else {
-    $id = 3;
+} else if(isset($_SESSION["currentUser"])){
+    $id=$_SESSION["currentUser"]["id"];
+    require 'register_database.php';
+    $dbh = Database::connect();
+    $alumnus = User::getUserByID($dbh, $id);
+}else{
+    $id=3;
     require 'register_database.php';
     $dbh = Database::connect();
     $alumnus = User::getUserByID($dbh, $id);
@@ -19,9 +24,10 @@ $photoPath = Photo::getPhoto($dbh, $id);
     <head>
         <meta charset="utf-8">
         <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
-        <link rel="stylesheet" type="text/css" href="../css/profile_test.css">
+        <link rel="stylesheet" type="text/css" href="../css/profile.css?<?php echo date('l jS \of F Y h:i:s A'); ?>">
         <link rel="stylesheet" type="text/css" href="../css/personal.css">
         <link rel="stylesheet" type="text/css" href="../css/cropper.css">
+        <link rel="stylesheet" type="text/css" href="../css/community.css">
         <link href="https://fonts.googleapis.com/css?family=Slabo+27px" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
         <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
@@ -296,32 +302,36 @@ EOT;
                 });
 
                 $('#upload-photo').click(function () {
-                    var croppedCanvas = $("#temp-container").cropper('getCroppedCanvas');
-                    var croppng = croppedCanvas.toDataURL("image/png");
-                    $("#original-photo").attr("src", croppng);
-                    $("#photo").attr("src", croppng);
-                    $("#temp-container").hide();
-                    $('#temp-container').cropper('destroy');
-                    $("#original-photo").show();
-                    $("#change-photo").parent("li").removeClass('disabled');
-                    $("#upload-photo").parent("li").addClass('disabled');
-                    $("#cancel-photo").parent("li").addClass('disabled');
-                    $('#imgFile').val("");
-                    $.post("save_photo.php", {
-                        pngimageData: croppng
-                    }, function (response) {
-                        $("#photo_info").html(response);
-                    });
+                    if (!$(this).parent("li").hasClass("disabled")) {
+                        var croppedCanvas = $("#temp-container").cropper('getCroppedCanvas');
+                        var croppng = croppedCanvas.toDataURL("image/png");
+                        $("#original-photo").attr("src", croppng);
+                        $("#photo").attr("src", croppng);
+                        $("#temp-container").hide();
+                        $('#temp-container').cropper('destroy');
+                        $("#original-photo").show();
+                        $("#change-photo").parent("li").removeClass('disabled');
+                        $("#upload-photo").parent("li").addClass('disabled');
+                        $("#cancel-photo").parent("li").addClass('disabled');
+                        $('#imgFile').val("");
+                        $.post("save_photo.php", {
+                            pngimageData: croppng
+                        }, function (response) {
+                            $("#photo_info").html(response);
+                        });
+                    }
                 });
 
                 $('#cancel-photo').click(function () {
-                    $("#temp-container").hide();
-                    $('#temp-container').cropper('destroy');
-                    $("#original-photo").show();
-                    $("#change-photo").parent("li").removeClass('disabled');
-                    $("#upload-photo").parent("li").addClass('disabled');
-                    $("#cancel-photo").parent("li").addClass('disabled');
-                    $('#imgFile').val("");
+                    if (!$(this).parent("li").hasClass("disabled")) {
+                        $("#temp-container").hide();
+                        $('#temp-container').cropper('destroy');
+                        $("#original-photo").show();
+                        $("#change-photo").parent("li").removeClass('disabled');
+                        $("#upload-photo").parent("li").addClass('disabled');
+                        $("#cancel-photo").parent("li").addClass('disabled');
+                        $('#imgFile').val("");
+                    }
                 });
 
 
@@ -360,7 +370,7 @@ EOT;
                         }
                         $(".profil-edit-wrapper").hide();
                         $(".flip-container").show();
-                    } 
+                    }
                 });
                 $("#profil-annuler").click(function () {
                     for (var i = 0; i < inputs.length; i++) {

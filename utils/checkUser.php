@@ -2,12 +2,20 @@
 
 if (isset($_POST['email'])) {
     require 'register_database.php';
-    $dbh= Database::connect();
-    $existed=User::getUserByEmail($dbh, $_POST['email']);
-    if($existed!=null){
-        echo 'existed';
-    }else{
-        echo '';
+    $dbh = Database::connect();
+    if (!isset($_POST['psw'])) {
+        $existed = User::getUserByEmail($dbh, $_POST['email']);
+        if ($existed != null) {
+            echo 'existed';
+        } else {
+            echo '';
+        }
+    } else {
+        if(User::checkPassword($dbh, $_POST['email'], $_POST['psw'])){
+            echo "1";
+        }else{
+            echo "";
+        }
     }
 }
 

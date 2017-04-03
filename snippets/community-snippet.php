@@ -58,7 +58,7 @@ EOT;
                             </ul>
                         </div>
                         <div class="text-center">
-                            <button id="button-recherche">Recherche</button>
+                            <button id="button-recherche">Rechercher</button>
                         </div>
                     </div>
                 </div>
@@ -78,7 +78,6 @@ EOT;
     </table>
 </div>
 <div id="profile-wrapper" class="vertical-center-parent">
-
 </div>
 <script>
     class selectForm {
@@ -87,6 +86,8 @@ EOT;
 
             self.button = $(button);
             self.list = $(list);
+            self.list.prepend("<span class='text-center'>Effacer Tous</span>");
+            self.clearAndSelect = $(self.list.find("span")[0]);
 
             self.button.html("<span class='multiselect-button-content'></span><span class='arrow-down'></span>");
 
@@ -140,6 +141,17 @@ EOT;
                 });
             });
 
+            self.clearAndSelect.click(function (e) {
+                e.stopPropagation();
+                if ($(this).hasClass("active")) {
+                    self.selectAll();
+                    self.switchToClear();
+                } else {
+                    self.clearAll();
+                    self.switchToSelect();
+                }
+            });
+
             $(window).resize(function () {
                 var offset = self.button.offset();
                 var height = self.button.outerHeight();
@@ -148,20 +160,61 @@ EOT;
 
         }
 
+        switchToClear() {
+            const self = this;
+            self.clearAndSelect.removeClass("active");
+            self.clearAndSelect.html("Effacer Tous");
+        }
+
+        switchToSelect() {
+            const self = this;
+            self.clearAndSelect.addClass("active");
+            self.clearAndSelect.html("Choisir Tous");
+        }
+
         changeContent() {
             const self = this;
 
             if (self.nbChecked === 0) {
                 self.content.html("Aucune sélection");
+                self.switchToSelect();
             } else if (self.nbChecked === 1) {
-                self.content.html(self.list.find("input[type=checkbox]:checked").parent("label").text());
+                var labelText = String(self.list.find("input[type=checkbox]:checked").parent("label").text()).trim();
+                if (labelText.length > 38) {
+                    labelText = labelText.substring(0, 35) + "...";
+                }
+                self.content.html(labelText);
             } else if (self.nbChecked === self.nbTotal) {
                 self.content.html("Tous (" + self.nbChecked + ")");
+                self.switchToClear();
             } else {
                 self.content.html(self.nbChecked + " sélectionné(e)s");
             }
         }
 
+        clearAll() {
+            const self = this;
+            self.nbChecked = 0;
+            self.labels.each(function () {
+                $(this).removeClass("active");
+            });
+            self.options.each(function () {
+                $(this).prop("checked", false);
+            });
+            self.content.html("Aucune sélection");
+        }
+
+        selectAll() {
+            const self = this;
+            self.nbChecked = self.nbTotal;
+            self.labels.each(function () {
+                $(this).addClass("active");
+            });
+            self.options.each(function () {
+                $(this).prop("checked", true);
+            });
+            self.content.html(self.nbChecked + " sélectionné(e)s");
+        }
     }
 
     function isShow($el) {
@@ -178,6 +231,8 @@ EOT;
     function addListenerToProfiles() {
         $(".profile-info>a").each(function () {
             $(this).click(function () {
+                document.body.style.overflow = 'hidden';
+                $('body').on('mousewheel', document.disableScrollFn);
                 $("#profile-wrapper").css('display', 'flex');
                 $.post("utils/profile.php", {
                     alumni_id: $(this).attr("id")
@@ -187,7 +242,12 @@ EOT;
             });
         });
     }
-
+    
+    this.disableScrollFn = function (e) {
+        e.preventDefault();
+        e.stopPropagation()
+    };
+    
     $(document).ready(function () {
         var nb_results = 0;
         var nb_total = 0;
@@ -285,6 +345,8 @@ EOT;
             if (event.target == this) {
                 $(this).css('display', 'none');
                 $(this).html("");
+                document.body.style.overflow = 'auto';
+                $('body').off('mousewheel', document.disableScrollFn);
             }
         });
     });
