@@ -39,7 +39,7 @@ if (!isset($_SESSION["DEPARTMENT_ARRAY"])) {
               content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <link rel="stylesheet" href="../css/master.css">
-        <link rel="stylesheet" href="../css/register.css">
+        <link rel="stylesheet" href="../css/register.css?<?php echo date('l jS \of F Y h:i:s A'); ?>">
         <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
         <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
         <script>
@@ -99,12 +99,14 @@ if (!isset($_SESSION["DEPARTMENT_ARRAY"])) {
                     </div>
                     <div class="form-group">
                         <label class="control-label" for="sexe">Sexe&nbsp;:</label>
-                        <select class="form-control" id="sexe">
-                            <option>Femme</option>
-                            <option>Homme</option>
-                            <option>Autre</option>
-                            <option>Non précis</option>
-                        </select>
+                        <div class="custom-selectbox">
+                            <select class=" custom-select" id="sexe">
+                                <option>Femme</option>
+                                <option>Homme</option>
+                                <option>Autre</option>
+                                <option>Non précis</option>
+                            </select>
+                        </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label">Quel(s) diplôme(s) avez-vous obtenu(s) à l'Université de Nanjing?</label>
@@ -148,7 +150,7 @@ if (!isset($_SESSION["DEPARTMENT_ARRAY"])) {
                     $nbAlumni = User::countResults($dbh, "WHERE 1", null);
                     $dbh = null;
                     ?>
-                    <p>Vous êtes la <?php echo $nbAlumni ?> ème personne inscrite sur notre site!</p>
+                    <p>Vous êtes la <span id="nb_alumni"></span> ème personne inscrite sur notre site!</p>
                     <a href="../index.php" class="">Retourner à la page d'accueil</a>
                 </div>
             </div>
@@ -229,7 +231,7 @@ if (!isset($_SESSION["DEPARTMENT_ARRAY"])) {
                             promo_doctorat: $("#promo-doctorat").val().trim(),
                             dept_doctorat: $("#dept-licence").val()},
                                 function (response) {
-                                    $('#error-diplome').html(response);
+                                    $("#nb_alumni").html(response);
                                 });
                         $("#success-container").fadeIn(500);
                         $("#success-container").css('display', 'flex');
@@ -386,6 +388,15 @@ if (!isset($_SESSION["DEPARTMENT_ARRAY"])) {
                     return true;
                 var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
                 if (re.test(email.trim())) {
+                    $.post('checkUser.php', 'email=' + email.trim(), function (response) {
+                        if (response === 'existed') {
+                            $('#email').css('border-color', 'red');
+                            $('#error-email').html("<font color='red'>Vous avez saisi une adresse e-mail déjà associée à un compte.<\/font>");
+                            return false;
+                        } else {
+                            return true;
+                        }
+                    });
                     return email;
                 } else {
                     return false;

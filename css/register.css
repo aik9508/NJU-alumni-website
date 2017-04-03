@@ -11,6 +11,10 @@
     padding-top: 7px;
 }
 
+.form-group input.form-control{
+    border-radius: 0;
+}
+
 .form-group.container{
     width: auto;
     padding-left: 0px;
@@ -138,4 +142,49 @@ body{
     font-size: 12px;
     height: 30px;
     border-top: 1px solid rgba(204,204,204,0.5);
+}
+
+.custom-selectbox{
+    position: relative;
+}
+
+.custom-select{
+    width: 100%;
+    height: 34px;
+    padding: 6px 12px;
+    padding-right: 20px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 0px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+
+.custom-selectbox:after{
+    content: " ";
+    height: 0;
+    width: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid black;
+    position: absolute;
+    right: 12px;
+    top: 16px;
+    transition: all 0.3s linear;
+}
+
+.custom-selectbox.open:after{
+    transform: rotate(-180deg);
+}
+
+select {
+    -webkit-appearance: none;
+    -webkit-border-radius: 0px;
 }

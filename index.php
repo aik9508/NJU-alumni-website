@@ -14,6 +14,7 @@ if (isset($_POST["email"]) and isset($_POST["psw"])) {
             "prenom" => $user->prenom,
         );
     }
+    $dbh=null;
 }
 if (!isset($_SESSION["DEPARTMENT_ARRAY"])) {
     $_SESSION["DEPARTEMENT_ARRAY"] = array(
@@ -56,9 +57,12 @@ if (!isset($_SESSION["DEPARTMENT_ARRAY"])) {
         <link rel="stylesheet" href="css/profile.css?<?php echo date('l jS \of F Y h:i:s A'); ?>">
         <link rel="stylesheet" href="css/personal.css?<?php echo date('l jS \of F Y h:i:s A'); ?>">
         <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Slabo+27px" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
         <link href="css/community.css?<?php echo date('l jS \of F Y h:i:s A'); ?>" rel="stylesheet">
         <link href="css/unite-gallery.css" rel="stylesheet">
         <link href="css/ug-theme-default.css" rel="stylesheet">
+        <link href="css/cropper.css" rel="stylesheet">
 
         <script src="js/jquery.js"></script>
         <script src="js/bootstrap.js"></script>

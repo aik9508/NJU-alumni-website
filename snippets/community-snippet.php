@@ -11,9 +11,9 @@
                     <hr/>
                     <div class="form-group">
                         <label class="control-label" for="nom">Nom : </label>
-                        <input type="text" class="form-control" name="nom" id="nom-filter" placeholder="Nom">
+                        <input type="text" class="form-control"  id="nom-filter" placeholder="Nom">
                         <label class="control-label" for="prenom">Prenom : </label>
-                        <input type="text" class="form-control" name="prenom" id="prenom-filter" placeholder="prenom">
+                        <input type="text" class="form-control" id="prenom-filter" placeholder="prenom">
                         <label class="control-label" >Études : </label>
                         <div class="multiselect-wrapper">
                             <button class="multiselect-button form-control"></button>

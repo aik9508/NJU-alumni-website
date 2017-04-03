@@ -1,6 +1,5 @@
 <?php
 
-define("NB_DEPARTEMENTS", 25);
 
 class Database {
     
@@ -306,7 +305,7 @@ class User {
         }
         
         /* departements */
-        if ($departements != null AND count($departements) < NB_DEPARTEMENTS) {
+        if ($departements != null AND count($departements) < 25) {
             $joined = true;
             $query = $query . " AND (diplomas.departement=$departements[0]";
             for ($i = 1; $i < count($departements); $i++) {

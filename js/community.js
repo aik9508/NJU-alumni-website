@@ -153,7 +153,7 @@ function addListenerToProfiles() {
             document.body.style.overflow = 'hidden';
             $('body').on('mousewheel', document.disableScrollFn);
             $("#profile-wrapper").css('display', 'flex');
-            $.post("utils/profile.php", {
+            $.post("utils/profile_entire.php", {
                 alumni_id: $(this).attr("id")
             }, function (response) {
                 $("#profile-wrapper").html(response);

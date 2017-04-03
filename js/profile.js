@@ -62,7 +62,7 @@ $(document).ready(function () {
             $("#upload-photo").parent("li").addClass('disabled');
             $("#cancel-photo").parent("li").addClass('disabled');
             $('#imgFile').val("");
-            $.post("save_photo.php", {
+            $.post("utils/save_photo.php", {
                 pngimageData: croppng
             }, function (response) {
                 $("#photo_info").html(response);
@@ -88,7 +88,9 @@ $(document).ready(function () {
         $(".profil-edit-wrapper").show();
     });
     $("#profil-valider").click(function () {
+        console.log("OK");
         if (isAllValid()) {
+            console.log("valid");
             if (hasChanged()) {
                 var postList = {};
                 for (var i = 0; i < inputs.length; i++) {
@@ -106,15 +108,13 @@ $(document).ready(function () {
                     postList["dpt-doctorat"] = $("#select-doctorat").val();
                 }
                 postList["id"] = initial_vals[9];
-                $.when($.post(
-                        "update_post.php",
+                $.post(
+                        "utils/update_post.php",
                         postList,
                         function (response) {
-                            console.log(response);
+                            $("#profile-wrapper").load("utils/profile_entire.php");
                         }
-                )).done(function () {
-                    location.reload();
-                });
+                );
             }
             $(".profil-edit-wrapper").hide();
             $(".flip-container").show();
@@ -326,14 +326,3 @@ function telFormat(tel) {
     return tel;
 }
 
-$('.custom-selectbox select').on('click', function (e) {
-
-    const self = this;
-    $('.custom-selectbox').each(function () {
-        if (this !== self && $(this).hasClass('open')) {
-            $(this).removeClass('open');
-        }
-    });
-    $(this).parent().toggleClass("open");
-    return false;
-});
