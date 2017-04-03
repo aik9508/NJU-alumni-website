@@ -108,8 +108,28 @@ if (!isset($_SESSION["DEPARTMENT_ARRAY"])) {
                         <div id="button-lang" class="popup-trigger">
                             <div class="glyphicon glyphicon-globe"></div>
                             <div id="popup-lang" class="popup-content">
-                                <button id="button-zh" type="button">中文</button>
-                                <button id="button-fr" type="button">Français</button>
+                                <?php
+                                $actual_link = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+                                if (strpos($actual_link, 'lang=fr')) {
+                                    $link_fr = $actual_link;
+                                    $link_zh = str_replace("lang=fr", "lang=zh", $actual_link);
+                                } else if (strpos($actual_link, 'lang=zh')) {
+                                    $link_zh = $actual_link;
+                                    $link_fr = str_replace("lang=zh", "lang=fr", $actual_link);
+                                } else if (strpos($actual_link, "?")) {
+                                    $link_zh = $actual_link . "&lang=zh";
+                                    $link_fr = $actual_link . "&lang=fr";
+                                } else {
+                                    $link_zh = $actual_link . "?lang=zh";
+                                    $link_fr = $actual_link . "?lang=fr";
+                                }
+                                ?>
+                                <a <?php echo "href='$link_zh'" ?>>
+                                    <button id="button-zh" type="button">中文</button>
+                                </a>
+                                <a <?php echo "href='$link_fr'" ?>>
+                                    <button id="button-zh" type="button">Français</button>
+                                </a>
                             </div>
                         </div>
                     </div>

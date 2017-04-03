@@ -116,6 +116,10 @@ body{
     background: linear-gradient(to bottom,rgba(99,6,95,0),rgba(99,6,95,1)); /*Standard*/
 }
 
+.error-container{
+    color: red;
+}
+
 /***************************************/
 .vertical-center-parent{
     display: flex;

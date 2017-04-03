@@ -346,7 +346,7 @@ class User {
     }
 
     public static function countResults($dbh, $query, $query_array) {
-        $query = "SELECT COUNT(DISTINCT(`NJUers`.id)) AS nbResults FROM `NJUers`" . $query;
+        $query = "SELECT COUNT(DISTINCT(`NJUers`.id)) AS nbResults FROM `NJUers` " . $query;
         $sth = $dbh->prepare($query);
         $sth->execute($query_array);
         return $sth->fetch()["nbResults"];

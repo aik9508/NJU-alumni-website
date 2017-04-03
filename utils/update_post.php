@@ -17,7 +17,7 @@ if (isset($_POST["prenom"])) {
     if (count($update_user_array) > 0) {
         $update_user_query = $update_user_query . ",";
     }
-    $update_user_query =$update_user_query . " `prenom` = ?";
+    $update_user_query = $update_user_query . " `prenom` = ?";
     array_push($update_user_array, $_POST["prenom"]);
 }
 if (isset($_POST["num"])) {
@@ -32,7 +32,6 @@ if (count($update_user_array) > 0) {
     array_push($update_user_array, $_POST["id"]);
     User::update($dbh, $update_user_query, $update_user_array);
 }
-var_dump($update_user_query);
 
 $diplomas = ["licence", "master", "doctorat"];
 for ($i = 0; $i < count($diplomas); $i++) {
@@ -42,7 +41,7 @@ for ($i = 0; $i < count($diplomas); $i++) {
         $promo = $_POST["promo-" . $diplomas[$i]];
     }
     if (isset($_POST["dpt-" . $diplomas[$i]])) {
-        if (!$_POST["dpt-" . $diplomas[$i]] && !$promo) {
+        if (!$_POST["dpt-" . $diplomas[$i]] && isset($_POST["promo-" . $diplomas[$i]]) && !$promo) {
             Diploma::delete($dbh, $_POST["id"], $i);
             continue;
         }
@@ -72,7 +71,6 @@ for ($i = 0; $i < count($diplomas); $i++) {
         array_push($update_study_array, $i);
         Diploma::update($dbh, $update_study_query, $update_study_array);
     }
-    var_dump($update_study_query);
 }
 
 if (isset($_POST["email"])) {
