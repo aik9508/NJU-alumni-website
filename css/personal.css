@@ -98,10 +98,36 @@ body {
     border-color: #ffffff;
     padding: 8px 0;
     position: absolute;
-    z-index: 100;
-    top: 33px;
+    z-index: 2;
+    top: 40px;
     left: 50%;
     margin-left: -80px;
+}
+
+#popup-login:before {
+    content: '';
+    display: block;
+    width: 0;
+    height: 0;
+    position: absolute;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid #edeadf;
+    left: 70px;
+    top: -10px;
+}
+
+#popup-lang:before {
+    content: '';
+    display: block;
+    width: 0;
+    height: 0;
+    position: absolute;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid #edeadf;
+    left: 71px;
+    top: -10px;
 }
 
 #button-signin,

@@ -115,9 +115,15 @@ $(document).ready(function() {
         $(".modal-content").load("snippets/activity/" + num + ".php");
     });
 
-    $(document).on("click", ".photo-modal-link", function() {
+    $(document).on("click", ".photo-modal-link", function() {  
         var num = $(this).attr('num');
-        $("#gallery-container").load("snippets/photo/" + num + ".php");
+        $("#gallery").load("snippets/photo/" + num + ".php");
+        setTimeout(function(){
+            $("#gallery").unitegallery({
+                theme_enable_text_panel: false
+            });
+            $(".modal-box").css('display', 'block');
+        }, 50);
     });
 
     $(document).on("click", ".modal-box", function() {

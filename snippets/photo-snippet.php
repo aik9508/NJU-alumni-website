@@ -12,7 +12,5 @@
 
 <div class="modal-box">
     <div class="modal-content" id="gallery-container">
-        <div id="gallery" style="display:none;">
-        </div>
     </div>
 </div>
