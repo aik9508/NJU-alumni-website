@@ -1,18 +1,28 @@
 <ul>
-  <li class="activity-tile">
-    <img src="images/homeface1.jpg">
-    <div>
-      <p class="activity-tag glyphicon glyphicon-tag"> 烧烤</p>
-      <p class="activity-title">国庆聚餐烧烤</p>
-      <div class="autherdate">
-        <span class="auther glyphicon glyphicon-user"> xsw</span>
-        <span class="date glyphicon glyphicon-time"> 2016-10-01</span>
+
+  <?php
+require __DIR__.'/../utils/register_database.php';
+$dbh = Database::connect();
+$totalnum = ActivityList::getActivityNumber($dbh);
+
+for ($i=$totalnum;$i>=1;$i--) {
+  $act = ActivityList::getActivityInfo($dbh,$i);
+  ?>
+<li class='activity-tile'>
+      <img src='images/activity<?php echo $i; ?>/m0.jpg'>
+      <div>
+        <p class='activity-tag glyphicon glyphicon-tag'><?php echo $act->tag; ?></p>
+        <p class='activity-title'><?php echo $act->title; ?></p>
+        <div class='autherdate'>
+          <span class='auther glyphicon glyphicon-user'> <?php echo $act->author; ?></span>
+          <span class='date glyphicon glyphicon-time'> <?php echo $act->date; ?></span>
+        </div>
+        <div class='hr'></div>
+        <span class='activity-description'><?php echo $act->caption; ?></span>
+        <span class='activity-modal-link' num=<?php echo $i; ?>>Read More</span>
       </div>
-      <div class="hr"></div>
-      <span class="activity-description">国庆佳节，南大学子齐聚会长季红家中，烧烤</span>
-      <span class="activity-modal-link" num="1">Read More</span>
-    </div>
-  </li>
+    </li>  
+<?php } ?>
 </ul>
 
 <div class="modal-box">
