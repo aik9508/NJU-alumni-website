@@ -139,7 +139,7 @@ echo <<<EOT
 <form id="loginform" action="$actual_link" method="post">
 <div class="imgcontainer">
 <span id='close-login' class="close" title="Close Modal">&times;</span>
-<img src="img_avatar2.png" alt="Avatar" class="avatar">
+<img src="sources/default.jpg" alt="Avatar" class="avatar">
 </div>
 
 <label><b>Email</b></label>
