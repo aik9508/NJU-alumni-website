@@ -12,9 +12,9 @@ class selectForm {
 
         self.button.click(function (e) {
             e.stopPropagation();
-            var offset = self.button.offset();
-            var height = self.button.outerHeight();
-            self.list.css("top", offset.top + height + 10).css("left", offset.left).toggle();
+            var position=self.button.position();
+            var height = self.button.outerHeight();            
+            self.list.css("top", position.top + height + 15).css("left", position.left).toggle();
         });
 
         self.content = self.button.find("span.multiselect-button-content");
@@ -72,9 +72,9 @@ class selectForm {
         });
 
         $(window).resize(function () {
-            var offset = self.button.offset();
+            var position = self.button.position();
             var height = self.button.outerHeight();
-            self.list.css("top", offset.top + height + 10).css("left", offset.left);
+            self.list.css("top", position.top + height + 15).css("left", position.left);
         });
 
     }
@@ -150,14 +150,17 @@ function isShow($el) {
 function addListenerToProfiles() {
     $(".profile-info>a").each(function () {
         $(this).click(function () {
-            document.body.style.overflow = 'hidden';
-            $('body').on('mousewheel', document.disableScrollFn);
-            $("#profile-wrapper").css('display', 'flex');
-            $.post("utils/profile_entire.php", {
-                alumni_id: $(this).attr("id")
-            }, function (response) {
-                $("#profile-wrapper").html(response);
-            });
+            console.log("An element is created");
+            if ($('body').find("#profile-wrapper").length === 0) {
+                $('body').append("<div id='profile-wrapper' class='vertical-center-parent background-wrapper'></div>");
+                document.body.style.overflow = 'hidden';
+                $('body').on('mousewheel', document.disableScrollFn);
+                $.post("utils/profile-fr.php", {
+                    alumni_id: $(this).attr("id")
+                }, function (response) {
+                    $("#profile-wrapper").html(response);
+                });
+            }
         });
     });
 }
@@ -260,12 +263,56 @@ $(document).ready(function () {
         }
     });
 
-    $("#profile-wrapper").click(function (event) {
+    $(document).on("click", "#profile-wrapper", function (event) {
         if (event.target == this) {
-            $(this).css('display', 'none');
-            $(this).html("");
+            $(this).remove();
             document.body.style.overflow = 'auto';
             $('body').off('mousewheel', document.disableScrollFn);
         }
     });
+
+    /*responsive*/
+    $("#search-hide").click(function () {
+        if ($(".table-filter").is(":visible")) {
+            $(".filter-wrapper").addClass("move-out");
+            $(".table-filter").hide(1000);
+            $("#response").css("text-align", "center");
+            if ($(window).width() > 980) {
+                $(".table-filter").attr("hideAfterClick", "1");
+            }
+            $(".table-filter").attr("showAfterClick", "");
+        }
+    });
+
+    $("#search-show").click(function () {
+        if (!$(".table-filter").is(":visible")) {
+            $(".table-filter").show(1000);
+            $(".filter-wrapper").removeClass("move-out");
+            if ($(window).width() > 980) {
+                $("#response").css("text-align", "left");
+            } else {
+                $(".table-filter").attr("showAfterClick", "1");
+            }
+            $(".table-filter").attr("hideAfterClick", "");
+        }
+    });
+
+    $(window).resize(function () {
+        if ($(this).width() <= 980) {
+            $(".table-filter").attr("hideAfterClick", "");
+            if (!$(".table-filter").attr("showAfterClick")) {
+                $(".filter-wrapper").addClass("move-out");
+                $(".table-filter").hide();
+                $("#response").css("text-align", "center");
+            }
+        } else {
+            $(".table-filter").attr("showAfterClick", "");
+            if (!$(".table-filter").attr("hideAfterClick")) {
+                $(".filter-wrapper").removeClass("move-out");
+                $(".table-filter").show();
+                $("#response").css("text-align", "left");
+            }
+        }
+    });
+
 });

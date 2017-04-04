@@ -14,36 +14,81 @@ if (isset($_POST["email"]) and isset($_POST["psw"])) {
             "prenom" => $user->prenom,
         );
     }
-    $dbh=null;
+    $dbh = null;
 }
+
+if (!isset($_GET["lang"]) || $_GET["lang"] != "fr") {
+    $_SESSION["lang"] = "zh";
+} else {
+    $_SESSION["lang"] = "fr";
+}
+
 if (!isset($_SESSION["DEPARTMENT_ARRAY"])) {
-    $_SESSION["DEPARTEMENT_ARRAY"] = array(
-        "Département des Sciences de l'Atmosphère",
-        "Département des Sciences Géographique et Océanographiques",
-        "Département des Sciences de la Terre",
-        "Institut des étudiants étrangers",
-        "Département de Chimie",
-        "Département Environnment",
-        "Département d'Informatique",
-        "Département d'Architecture",
-        "Insititut d'Education",
-        "Ecole d'Honneur de Kuang Yaming",
-        "Département d'Histoire",
-        "Département d'Ingénierie logiciel",
-        "Département des Sciences Commerciales",
-        "Département de Sociologie",
-        "Département des Sciences de la Vie",
-        "Département de Mathématiques",
-        "Département des Langues Etrangères",
-        "Département de Littérature",
-        "Département de Physique",
-        "Département d'Ingénierie et des Sciences Appliquées",
-        "Département de journalisme",
-        "Département des Sciences d'Information",
-        "Faculté de Médecine",
-        "Département de Philosophie",
-        "Département des Sciences Politiques"
-    );
+    if ($_SESSION["lang"] == "zh") {
+        $_SESSION["DEPARTEMENT_ARRAY"] = array(
+            "大气科学学院",
+            "地理与海洋科学学院",
+            "地球科学与工程学院",
+            "海外教育学院",
+            "化学化工学院",
+            "环境学院",
+            "计算机科学与技术系",
+            "建筑与城市规划学院",
+            "教育研究院",
+            "匡亚明学院",
+            "历史学系",
+            "软件学院",
+            "商学院",
+            "社会学院",
+            "生命科学学院",
+            "数学系",
+            "外国语学院",
+            "文学院",
+            "物理学院",
+            "现代工程与应用科学学院",
+            "新闻传播学院",
+            "信息管理学院",
+            "医学院",
+            "哲学系",
+            "政府管理学院",
+            "电子科学与工程学院",
+            "法学院",
+            "工程管理学院",
+            "天文与空间科学学院"
+        );
+    } else {
+        $_SESSION["DEPARTEMENT_ARRAY"] = array(
+            "Département des Sciences de l'Atmosphère",
+            "Département des Sciences Géographique et Océanographiques",
+            "Département des Sciences de la Terre",
+            "Institut des étudiants étrangers",
+            "Département de Chimie",
+            "Département Environnment",
+            "Département d'Informatique",
+            "Département d'Architecture",
+            "Insititut d'Education",
+            "Ecole d'Honneur de Kuang Yaming",
+            "Département d'Histoire",
+            "Département d'Ingénierie logiciel",
+            "Département des Sciences Commerciales",
+            "Département de Sociologie",
+            "Département des Sciences de la Vie",
+            "Département de Mathématiques",
+            "Département des Langues Etrangères",
+            "Département de Littérature",
+            "Département de Physique",
+            "Département d'Ingénierie et des Sciences Appliquées",
+            "Département de journalisme",
+            "Département des Sciences d'Information",
+            "Faculté de Médecine",
+            "Département de Philosophie",
+            "Département des Sciences Politiques",
+            "Département d'Electronique",
+            "Faculté de Droit",
+            "Département de Management et d'ingénierie",
+            "Département d'Astronomie et des Sciences Spatiales"
+        );
+    }
 }
 ?>
 <!doctype html>
@@ -89,9 +134,21 @@ if (!isset($_SESSION["DEPARTMENT_ARRAY"])) {
                                         <input id='button-signout' name="signout" value="Sign out" type='submit' />
                                     </form>
                                 <?php } else { ?>
-                                    <button id='button-signin' type='button'>Sign in</button>
+                                    <button id='button-signin' type='button'><?php
+                                        if ($_SESSION["lang"] == "fr") {
+                                            echo "Se connecter";
+                                        } else {
+                                            echo "登录";
+                                        }
+                                        ?></button>
                                     <br/>
-                                    <button id='button-signup' type='button'>Sign up</button>
+                                    <button id='button-signup' type='button'><?php
+                                        if ($_SESSION["lang"] == "fr") {
+                                            echo "S'inscrire";
+                                        } else {
+                                            echo "注册";
+                                        }
+                                        ?></button>
                                     <?php
                                 }
                                 ?>
@@ -132,7 +189,7 @@ if (!isset($_SESSION["DEPARTMENT_ARRAY"])) {
                                     <button id="button-zh" type="button">中文</button>
                                 </a>
                                 <a <?php echo "href='$link_fr'" ?>>
-                                    <button id="button-zh" type="button">Français</button>
+                                    <button id="button-fr" type="button">Français</button>
                                 </a>
                             </div>
                         </div>
@@ -181,7 +238,7 @@ EOT
             else if ($_GET['page'] == 'activity')
                 require 'snippets/activity-snippet.php';
             else if ($_GET['page'] == 'community')
-                require 'snippets/community-snippet.php';
+                require 'snippets/community-snippet-'.$_SESSION["lang"].'.php';
             else
                 echo "<h1>No Such Page</h1>";
             ?>

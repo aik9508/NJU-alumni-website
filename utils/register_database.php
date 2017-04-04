@@ -305,7 +305,7 @@ class User {
         }
         
         /* departements */
-        if ($departements != null AND count($departements) < 25) {
+        if ($departements != null AND count($departements) < 29) {
             $joined = true;
             $query = $query . " AND (diplomas.departement=$departements[0]";
             for ($i = 1; $i < count($departements); $i++) {

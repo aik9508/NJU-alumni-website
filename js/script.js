@@ -77,7 +77,7 @@ $(document).ready(function() {
     });
 
     $('#button-signup').click(function() {
-        window.open('utils/register.php', '_self');
+        window.open('utils/register-zh.php', '_self');
     });
 
     $('#button-signin').click(function() {
@@ -120,7 +120,7 @@ $(document).ready(function() {
         $("#gallery-container").load("snippets/photo/" + num + ".php");
     });
 
-    $(document).on("click", ".modal-box", function() {
+    $(document).on("click", ".modal-box", function(event) {
         if (event.target == this) {
             $(".modal-box").css('display', 'none');
             $("#gallery").html("");

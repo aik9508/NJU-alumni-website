@@ -34,7 +34,7 @@ if (isset($_POST)) {
             }
             $alumni_id = $individu["id"];
             echo <<<EOT
-            <div class="profile-card col-lg-3 col-md-4 col-sm-6 col-xm-12">
+            <div class="profile-card ">
                 <div class="profile-img-wrapper">
                     <img src=$photo alt="photo" class="img-thumbnail"/>
                 </div>

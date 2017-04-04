@@ -39,7 +39,7 @@ $display = isset($_POST["alumni_id"]) && isset($_SESSION["currentUser"]) && $_PO
                 }
                 ?> alt="photo" id="photo"/>
             </div>
-            <span id="profil-email"><?php echo "<a href='#' >$alumnus->email</a>"; ?></span>
+            <span id="profil-email"><?php echo "<a style='cursor: auto;'>$alumnus->email</a>"; ?></span>
         </div>
     </div>
     <?php if ($display) { ?>
@@ -235,7 +235,7 @@ EOT;
             <input type="hidden" name="id" <?php echo "value=" . $id ?>>
         </div>
         <script src="js/cropper.js"></script>
-        <script src="js/profile.js"></script>
+        <script src="js/profile-fr.js"></script>
 <?php }
 ?>
 </div>

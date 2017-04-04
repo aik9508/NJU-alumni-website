@@ -36,7 +36,18 @@
 
 #input-valider{
     width: 300px;
-    align-self: center
+    align-self: center;
+    border-radius: 0;
+    color: white;
+    background-color: #63065f;
+    padding: 10px 10px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+}
+
+#input-valider:hover{
+    opacity: 0.8;
 }
 
 #success-container{
@@ -187,4 +198,10 @@ body{
 select {
     -webkit-appearance: none;
     -webkit-border-radius: 0px;
+}
+
+#li-licence a,
+#li-master a,
+#li-doctorat a{
+    cursor: pointer;
 }

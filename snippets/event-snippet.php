@@ -2,7 +2,10 @@
 
     <?php
 //require __DIR__.'/../utils/register_database.php';
-    if (!$dbh) {
+    if (!isset($dbh)) {
+        require __DIR__ . '/../utils/register_database.php';
+        $dbh = Database::connect();
+    } else if (!$dbh) {
         $dbh = Database::connect();
     }
     $totalnum = ActivityList::getActivityNumber($dbh);
@@ -25,7 +28,7 @@
                 <span class='activity-modal-link' num=<?php echo $i; ?>>Read More</span>
             </div>
         </li>  
-    <?php } $dbh=null?>
+    <?php } $dbh = null ?>
 </ul>
 
 <div class="modal-box">

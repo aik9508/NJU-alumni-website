@@ -139,8 +139,8 @@ $(document).ready(function () {
     inputs[4].autocheck(isPromoValid, toolTipError(inputs[4], 'Promotion invalide'));
     inputs[5].autocheck(isPromoValid, toolTipError(inputs[5], 'Promotion invalide'));
     inputs[6].autocheck(isTelValid, toolTipError(inputs[6], "Ce format de numéro de téléphone n'est pas reconnu."));
-    inputs[7].autocheck(isEntrepriseValid, toolTipError(inputs[7], "Veuillex indiquer votre entreprise."));
-    inputs[8].autocheck(isFonctionValid, toolTipError(inputs[8], "Veuillex indiquer votre entreprise."));
+    inputs[7].autocheck(isEntrepriseValid, toolTipError(inputs[7], "Veuillez indiquer votre entreprise."));
+    inputs[8].autocheck(isFonctionValid, toolTipError(inputs[8], "Veuillez indiquer votre entreprise."));
 
     function hasChanged() {
         for (var i = 0; i < inputs.length; i++) {

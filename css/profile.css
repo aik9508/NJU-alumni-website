@@ -237,6 +237,24 @@ select {
     cursor: pointer;
 }
 
+.profil-photo>.navbar.navbar-inverse>.container-fluid>ul{
+    margin: 0;
+}
+
+.profil-photo>.navbar.navbar-inverse>.container-fluid>ul>li>a{
+    padding-top: 15px;
+    height: 50px;
+}
+
+.profil-photo>.navbar.navbar-inverse>.container-fluid>ul>li,
+.profil-photo>.navbar.navbar-inverse>.container-fluid>.navbar-header{
+    float: left;
+    display: inline-block;
+}
+.profil-photo .container-fluid{
+    height: 50px;
+}
+
 .nav.navbar-nav li{
     cursor: pointer;
 }
@@ -388,4 +406,16 @@ select {
     -o-transform: rotateY(-180deg);
     -ms-transform: rotateY(180deg);
     transform: rotateY(-180deg);
+}
+
+.background-wrapper{
+    display: flex;
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: no-content; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }

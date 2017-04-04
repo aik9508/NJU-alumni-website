@@ -2,8 +2,16 @@
 $(document).ready(function () {
     var userId = $("#userName").attr("userid");
     $("#userName").click(function () {
+        console.log(userId);
         if (userId) {
-            window.open("utils/profile_entire.php", "_blank");
+            $("body").append("<div id='profile-wrapper' class='vertical-center-parent background-wrapper'></div>");
+            $("#profile-wrapper").load("utils/profile_entire.php");
+        }
+    });
+    
+    $(document).on("click","#profile-wrapper",function(event){
+        if (event.target === this) {
+            $(this).remove();
         }
     });
 
@@ -15,7 +23,7 @@ $(document).ready(function () {
             if (!response) {
                 $("#error-info").css("color", "red").html("Email ou mot de passe incorrect. Veuillez réessayer.");
             } else {
-                $("#loginform").attr("action","index.php");
+                $("#loginform").attr("action","");
                 $("#loginform").submit();
             }
         });
