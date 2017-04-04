@@ -1,31 +1,28 @@
 <ul>
 
     <?php
-//require __DIR__.'/../utils/register_database.php';
     if (!isset($dbh)) {
         require __DIR__ . '/../utils/register_database.php';
         $dbh = Database::connect();
     } else if (!$dbh) {
         $dbh = Database::connect();
     }
-    $totalnum = ActivityList::getActivityNumber($dbh);
+    $articles = array_reverse(ActivityList::getArticleActivities($dbh));
 
-    for ($i = $totalnum; $i >= 1; $i--) {
-
-        $act = ActivityList::getActivityInfo($dbh, $i);
+    foreach ($articles as $article) {
         ?>
         <li class='activity-tile'>
-            <img src='images/activity<?php echo $i; ?>/m0.jpg'>
+            <img src='images/activity<?php echo $article->num; ?>/m0.jpg' alt='photo of activity'>
             <div>
-                <p class='activity-tag glyphicon glyphicon-tag'><?php echo $act->tag; ?></p>
-                <p class='activity-title'><?php echo $act->title; ?></p>
+                <p class='activity-tag glyphicon glyphicon-tag'><?php echo $article->tag; ?></p>
+                <p class='activity-title'><?php echo $article->title; ?></p>
                 <div class='autherdate'>
-                    <span class='auther glyphicon glyphicon-user'> <?php echo $act->author; ?></span>
-                    <span class='date glyphicon glyphicon-time'> <?php echo $act->date; ?></span>
+                    <span class='auther glyphicon glyphicon-user'> <?php echo $article->author; ?></span>
+                    <span class='date glyphicon glyphicon-time'> <?php echo $article->date; ?></span>
                 </div>
                 <div class='hr'></div>
-                <span class='activity-description'><?php echo $act->caption; ?></span>
-                <span class='activity-modal-link' num=<?php echo $i; ?>>Read More</span>
+                <span class='activity-description'><?php echo $article->caption; ?></span>
+                <span class='activity-modal-link' data-num=<?php echo $article->num; ?>>Read More</span>
             </div>
         </li>  
     <?php } $dbh = null ?>

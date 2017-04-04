@@ -350,11 +350,13 @@ class User {
         $sth->execute($query_array);
         return $sth->fetch()["nbResults"];
     }
-
+    
 }
 
 class ActivityList {
     public $num;
+    public $article;
+    public $gallery;
     public $title;
     public $author;
     public $date;
@@ -375,8 +377,39 @@ class ActivityList {
         }
     }
     
-    public static function getActivityNumber($dhb) {
-        $nRows = $dhb->query('select COUNT(*) from activities')->fetchColumn();
+    public static function getActivityNumber($dbh) {
+        $nRows = $dbh->query('select COUNT(*) from activities')->fetchColumn();
         return $nRows;
+    }
+    
+    public static function getGalleryActivities($dbh) {
+        $query = "SELECT * FROM `activities` WHERE gallery=1";
+        $sth = $dbh->prepare($query);
+        $sth->setFetchMode(PDO::FETCH_CLASS, 'ActivityList');
+        $sth->execute();
+        if ($sth->rowCount() == 0) {
+            $dbh = null;
+            return null;
+        } else {
+            $galleries = $sth->fetchAll();
+            $dbh = null;
+            return $galleries;
+            
+        }
+    }
+    public static function getArticleActivities($dbh) {
+        $query = "SELECT * FROM `activities` WHERE article=1";
+        $sth = $dbh->prepare($query);
+        $sth->setFetchMode(PDO::FETCH_CLASS, 'ActivityList');
+        $sth->execute();
+        if ($sth->rowCount() == 0) {
+            $dbh = null;
+            return null;
+        } else {
+            $articles = $sth->fetchAll();
+            $dbh = null;
+            return $articles;
+            
+        }
     }
 }

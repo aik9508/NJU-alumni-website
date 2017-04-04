@@ -15,7 +15,7 @@
     <div id="activity-menu" class="block-tile">
         <div id="activity-title" class="block-title">
             <span class="glyphicon glyphicon-chevron-right"></span>
-            <span>ACTIVITES</span>
+            <span><?php echo (!isset($_GET["lang"]) || $_GET["lang"] == "zh") ? "活动" : "ACTIVITES"; ?></span>
         </div>
         <div class='bighr'></div>
 
@@ -25,11 +25,10 @@
             $i = 0;
             $names = (!isset($_GET["lang"]) || $_GET["lang"] == "zh") ? array("活动交流", "相册影集") : array("Activités", "Photos & Vidéos");
             foreach ($items as $item) {
-                $greyBgd = ($i % 2 == 1) ? '' : 'greybgd';
                 echo <<<EOT
-                <li class="activity-menu-tile $greyBgd">
+                <li class="activity-menu-tile">
                     <span class="glyphicon glyphicon-paperclip"></span>
-                    <span name=$items[$i]>$names[$i]</span>
+                    <span data-name=$items[$i]>$names[$i]</span>
                 </li>
 EOT;
                 $i++;
@@ -43,7 +42,7 @@ EOT;
         <div class="activity-content-title block-title">
             <span class="glyphicon glyphicon-chevron-right"></span>
             <?php
-            $item_title = (!isset($_GET["lang"]) || $_GET["lang"] == "zh") ? "联谊活动" : "Loisirs";
+            $item_title = (!isset($_GET["lang"]) || $_GET["lang"] == "zh") ? "活动交流" : "Activités";
             echo "<span>$item_title</span>";
             ?>
         </div>
