@@ -45,7 +45,7 @@
         <div id="information" class="block-tile fix-block">
             <div id="information-title" class="block-title">
                 <span class="glyphicon glyphicon-chevron-right"></span>
-                <span>INFORMATIONS</span>
+                <span><?php echo (!isset($_GET["lang"]) || $_GET["lang"] == "zh") ? "南大新闻" : "Nouvelle de NJU";?></span>
             </div>
             <div class='bighr'></div>
 
@@ -70,17 +70,17 @@ EOT;
             $alumnis = 2043;
             $visitors = 2625;
             $nbrOfAlumnis = number_format($alumnis, 0, ',', ' ');
-            $nbrOfVisitors = number_format($visitors, 0, ',', ' ');
-            echo "<div><strong id='alumni-number' class='count-number' count='$alumnis'>$nbrOfAlumnis</strong><span class='count-name'>&nbsp;&nbsp;Alumnis</span></div>";
-            echo "<div><strong id='visitor-number' class='count-number' count='$visitors'>$nbrOfVisitors</strong><span class='count-name'>&nbsp;&nbsp;Visiteurs</span></div>";
+            $nbrOfVisitors = number_format($visitors, 0, ',', ' '); 
             ?>
+            <div><strong id='alumni-number' class='count-number' data-count=<?php echo $alumnis ?>><?php echo $nbrOfAlumnis ?></strong><span class='count-name'>&nbsp;&nbsp;<?php echo (!isset($_GET["lang"]) || $_GET["lang"] == "zh") ? "注册校友" : "Alumni"; ?></span></div>
+            <div><strong id='visitor-number' class='count-number' data-count='<?php echo $visitors ?>'><?php echo $nbrOfVisitors?></strong><span class='count-name'>&nbsp;&nbsp;<?php echo (!isset($_GET["lang"]) || $_GET["lang"] == "zh") ? "访问人次" : "Visiteurs"; ?></span></div>
         </div>
     </div>
 
     <div id="activities" class="block-tile flex-block">
         <div id="activity-title" class="block-title">
             <span class="glyphicon glyphicon-chevron-right"></span>
-            <span>ACTIVITÉS</span>
+            <span><?php echo (!isset($_GET["lang"]) || $_GET["lang"] == "zh") ? "活动新闻" : "Nouvelle de l'AAENF";?></span>
         </div>
         <div class='bighr'></div>
 <?php require "snippets/event-snippet.php";
@@ -90,5 +90,5 @@ EOT;
 
     </div><!--End of activities block-->
 </div><!--End of home snippet-->
-<script src="js/countnumber.js"></script>
+<script src="js/countnumber.js?<?php echo date('l jS \of F Y h:i:s A'); ?>"></script>
 <script src="js/BBS.js"></script>

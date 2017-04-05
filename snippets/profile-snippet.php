@@ -16,7 +16,7 @@
     <div id="profile-menu" class="block-tile">
         <div id="profile-title" class="block-title">
             <span class="glyphicon glyphicon-chevron-right"></span>
-            <span>PROFILES</span>
+            <span><?php echo (!isset($_GET["lang"]) || $_GET["lang"] == "zh") ? "关于我们" : "PROFILE"; ?></span>
         </div>
         <div class='bighr'></div>
 
@@ -26,11 +26,10 @@
             $i = 0;
             $names = (!isset($_GET["lang"]) || $_GET["lang"] == "zh") ? array("南大简介", "校友会简介", "主席团成员", "理事会成员", "注册文件") : array("À propos de NJU", "À propos de l'AAENF", "Direction", "Conceil", "Déclaration");
             foreach ($items as $item) {
-                $greyBgd = ($i % 2 == 1) ? '' : 'greybgd';
                 echo <<<EOT
-                <li class="profile-menu-tile $greyBgd">
+                <li class="profile-menu-tile">
                     <span class="glyphicon glyphicon-paperclip"></span>
-                    <span name=$items[$i]>$names[$i]</span>
+                    <span data-name=$items[$i]>$names[$i]</span>
                 </li>
 EOT;
                 $i++;

@@ -1,26 +1,4 @@
 $(document).ready(function() {
-    var homePhp = "snippets/home-snippet.php";
-    var profilePhp = "snippets/profile-snippet.php";
-    var actpagePhp = "snippets/activity-snippet.php";
-
-    // Convenience function for inserting for 'select'
-    var insertPhp = function(selector, phpfile) {
-        var targetElem = $(selector);
-        targetElem.load(phpfile);
-    };
-
-    var insertHtml = function(selector, html) {
-        var targetElem = document.querySelector(selector);
-        targetElem.innerHTML = html;
-    };
-
-    // Show loading icon inside element identified by 'selector'.
-    var showLoading = function(selector) {
-        var html = "<div class='text-center'>";
-        html += "<img src='images/ajax-loader.gif'></div>";
-        insertHtml(selector, html);
-    };
-
     // Return substitute of '{{propName}}'
     // with propValue in given 'string'
     var insertProperty = function(string, propName, propValue) {
@@ -97,7 +75,7 @@ $(document).ready(function() {
         $(this).attr('id', 'profile-item' + i);
         $('#profile-item' + i).click(function() {
             $($('.profile-content-title>span')[1]).html($('#profile-item' + i + ">span")[1].innerHTML);
-            $('#profile-content').load("snippets/" + $('#profile-item' + i + ">span")[1].getAttribute("name") + "-snippet.php");
+            $('#profile-content').load("snippets/" + $('#profile-item' + i + ">span")[1].getAttribute("data-name") + "-snippet.php");
         });
     });
 
@@ -105,18 +83,18 @@ $(document).ready(function() {
         $(this).attr('id', 'activity-item' + i);
         $('#activity-item' + i).click(function() {
             $($('.activity-content-title>span')[1]).html($('#activity-item' + i + ">span")[1].innerHTML);
-            $('#activity-content').load("snippets/" + $('#activity-item' + i + ">span")[1].getAttribute("name") + "-snippet.php");
+            $('#activity-content').load("snippets/" + $('#activity-item' + i + ">span")[1].getAttribute("data-name") + "-snippet.php");
         });
     });
 
     $(document).on("click", ".activity-modal-link", function() {
-        $(".modal-box").css('display', 'block');
-        var num = $(this).attr('num');
+        var num = $(this).attr('data-num');
         $(".modal-content").load("snippets/activity/" + num + ".php");
+
     });
 
-    $(document).on("click", ".photo-modal-link", function() {  
-        var num = $(this).attr('num');
+    $(document).on("click", ".photo-modal-link", function() {
+        var num = $(this).attr('data-num');
         $("#gallery-container").load("snippets/photo/" + num + ".php");
     });
 
@@ -126,6 +104,7 @@ $(document).ready(function() {
             $("#gallery").html("");
         }
     });
+
 
 
 });
