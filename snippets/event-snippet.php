@@ -2,7 +2,7 @@
 
     <?php
 //require __DIR__.'/../utils/register_database.php';
-    if (!isset($dbh)) {
+    if (!class_exists("Database")) {
         require __DIR__ . '/../utils/register_database.php';
         $dbh = Database::connect();
     } else if (!$dbh) {

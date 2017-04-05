@@ -5,7 +5,7 @@ $(document).ready(function () {
         console.log(userId);
         if (userId) {
             $("body").append("<div id='profile-wrapper' class='vertical-center-parent background-wrapper'></div>");
-            $("#profile-wrapper").load("utils/profile_entire.php");
+            $("#profile-wrapper").load("utils/profile-zh.php");
         }
     });
     

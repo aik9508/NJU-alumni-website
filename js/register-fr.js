@@ -36,7 +36,7 @@ $(document).ready(function () {
     ]);
     setAutoCheck($("#confirmer_mdp"), $("#error-confirmer_mdp"), [
         new Pair(isNonEmpty, "Ce champ est obligatoire!"),
-        new Pair(isPswCorrect, "Les mots de passe ne correspondent pas. Voulez-vous réessayer")
+        new Pair(isPswCorrect, "Les mots de passe ne correspondent pas. Voulez-vous réessayer?")
     ]);
     setAutoCheck($("#num"), $("#error-num"), [
         new Pair(isTelValid, "Ce format de numéro de téléphone n'est pas reconnu. Veuillez vérifier le numéro.")]);
