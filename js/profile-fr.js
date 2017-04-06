@@ -112,7 +112,7 @@ $(document).ready(function () {
                         "utils/update_post.php",
                         postList,
                         function (response) {
-                            $("#profile-wrapper").load("utils/profile_entire.php");
+                            $("#profile-wrapper").load("utils/profile-fr.php");
                         }
                 );
             }
