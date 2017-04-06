@@ -118,13 +118,12 @@ if (!isset($_SESSION["DEPARTMENT_ARRAY"])) {
     <header>
       <div class="container">
         <div class="row">
-          <div id="logo" class="col-lg-3">
+          <div id="logo" class="col-lg-6 col-md-6 col-sm-8 col-xs-8">
             <a href="index.php"><img src="images/nju-logo.png" alt="logo" /></a>
+            <span id='association'>法国校友会</span>
           </div>
-          <div id="association" class="col-lg-3">
-            <span>法国校友会</span>
-          </div>
-          <div class="header-right col-lg-2">
+            
+          <div class="header-right col-lg-2 col-md-2 col-sm-4 col-xs-4">
             <div id="button-inscription" class="popup-trigger">
               <div class="glyphicon glyphicon-user"></div>
               <div id="popup-login" class="popup-content">
