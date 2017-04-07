@@ -101,7 +101,7 @@ $display = isset($_POST["alumni_id"]) && isset($_SESSION["currentUser"]) && $_PO
                     </ul>
                 </div>
             </div>
-<?php if ($display) { ?>
+            <?php if ($display) { ?>
                 <div class="back">
                     <div class="profil-photo">
                         <nav class="navbar navbar-inverse">
@@ -178,7 +178,7 @@ $display = isset($_POST["alumni_id"]) && isset($_SESSION["currentUser"]) && $_PO
             </div>
             <?php
             $titre_diplome = ['licence', 'master', 'doctorat'];
-            $titre_zh=['本科','硕士','博士'];
+            $titre_zh = ['本科', '硕士', '博士'];
             $info_diplome = [$licence, $master, $doctorat];
             for ($i = 0; $i < 3; $i++) {
                 echo <<<EOT
@@ -259,9 +259,10 @@ EOT;
                 </div>
             </div>
         </div>
+        <script src="js/JIC.min.js"></script>
         <script src="js/cropper.js"></script>
         <script src="js/profile-zh.js?<?php echo date('l jS \of F Y h:i:s A'); ?>"></script>
-<?php }
-?>
+    <?php }
+    ?>
 </div>
 

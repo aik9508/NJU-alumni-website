@@ -24,16 +24,16 @@ $(document).ready(function () {
         }
     });
 
-    $('#imgFile').change(function () {
-        if ($(this)[0].files && $(this)[0].files[0]) {
-            $("#original-photo").hide();
-            $("#temp-container").show();
-            $("#change-photo").parent("li").addClass('disabled');
-            $("#upload-photo").parent("li").removeClass('disabled');
-            $("#cancel-photo").parent("li").removeClass('disabled');
-            var file = $(this)[0].files[0];
-            var photo_obj = window.URL.createObjectURL(file);
-            $("#temp-container").attr("src", photo_obj);
+    $(".cropper-wrapper").append("<img id='source_photo' class='display-none' alt='source'/>");
+
+    $("#source_photo")[0].onload = function () {
+        if ($("#imgFile")[0].files && $("#imgFile")[0].files[0]) {
+            var file = $("#imgFile")[0].files[0];
+            if (file.size > 300000) {
+                var quality = 300000 * 100 / file.size;
+                var photo_obj = jic.compress($(this)[0], quality, file.type).src;
+                $("#temp-container").attr("src", photo_obj);
+            }
             $('#temp-container').cropper({
                 viewMode: 1,
                 dragMode: 'move',
@@ -46,6 +46,19 @@ $(document).ready(function () {
                 cropBoxResizable: false
 
             });
+        }
+    };
+
+    $('#imgFile').change(function () {
+        if ($(this)[0].files && $(this)[0].files[0]) {
+            $("#original-photo").hide();
+            $("#temp-container").show();
+            $("#change-photo").parent("li").addClass('disabled');
+            $("#upload-photo").parent("li").removeClass('disabled');
+            $("#cancel-photo").parent("li").removeClass('disabled');
+            var file = $(this)[0].files[0];
+            var photo_obj = window.URL.createObjectURL(file);
+            $("#source_photo").attr("src", photo_obj);
         }
     });
 
@@ -178,8 +191,8 @@ $(document).ready(function () {
     inputs[6].autocheck(isTelValid, toolTipError(inputs[6], "手机号码格式错误。"));
     inputs[7].autocheck(isEntrepriseValid, toolTipError(inputs[7], "请注明就职单位。"));
     inputs[8].autocheck(isFonctionValid, toolTipError(inputs[8], "请注明就职单位。"));
-    
-    $("input[name='ancien-mdp']").autocheck(isNonEmpty,toolTipError($(this), "请输入您现在的密码。"));
+
+    $("input[name='ancien-mdp']").autocheck(isNonEmpty, toolTipError($(this), "请输入您现在的密码。"));
     $("input[name='nouveau-mdp']").focusin(function () {
         $(this).css('border-color', 'rgb(102,175,233)');
     });

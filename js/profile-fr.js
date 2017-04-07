@@ -24,16 +24,16 @@ $(document).ready(function () {
         }
     });
 
-    $('#imgFile').change(function () {
-        if ($(this)[0].files && $(this)[0].files[0]) {
-            $("#original-photo").hide();
-            $("#temp-container").show();
-            $("#change-photo").parent("li").addClass('disabled');
-            $("#upload-photo").parent("li").removeClass('disabled');
-            $("#cancel-photo").parent("li").removeClass('disabled');
-            var file = $(this)[0].files[0];
-            var photo_obj = window.URL.createObjectURL(file);
-            $("#temp-container").attr("src", photo_obj);
+    $(".cropper-wrapper").append("<img id='source_photo' class='display-none' alt='source'/>");
+
+    $("#source_photo")[0].onload = function () {
+        if ($("#imgFile")[0].files && $("#imgFile")[0].files[0]) {
+            var file = $("#imgFile")[0].files[0];
+            if (file.size > 300000) {
+                var quality = 300000 * 100 / file.size;
+                var photo_obj = jic.compress($(this)[0], quality, file.type).src;
+                $("#temp-container").attr("src", photo_obj);
+            }
             $('#temp-container').cropper({
                 viewMode: 1,
                 dragMode: 'move',
@@ -47,10 +47,24 @@ $(document).ready(function () {
 
             });
         }
+    };
+
+    $('#imgFile').change(function () {
+        if ($(this)[0].files && $(this)[0].files[0]) {
+            $("#original-photo").hide();
+            $("#temp-container").show();
+            $("#change-photo").parent("li").addClass('disabled');
+            $("#upload-photo").parent("li").removeClass('disabled');
+            $("#cancel-photo").parent("li").removeClass('disabled');
+            var file = $(this)[0].files[0];
+            var photo_obj = window.URL.createObjectURL(file);
+            $("#source_photo").attr("src", photo_obj);
+        }
     });
 
     $('#upload-photo').click(function () {
         if (!$(this).parent("li").hasClass("disabled")) {
+            console.log("OK2");
             var croppedCanvas = $("#temp-container").cropper('getCroppedCanvas');
             var croppng = croppedCanvas.toDataURL("image/png");
             $("#original-photo").attr("src", croppng);
@@ -65,7 +79,8 @@ $(document).ready(function () {
             $.post("utils/save_photo.php", {
                 pngimageData: croppng
             }, function (response) {
-                $("#photo_info").html(response);
+                console.log("OK3");
+                console.log(response);
             });
         }
     });
@@ -178,8 +193,8 @@ $(document).ready(function () {
     inputs[6].autocheck(isTelValid, toolTipError(inputs[6], "Ce format de numéro de téléphone n'est pas reconnu."));
     inputs[7].autocheck(isEntrepriseValid, toolTipError(inputs[7], "Veuillez indiquer votre entreprise."));
     inputs[8].autocheck(isFonctionValid, toolTipError(inputs[8], "Veuillez indiquer votre entreprise."));
-    
-    $("input[name='ancien-mdp']").autocheck(isNonEmpty,toolTipError($(this), "Veuillez entrer votre ancien mot de passe."));
+
+    $("input[name='ancien-mdp']").autocheck(isNonEmpty, toolTipError($(this), "Veuillez entrer votre ancien mot de passe."));
     $("input[name='nouveau-mdp']").focusin(function () {
         $(this).css('border-color', 'rgb(102,175,233)');
     });
