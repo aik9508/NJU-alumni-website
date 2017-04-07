@@ -114,6 +114,11 @@ img {
     cursor: pointer;
 }
 
+#userName:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
 .popup-trigger .popup-content {
     display: none;
     width: 160px;

@@ -111,13 +111,13 @@ if ($_SESSION["lang"] == "zh") {
         <script src="js/cropper.js"></script>
 
     </head>
-
     <body>
         <header>
             <div class="container">
                 <div class="row">
                     <div id="logo" class="col-lg-3">
                         <a href="index.php"><img src="images/nju-logo.png" alt="logo" /></a>
+
                     </div>
                     <div id="association" class="col-lg-3">
                         <span>法国校友会</span>
@@ -195,27 +195,27 @@ if ($_SESSION["lang"] == "zh") {
                 <ul id="menu-list">
                     <li id="button-accueil" class="menu-item">
                         <a href="index.php?page=home<?php echo $lang; ?>">
-<?php echo $menu_items[0] ?>
+                            <?php echo $menu_items[0] ?>
                         </a>
                     </li>
                     <li id="button-profile" class="menu-item">
                         <a href="index.php?page=profile<?php echo $lang; ?>">
-<?php echo $menu_items[1] ?>
+                            <?php echo $menu_items[1] ?>
                         </a>
                     </li>
                     <li id="button-activity" class="menu-item">
                         <a href="index.php?page=activity<?php echo $lang; ?>">
-<?php echo $menu_items[2] ?>
+                            <?php echo $menu_items[2] ?>
                         </a>
                     </li>
                     <li id="button-community" class="menu-item">
                         <a href="index.php?page=community<?php echo $lang; ?>">
-<?php echo $menu_items[3] ?>
+                            <?php echo $menu_items[3] ?>
                         </a>
                     </li>
                     <li id="button-contact" class="menu-item">
                         <a href="#contact">
-<?php echo $menu_items[4] ?>
+                            <?php echo $menu_items[4] ?>
                         </a>
                     </li>
                 </ul>
