@@ -80,7 +80,7 @@ EOT;
     <div id="activities" class="block-tile flex-block">
         <div id="activity-title" class="block-title">
             <span class="glyphicon glyphicon-chevron-right"></span>
-            <span><?php echo (!isset($_GET["lang"]) || $_GET["lang"] == "zh") ? "活动新闻" : "Nouvelle de l'AAENF";?></span>
+            <span><?php echo (!isset($_GET["lang"]) || $_GET["lang"] == "zh") ? "近期活动" : "Nouvelle de l'AAENF";?></span>
         </div>
         <div class='bighr'></div>
 <?php require "snippets/event-snippet.php";
