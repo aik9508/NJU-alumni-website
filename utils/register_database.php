@@ -380,6 +380,9 @@ class ActivityList {
     public $author;
     public $date;
     public $caption;
+    public $title_fr;
+    public $tag_fr;
+    public $caption_fr;
     
     public static function getActivityInfo($dbh, $num) {
         $query = "SELECT * FROM `activities` WHERE num=?";

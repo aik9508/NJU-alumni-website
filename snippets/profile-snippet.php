@@ -13,7 +13,7 @@
 </div>
 
 <div class="container">
-    <div id="profile-menu" class="block-tile">
+    <div id="profile-menu" class="block-tile side-menu">
         <div id="profile-title" class="block-title">
             <span class="glyphicon glyphicon-chevron-right"></span>
             <span><?php echo (!isset($_GET["lang"]) || $_GET["lang"] == "zh") ? "关于我们" : "PROFILE"; ?></span>
@@ -39,7 +39,7 @@ EOT;
 
         <div class='bighr'></div>
     </div>
-    <div id="profile-content-container">
+    <div id="profile-content-container" class="content-container">
         <div class="profile-content-title block-title">
             <span class="glyphicon glyphicon-chevron-right"></span>
             <?php
@@ -49,7 +49,9 @@ EOT;
         </div>
         <div class='bighr'></div>
         <div id="profile-content">
-            <?php require 'snippets/NJU-snippet.php';
+            <?php 
+            $lang = (isset($_GET["lang"]))?$_GET["lang"]:"zh";
+            require 'snippets/NJU-snippet-'.$lang.'.php';
             ?>
         </div>
         <div class='bighr'></div>

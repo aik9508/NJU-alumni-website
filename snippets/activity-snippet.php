@@ -12,7 +12,7 @@
 </div>
 
 <div class="container">
-    <div id="activity-menu" class="block-tile">
+    <div id="activity-menu" class="block-tile side-menu">
         <div id="activity-title" class="block-title">
             <span class="glyphicon glyphicon-chevron-right"></span>
             <span><?php echo (!isset($_GET["lang"]) || $_GET["lang"] == "zh") ? "活动" : "ACTIVITES"; ?></span>
@@ -38,7 +38,7 @@ EOT;
 
         <div class='bighr'></div>
     </div>
-    <div id="activity-content-container">
+    <div id="activity-content-container" class="content-container">
         <div class="activity-content-title block-title">
             <span class="glyphicon glyphicon-chevron-right"></span>
             <?php

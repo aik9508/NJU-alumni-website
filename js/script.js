@@ -4,7 +4,7 @@ $(document).ready(function () {
     var insertProperty = function (string, propName, propValue) {
         var propToReplace = "{{" + propName + "}}";
         string = string
-                .replace(new RegExp(propToReplace, "g"), propValue);
+            .replace(new RegExp(propToReplace, "g"), propValue);
         return string;
     };
 
@@ -23,6 +23,28 @@ $(document).ready(function () {
         }
     };
 
+    // Get the language attibute of current page via $_GET.
+    var getLang = function () {
+        var lang = "zh";
+        var url = document.location.toString();
+        if (url.indexOf('?') !== -1) {
+            var query = url
+                // get the query string
+                .replace(/^.*?\?/, '')
+                // and remove any existing hash string (thanks, @vrijdenker)
+                .replace(/#.*$/, '')
+                .split('&');
+
+            for (var i = 0, l = query.length; i < l; i++) {
+                var aux = decodeURIComponent(query[i]).split('=');
+                if (aux[0] == "lang") {
+                    lang = aux[1];
+                }
+            }
+        }
+        return lang;
+    };
+
 
     // Gotop button appears and disappears
     $('#gotop').ready($('#gotop').fadeOut(0)); // Initially non visible
@@ -35,7 +57,9 @@ $(document).ready(function () {
     });
     // Page scrolls to top when gotop button clicked
     $("#gotop").click(function () {
-        $("html,body").animate({scrollTop: "0px"}, 200); // during 200ms
+        $("html,body").animate({
+            scrollTop: "0px"
+        }, 200); // during 200ms
     });
 
     $('#button-inscription').mouseover(function () {
@@ -83,23 +107,27 @@ $(document).ready(function () {
     $('#profile-menu>ul>li').each(function (i) {
         $(this).attr('id', 'profile-item' + i);
         $('#profile-item' + i).click(function () {
+            var lang = getLang();
             $($('.profile-content-title>span')[1]).html($('#profile-item' + i + ">span")[1].innerHTML);
-            $('#profile-content').load("snippets/" + $('#profile-item' + i + ">span")[1].getAttribute("data-name") + "-snippet.php");
+            $('#profile-content').load("snippets/" + $('#profile-item' + i + ">span")[1].getAttribute("data-name") + "-snippet-" + lang + ".php");
         });
     });
 
     $('#activity-menu>ul>li').each(function (i) {
         $(this).attr('id', 'activity-item' + i);
         $('#activity-item' + i).click(function () {
+            var lang = getLang();
             $($('.activity-content-title>span')[1]).html($('#activity-item' + i + ">span")[1].innerHTML);
-            $('#activity-content').load("snippets/" + $('#activity-item' + i + ">span")[1].getAttribute("data-name") + "-snippet.php");
+            $('#activity-content').load("snippets/" + $('#activity-item' + i + ">span")[1].getAttribute("data-name") + "-snippet.php", {
+                "lang": lang
+            });
         });
     });
 
     $(document).on("click", ".activity-modal-link", function () {
+        var lang = getLang();
         var num = $(this).attr('data-num');
-        $(".modal-content").load("snippets/activity/" + num + ".php");
-
+        $(".modal-content").load("snippets/activity/" + num + "-" + lang + ".php");
     });
 
     $(document).on("click", ".photo-modal-link", function () {
