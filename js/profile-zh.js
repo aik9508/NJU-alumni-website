@@ -24,6 +24,8 @@ $(document).ready(function () {
         }
     });
 
+    var output_format = "image/jpeg";
+
     $(".cropper-wrapper").append("<img id='source_photo' class='display-none' alt='source'/>");
 
     $("#source_photo")[0].onload = function () {
@@ -31,14 +33,24 @@ $(document).ready(function () {
             var file = $("#imgFile")[0].files[0];
             if (file.size > 300000) {
                 var quality = 300000 * 100 / file.size;
-                var photo_obj = jic.compress($(this)[0], quality, file.type).src;
+                if (quality < 20) {
+                    quality = 20;
+                }
+                var photo_obj;
+                if (output_format === "image/png") {
+                    photo_obj = jic.compress($(this)[0], quality, "png").src;
+                } else {
+                    photo_obj = jic.compress($(this)[0], quality, "jpg").src;
+                }
                 $("#temp-container").attr("src", photo_obj);
+            } else {
+                $('#temp-container').attr("src", $(this).attr("src"));
             }
             $('#temp-container').cropper({
                 viewMode: 1,
                 dragMode: 'move',
                 aspectRatio: 1,
-                autoCropArea: 0.5,
+                autoCropArea: 0.7,
                 restore: false,
                 guides: false,
                 highlight: false,
@@ -57,6 +69,7 @@ $(document).ready(function () {
             $("#upload-photo").parent("li").removeClass('disabled');
             $("#cancel-photo").parent("li").removeClass('disabled');
             var file = $(this)[0].files[0];
+            output_format = file.type;
             var photo_obj = window.URL.createObjectURL(file);
             $("#source_photo").attr("src", photo_obj);
         }
@@ -65,9 +78,14 @@ $(document).ready(function () {
     $('#upload-photo').click(function () {
         if (!$(this).parent("li").hasClass("disabled")) {
             var croppedCanvas = $("#temp-container").cropper('getCroppedCanvas');
-            var croppng = croppedCanvas.toDataURL("image/png");
-            $("#original-photo").attr("src", croppng);
-            $("#photo").attr("src", croppng);
+            var cropimg;
+            if (output_format === "image/png") {
+                cropimg = croppedCanvas.toDataURL("image/png");
+            } else {
+                cropimg = croppedCanvas.toDataURL("image/jpeg");
+            }
+            $("#original-photo").attr("src", cropimg);
+            $("#photo").attr("src", cropimg);
             $("#temp-container").hide();
             $('#temp-container').cropper('destroy');
             $("#original-photo").show();
@@ -76,9 +94,10 @@ $(document).ready(function () {
             $("#cancel-photo").parent("li").addClass('disabled');
             $('#imgFile').val("");
             $.post("utils/save_photo.php", {
-                pngimageData: croppng
+                imageData: cropimg,
+                type: output_format
             }, function (response) {
-                $("#photo_info").html(response);
+                console.log(response);
             });
         }
     });
