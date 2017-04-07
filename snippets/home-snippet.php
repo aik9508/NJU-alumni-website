@@ -45,7 +45,7 @@
         <div id="information" class="block-tile fix-block">
             <div id="information-title" class="block-title">
                 <span class="glyphicon glyphicon-chevron-right"></span>
-                <span><?php echo (!isset($_GET["lang"]) || $_GET["lang"] == "zh") ? "南大新闻" : "Nouvelle de NJU";?></span>
+                <span><?php echo $langIszh ? "南大新闻" : "Nouvelle de NJU";?></span>
             </div>
             <div class='bighr'></div>
 
@@ -80,7 +80,7 @@ EOT;
     <div id="activities" class="block-tile flex-block">
         <div id="activity-title" class="block-title">
             <span class="glyphicon glyphicon-chevron-right"></span>
-            <span><?php echo (!isset($_GET["lang"]) || $_GET["lang"] == "zh") ? "近期活动" : "Nouvelle de l'AAENF";?></span>
+            <span><?php echo $langIszh ? "近期活动" : "Nouvelle de l'AAENF";?></span>
         </div>
         <div class='bighr'></div>
 <?php require "snippets/event-snippet.php";

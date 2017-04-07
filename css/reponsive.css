@@ -1,41 +1,200 @@
-/********** Large devices only **********/
-@media (min-width: 1200px) {
+#wrap-bar {
+  display: none;
 }
+
+.head-menu {
+  display: none;
+  width: 100%;
+}
+
+#wrap-button {
+  display: none;
+  cursor: pointer;
+}
+
+#wrap-button:hover {
+  opacity: 0.6;
+}
+
+#wrap-menu {
+  display: none;
+  width: 25%;
+  background-color: #333;
+  float: left;
+  color: #ffffff;
+}
+
+#overal-container {
+  float: left;
+}
+
+.accordion-list {
+  list-style-type: none;
+  list-style-position: outside;
+  padding: 0px;
+  margin-bottom: 0px;
+}
+
+.accordion-list li {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: #ffffff;
+  border-width: 1px;
+  border-bottom-color: #e0d9c9;
+  border-bottom-style: solid;
+}
+
+.accordion-list li:hover {
+  background-color: #edeadf;
+  cursor: pointer;
+}
+
+.head-menu-titlebar {
+  background-color: #63065f;
+  padding: 10px 0 10px 6px;
+  border-bottom: 3px solid #e09f51;
+}
+
+.head-menu-titlebar:hover {
+  cursor: pointer;
+}
+
+.glyphicon-menu-hamburger {
+  float: right;
+  color: #ffffff;
+  position: relative;
+  top: 8px;
+}
+
+.head-menu-title {
+  font-size: 22px;
+  color: #ffffff;
+  margin: 10px 0 10px 6px;
+}
+
+.accordion-menu {
+  display: none;
+}
+
+.wrap-item {
+  border-bottom: 2px solid rgb(0,0,0,.3);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.05);
+}
+
+.wrap-item-first {
+  background-color: #333;
+  color: #aaa;
+  font-size: 13px;
+  padding: 7px 10px;
+  text-shadow: 0 1px 0 rgba(0,0,0,.5);
+}
+
+
+.wrap-item-second {
+  background-color: #444;
+  color: #aaa;
+  font-size: 14px;
+  padding: 5px 18px;
+  text-shadow: 0 1px 0 rgba(0,0,0,.5);
+}
+
+.wrap-item-second>a:hover {
+  text-decoration: none;
+  color:#aaa;
+}
+.wrap-item-third {
+  background-color: #555;
+  color: #aaa;
+  font-size: 14px;
+  padding: 5px 26px;
+}
+
+.wrap-item-second:hover, .wrap-item-third:hover {
+  opacity: 0.3;
+  cursor: pointer;
+}
+
+
+
+/********** Large devices only **********/
+
+@media (min-width: 1200px) {}
+
 
 /********** Medium devices only **********/
-@media (min-width: 992px) and (max-width: 1199px) {
-}
+
+@media (min-width: 992px) and (max-width: 1199px) {}
+
 
 /********** Small devices only **********/
+
 @media (min-width: 768px) and (max-width: 991px) {
   .side-menu {
-      display: none;
+    display: none;
   }
   #activities {
-      padding-right: 0px;
+    padding-right: 0px;
   }
-
   .friendly-links {
-      display: none;
-      visibility: hidden;
+    display: none;
+    visibility: hidden;
   }
-
   .foot-logo {
-      float: left;
-      text-align: left;
-      padding-left: 40px;
+    float: left;
+    text-align: left;
+    padding-left: 40px;
   }
   #contact {
-      float: right;
+    float: right;
   }
   .footer-top .row {
-      justify-content: left;
+    justify-content: left;
   }
-
   .content-container {
-      padding-left: 0;
+    padding-left: 0;
   }
+  #loginform {
+    width: 60%;
+  }
+  .modal-content {
+    width: 80%;
+  }
+  .jumbotron {
+    width: 100%;
+  }
+  .head-menu {
+    display: block;
+  }
+}
 
+
+/********** Extra small devices only **********/
+
+@media (max-width: 767px) {
+  .side-menu {
+    display: none;
+  }
+  #activities {
+    padding-right: 0px;
+  }
+  .friendly-links {
+    display: none;
+    visibility: hidden;
+  }
+  .foot-logo {
+    float: left;
+    text-align: left;
+    padding-left: 40px;
+  }
+  #contact {
+    float: right;
+  }
+  .footer-top .row {
+    justify-content: left;
+  }
+  .content-container {
+    padding-left: 0;
+  }
   .menu-item {
     margin: 0px 20px 0px 10px;
     padding: 5px;
@@ -43,114 +202,36 @@
     color: #ffffff;
     text-align: center;
     font-family: 'Source Sans Pro', sans-serif;
-}
-
-#loginform {
+  }
+  #loginform {
     width: 60%;
-}
-}
-
-/********** Extra small devices only **********/
-@media (max-width: 767px) {
-  /* Header */
-  .navbar-brand {
-    padding-top: 10px;
-    height: 80px;
   }
-  .navbar-brand h1 { /* Restaurant name */
-    padding-top: 10px;
-    font-size: 5vw; /* 1vw = 1% of viewport width */
+  .modal-content {
+    width: 80%;
   }
-  .navbar-brand p { /* Kosher cert */
-    font-size: .6em;
-    margin-top: 12px;
-  }
-  .navbar-brand p img { /* Star-K */
-    height: 20px;
-  }
-
-  #collapsable-nav a { /* Collapsed nav menu text */
-    font-size: 1.2em;
-  }
-  #collapsable-nav a span { /* Collapsed nav menu glyph */
-    font-size: 1em;
-    margin-right: 5px;
-  }
-
-  #call-btn > a {
-    font-size: 1.5em;
-    display: block;
-    margin: 0 20px;
-    padding: 10px;
-    border: 2px solid #fff;
-    background-color: #f6b319;
-    color: #951c49;
-  }
-  #xs-deliver {
-    margin-top: 5px;
-    font-size: .7em;
-    letter-spacing: .1em;
-    text-transform: uppercase;
-  }
-  /* End Header */
-
-  /* Footer */
-  .panel-footer section {
-    margin-bottom: 30px;
-    text-align: center;
-  }
-  .panel-footer section:nth-child(3) {
-    margin-bottom: 0; /* margin already exists on the whole row */
-  }
-  .panel-footer section hr {
-    width: 50%;
-  }
-  /* End Footer */
-
-  /* Home Page */
-  .container .jumbotron {
-    margin-top: 30px;
-    padding: 0;
-  }
-  #menu-tile, #specials-tile {
-    width: 360px;
-    margin: 0 auto 15px;
-  }
-
-  .menu-item-photo {
-    margin-right: auto;
-  }
-  .menu-item-tile .menu-item-price {
-    text-align: center;
-  }
-  .menu-item-description {
-    text-align: center;;
-  }
-}
-
-
-/********** Super extra small devices Only :-) (e.g., iPhone 4) **********/
-@media (max-width: 479px) {
-  /* Header */
-  .navbar-brand h1 { /* Restaurant name */
-    padding-top: 5px;
-    font-size: 6vw;
-  }
-  /* End Header */
-  
-  /* Home page */
-  #menu-tile, #specials-tile {
-    width: 280px;
-    margin: 0 auto 15px;
-  }
-
-  .col-xxs-12 {
-    position: relative;
-    min-height: 1px;
-    padding-right: 15px;
-    padding-left: 15px;
-    float: left;
+  .jumbotron {
     width: 100%;
   }
+  .head-menu {
+    display: block;
+  }
+  .header-right {
+    display: none;
+  }
+  .header-right div {
+    display: none;
+  }
+  #menu {
+    display: none;
+  }
+  #wrap-button {
+    display: block;
+    color: #ffffff;
+    font-size: 30px;
+    margin-top: 18px;
+    text-align: left;
+  }
+  #logo {
+    text-align: center;
+  }
 }
-

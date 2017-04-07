@@ -88,6 +88,31 @@ if ($_SESSION["lang"] == "zh") {
     "Département d'Astronomie et des Sciences Spatiales"
     );
 }
+$langIszh = (!isset($_GET["lang"]) || $_GET["lang"] == "zh");
+
+$menu_items = $langIszh ? array("主页", "关于我们", "活动新闻", "校友名录") : array("ACCUEIL", "NOTRE PROFIL", "ACTIVITÉS", "COMMUNAUTÉ");
+$lang = (isset($_GET["lang"])) ? ("&lang=" . $_GET["lang"]) : "";
+
+$profile_items = array("NJU", "Asso", "Chairmen", "Council", "Cert");
+$profile_names = $langIszh ? array("南大简介", "校友会简介", "主席团成员", "理事会成员", "注册文件") : array("À propos de NJU", "À propos de l'AAENF", "Direction", "Conceil", "Déclaration");
+
+$activity_items = array("event", "photo");
+$activity_names = $langIszh ? array("活动交流", "相册影集") : array("Activités", "Photos & Vidéos");
+
+$actual_link = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+if (strpos($actual_link, 'lang=fr')) {
+    $link_fr = $actual_link;
+    $link_zh = str_replace("lang=fr", "lang=zh", $actual_link);
+} else if (strpos($actual_link, 'lang=zh')) {
+    $link_zh = $actual_link;
+    $link_fr = str_replace("lang=zh", "lang=fr", $actual_link);
+} else if (strpos($actual_link, "?")) {
+    $link_zh = $actual_link . "&lang=zh";
+    $link_fr = $actual_link . "&lang=fr";
+} else {
+    $link_zh = $actual_link . "?lang=zh";
+    $link_fr = $actual_link . "?lang=fr";
+}
 ?>
   <!doctype html>
   <html>
@@ -115,79 +140,108 @@ if ($_SESSION["lang"] == "zh") {
   </head>
 
   <body>
-    <header>
-      <div class="container">
-        <div class="row">
-          <div id="logo" class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
-            <a href="index.php"><img src="images/nju-logo.png" alt="logo" /></a>
-          </div>
+    <div id="wrap-menu">
+      <p class="wrap-item wrap-item-first"><?php echo $langIszh?'导航':'PILOTAGE';?></p>
+        <p id="wrap-button-accueil"  class="wrap-item wrap-item-second">
+          <a href="index.php?page=home<?php echo $lang; ?>">
+            <?php echo $menu_items[0] ?>
+          </a>
+        </p>
 
-          <div class="header-right col-lg-2 col-md-2 col-sm-4 col-xs-4">
-            <div id="button-inscription" class="popup-trigger">
-              <div class="glyphicon glyphicon-user"></div>
-              <div id="popup-login" class="popup-content">
-                <?php if (isset($_SESSION["currentUser"])) { ?>
-                  <form method="post">
-                    <input id='button-signout' name="signout" value="<?php echo (!isset($_GET["lang"]) || $_GET["lang"] == "zh ") ? "退出登录 " : "Se déconnecter "; ?>" type='submit' />
-                  </form>
-                  <?php } else { ?>
-                    <div id='button-signin' class='button'>
-                      <?php echo (!isset($_GET["lang"]) || $_GET["lang"] == "zh") ? "登录" : "Se connecter"; ?>
-                    </div>
-                    <br/>
-                    <div id='button-signup' class='button'>
-                      <?php echo (!isset($_GET["lang"]) || $_GET["lang"] == "zh") ? "注册" : "S'inscrire"; ?>
-                    </div>
-                    <?php
+        <p id="wrap-button-profile"  class="wrap-item wrap-item-second">
+          <a href="index.php?page=profile<?php echo $lang; ?>">
+            <?php echo $menu_items[1] ?>
+          </a>
+        </p>
+        <p class="wrap-item wrap-item-third"><?php echo $profile_names[0];?></p>
+        <p class="wrap-item wrap-item-third"><?php echo $profile_names[1];?></p>
+        <p class="wrap-item wrap-item-third"><?php echo $profile_names[2];?></p>
+        <p class="wrap-item wrap-item-third"><?php echo $profile_names[3];?></p>
+        <p class="wrap-item wrap-item-third"><?php echo $profile_names[4];?></p>
+
+        <p id="wrap-button-activity"  class="wrap-item wrap-item-second">
+          <a href="index.php?page=activity<?php echo $lang; ?>">
+            <?php echo $menu_items[2] ?>
+          </a>
+        </p>
+        <p class="wrap-item wrap-item-third"><?php echo $activity_names[0];?></p>
+        <p class="wrap-item wrap-item-third"><?php echo $activity_names[1];?></p>
+
+        <p id="wrap-button-community"  class="wrap-item wrap-item-second">
+          <a href="index.php?page=community<?php echo $lang; ?>">
+            <?php echo $menu_items[3] ?>
+          </a>
+        </p>
+
+      <p class="wrap-item wrap-item-first"><?php echo $langIszh?'账户':'COMPTE';?></p>
+      <p class="wrap-item wrap-item-second"><?php echo $langIszh?'登录':'Se connecter';?></p>
+      <p class="wrap-item wrap-item-second"><?php echo $langIszh?'注册':"S'inscrire";?></p>
+      <p class="wrap-item wrap-item-second"><?php echo $langIszh?'退出登录':'Se déconnecter';?></p>
+
+      <p class="wrap-item wrap-item-first"><?php echo $langIszh?'语言':'LANGUE';?></p>
+      <a href='<?php echo $langIszh?$link_fr:$link_zh; ?>'><p class="wrap-item wrap-item-second"><?php echo $langIszh?'Français':'中文';?></p></a>
+    </div>
+
+    <div id="overal-container">
+      <!-- This is the whole page content, seperated form the side-menu -->
+      <header>
+        <div class="container">
+          <div class="row">
+            <div id="wrap-button" class="glyphicon glyphicon-th-list col-xs-1"></div>
+            <div id="logo" class="col-lg-4 col-md-4 col-sm-6 col-xs-9">
+              <a href="index.php"><img src="images/nju-logo.png" alt="logo" /></a>
+            </div>
+
+            <div class="header-right col-lg-2 col-md-2 col-sm-4">
+              <div id="button-inscription" class="popup-trigger">
+                <div class="glyphicon glyphicon-user"></div>
+                <div id="popup-login" class="popup-content">
+                  <?php if (isset($_SESSION["currentUser"])) { ?>
+                    <form method="post">
+                      <input id='button-signout' name="signout" value="<?php
+    echo $langIszh ? " 退出登录 " : "Se déconnecter ";
+    ?>" type='submit' />
+                    </form>
+                    <?php } else { ?>
+                      <div id='button-signin' class='button'>
+                        <?php echo $langIszh ? "登录" : "Se connecter"; ?>
+                      </div>
+                      <br/>
+                      <div id='button-signup' class='button'>
+                        <?php echo $langIszh ? "注册" : "S'inscrire"; ?>
+                      </div>
+                      <?php
 }
 ?>
+                </div>
               </div>
-            </div>
-            <div id="userName" <?php if (isset($_SESSION[ "currentUser"])) { echo "userid=" . $_SESSION[ "currentUser"][ "id"]; } ?> >
-              <span><?php
+              <div id="userName" <?php if (isset($_SESSION[ "currentUser"])) { echo "userid=" . $_SESSION[ "currentUser"][ "id"]; } ?> >
+                <span><?php
 if (isset($_SESSION["currentUser"])) {
     echo ucfirst($_SESSION["currentUser"]["prenom"]) . " " . ucfirst($_SESSION["currentUser"]["nom"]);
 }
 ?>
 </span>
-            </div>
-            <div id="button-lang" class="popup-trigger">
-              <div class="glyphicon glyphicon-globe"></div>
-              <div id="popup-lang" class="popup-content">
-                <?php
-$actual_link = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-if (strpos($actual_link, 'lang=fr')) {
-    $link_fr = $actual_link;
-    $link_zh = str_replace("lang=fr", "lang=zh", $actual_link);
-} else if (strpos($actual_link, 'lang=zh')) {
-    $link_zh = $actual_link;
-    $link_fr = str_replace("lang=zh", "lang=fr", $actual_link);
-} else if (strpos($actual_link, "?")) {
-    $link_zh = $actual_link . "&lang=zh";
-    $link_fr = $actual_link . "&lang=fr";
-} else {
-    $link_zh = $actual_link . "?lang=zh";
-    $link_fr = $actual_link . "?lang=fr";
-}
-?>
-
-                  <div id="button-zh" class="button"><a <?php echo "href='$link_zh'" ?>>中文</a></div>
+              </div>
+              <div id="button-lang" class="popup-trigger">
+                <div class="glyphicon glyphicon-globe"></div>
+                <div id="popup-lang" class="popup-content">
 
 
-                  <div id="button-fr" class="button"><a <?php echo "href='$link_fr'" ?>>Français</a></div>
+                    <div id="button-zh" class="button"><a <?php echo "href='$link_zh'" ?>>中文</a></div>
 
+
+                    <div id="button-fr" class="button"><a <?php echo "href='$link_fr'" ?>>Français</a></div>
+
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </header>
-    <div id="menu" class="collapse navbar-collapse">
-      <div class="container">
-        <?php
-$menu_items = (!isset($_GET["lang"]) || $_GET["lang"] == "zh") ? array("主页", "关于我们", "活动新闻", "校友名录", "联系我们") : array("ACCUEIL", "NOTRE PROFIL", "ACTIVITÉS", "COMMUNAUTÉ", "CONTACTEZ-NOUS");
-$lang = (isset($_GET["lang"])) ? ("&lang=" . $_GET["lang"]) : "";
-?>
+      </header>
+      <div id="menu" class="collapse navbar-collapse">
+        <div class="container">
+
           <ul id="menu-list">
             <li id="button-accueil" class="menu-item">
               <a href="index.php?page=home<?php echo $lang; ?>">
@@ -209,36 +263,33 @@ $lang = (isset($_GET["lang"])) ? ("&lang=" . $_GET["lang"]) : "";
                 <?php echo $menu_items[3] ?>
               </a>
             </li>
-            <li id="button-contact" class="menu-item">
-              <a href="#contact">
-                <?php echo $menu_items[4] ?>
-              </a>
-            </li>
           </ul>
-      </div>
-    </div>
-
-
-    <div id="loginform-container" class="modal">
-      <form id="loginform" method="post" action="javascript:void(0);">
-        <div class="imgcontainer">
-          <span id='close-login' class="close" title="Close Modal">&times;</span>
-          <img src="sources/default.jpg" alt="Avatar" class="avatar">
         </div>
+      </div>
 
-        <label><b><?php echo (!isset($_GET["lang"]) || $_GET["lang"] == "zh") ? "邮箱：" : "Email : "; ?></b></label>
-        <input type="text" placeholder=<?php echo (!isset($_GET["lang"]) || $_GET["lang"] == "zh") ? "您的邮箱" : "Email"; ?> name="email" required>
 
-        <label><b><?php echo (!isset($_GET["lang"]) || $_GET["lang"] == "zh") ? "密码：" : "Mot de pass : "; ?></b></label>
-        <input type="password" placeholder=<?php echo (!isset($_GET["lang"]) || $_GET["lang"] == "zh") ? "您的密码" : "Password"; ?> name="psw" required>
-        <button type="submit" id="login-submit"><?php echo (!isset($_GET["lang"]) || $_GET["lang"] == "zh") ? "登录" : "Connectez-vous"; ?></button>
-        <div id="error-info"> </div>
-      </form>
-    </div>
+      <div id="loginform-container" class="modal">
+        <form id="loginform" method="post" action="javascript:void(0);">
+          <div class="imgcontainer">
+            <span id='close-login' class="close" title="Close Modal">&times;</span>
+            <img src="sources/default.jpg" alt="Avatar" class="avatar">
+          </div>
 
-    <!-- Here insert main contents of each page -->
-    <div id="main-content">
-      <?php
+          <label><b><?php echo $langIszh ? "邮箱：" : "Email : "; ?></b></label>
+          <input type="text" placeholder=<?php echo (!isset($_GET[ "lang"]) || $_GET[ "lang"]=="zh" ) ? "您的邮箱" : "Email"; ?> name="email" required>
+
+          <label><b><?php echo $langIszh ? "密码：" : "Mot de pass : "; ?></b></label>
+          <input type="password" placeholder=<?php echo $langIszh ? "您的密码" : "Password"; ?> name="psw" required>
+          <button type="submit" id="login-submit">
+            <?php echo $langIszh ? "登录" : "Connectez-vous"; ?>
+          </button>
+          <div id="error-info"> </div>
+        </form>
+      </div>
+
+      <!-- Here insert main contents of each page -->
+      <div id="main-content">
+        <?php
 if (!(isset($_GET['page'])) || $_GET['page'] == 'home')
     require 'snippets/home-snippet.php';
 else if ($_GET['page'] == 'profile')
@@ -252,76 +303,77 @@ else
 ?>
 
 
-    </div>
-    <!--Here ends the main contents-->
+      </div>
+      <!--Here ends the main contents-->
 
-    <div id="gotop"><img src="images/gotop.png" alt='TOP'></div>
-    <footer>
-      <div class="footer-top">
-        <div class="container">
-          <div class="row">
-            <!--start friendly links-->
-            <div class="friendly-links col-sm-4 col-md-5 vertical-center">
-              <a class="icon-href" href="http://www.nju.edu.cn/" target="_blank">
-                <span class="icon icon1"></span>
-                <p>NJU</p>
-              </a>
-              <a class="icon-href" href="http://bbs.nju.edu.cn/" target="_blank">
-                <span class="icon icon2"></span>
-                <p>BBS</p>
-              </a>
-              <a class="icon-href" href="http://www.nju.org.cn/" target="_blank">
-                <span class="icon icon3"></span>
-                <p>AN</p>
-              </a>
-              <a class="icon-href" href="http://njuedf.nju.edu.cn" target="_blank">
-                <span class="icon icon4"></span>
-                <p>FN</p>
-              </a>
-              <!--<img src="sources/icon.png">-->
-            </div>
-            <!--end friendly links-->
+      <div id="gotop"><img src="images/gotop.png" alt='TOP'></div>
+      <footer>
+        <div class="footer-top">
+          <div class="container">
+            <div class="row">
+              <!--start friendly links-->
+              <div class="friendly-links col-sm-4 col-md-5 vertical-center">
+                <a class="icon-href" href="http://www.nju.edu.cn/" target="_blank">
+                  <span class="icon icon1"></span>
+                  <p>NJU</p>
+                </a>
+                <a class="icon-href" href="http://bbs.nju.edu.cn/" target="_blank">
+                  <span class="icon icon2"></span>
+                  <p>BBS</p>
+                </a>
+                <a class="icon-href" href="http://www.nju.org.cn/" target="_blank">
+                  <span class="icon icon3"></span>
+                  <p>AN</p>
+                </a>
+                <a class="icon-href" href="http://njuedf.nju.edu.cn" target="_blank">
+                  <span class="icon icon4"></span>
+                  <p>FN</p>
+                </a>
+                <!--<img src="sources/icon.png">-->
+              </div>
+              <!--end friendly links-->
 
-            <!--start foot logo-->
-            <div class="foot-logo col-xs-6 col-sm-6 col-md-2 vertical-center">
-              <img src="images/foot_logo.png" alt='LOGO'>
-            </div>
-            <!--end foot logo-->
+              <!--start foot logo-->
+              <div class="foot-logo col-xs-6 col-sm-6 col-md-2 vertical-center">
+                <img src="images/foot_logo.png" alt='LOGO'>
+              </div>
+              <!--end foot logo-->
 
-            <!--start follow links-->
-            <div id='contact' class="follow-links col-xs-6 col-sm-6 col-md-5 vertical-center">
-              <a class="icon-href" href="#">
-                <span class="icon icon1"></span>
-              </a>
-              <a class="icon-href" href="#">
-                <span class="icon icon2"></span>
-              </a>
-              <a class="icon-href" href="#">
-                <span class="icon icon3"></span>
-              </a>
-              <a class="icon-href" href="#">
-                <span class="icon icon4"></span>
-              </a>
-              <!-- <img src="sources/shares.png"> -->
+              <!--start follow links-->
+              <div id='contact' class="follow-links col-xs-6 col-sm-6 col-md-5 vertical-center">
+                <a class="icon-href" href="#">
+                  <span class="icon icon1"></span>
+                </a>
+                <a class="icon-href" href="#">
+                  <span class="icon icon2"></span>
+                </a>
+                <a class="icon-href" href="#">
+                  <span class="icon icon3"></span>
+                </a>
+                <a class="icon-href" href="#">
+                  <span class="icon icon4"></span>
+                </a>
+                <!-- <img src="sources/shares.png"> -->
+              </div>
+              <!--end follow links-->
             </div>
-            <!--end follow links-->
+            <!--end footer-top row-->
           </div>
-          <!--end footer-top row-->
+          <!--end footer-top container-->
         </div>
-        <!--end footer-top container-->
-      </div>
-      <!--end footer-top-->
+        <!--end footer-top-->
 
-      <!--start footer-botton-->
-      <div class="footer-bottom">
-        <span>Copyright@Ke WANG & Shiwen XIA</span>
-      </div>
-      <!--end footer-bottom-->
-    </footer>
-    <script src="js/script.js?<?php echo date('l jS \of F Y h:i:s A'); ?>"></script>
-    <script src="js/index_sup.js?<?php echo date('l jS \of F Y h:i:s A'); ?>"></script>
-    <script src="js/unitegallery.min.js"></script>
-    <script src="js/ug-theme-default.js"></script>
+        <!--start footer-botton-->
+        <div class="footer-bottom">
+          <span>Copyright@Ke WANG & Shiwen XIA</span>
+        </div>
+        <!--end footer-bottom-->
+      </footer>
+      <script src="js/script.js?<?php echo date('l jS \of F Y h:i:s A'); ?>"></script>
+      <script src="js/index_sup.js?<?php echo date('l jS \of F Y h:i:s A'); ?>"></script>
+      <script src="js/unitegallery.min.js"></script>
+      <script src="js/ug-theme-default.js"></script>
   </body>
+  </div>
 
   </html>
