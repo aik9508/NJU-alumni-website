@@ -117,7 +117,6 @@ if ($_SESSION["lang"] == "zh") {
                 <div class="row">
                     <div id="logo" class="col-lg-3">
                         <a href="index.php"><img src="images/nju-logo.png" alt="logo" /></a>
-
                     </div>
                     <div id="association" class="col-lg-3">
                         <span>法国校友会</span>
