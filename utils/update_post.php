@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-if (!isset($_POST)) {
+if (!isset($_POST) || !isset($_SESSION["currentUser"])) {
     exit(0);
 }
 var_dump($_POST);

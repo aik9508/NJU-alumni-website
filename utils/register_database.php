@@ -1,6 +1,6 @@
 <?php
 
-
+define("SEL", "eureka");
 class Database {
     
     public static function connect() {
@@ -250,7 +250,7 @@ class User {
     public static function insertUser($dbh, $nom, $prenom, $email, $mdp, $numero, $sexe) {
         if (User::getUserByEmail($dbh, $email) == null) {
             $sth = $dbh->prepare("INSERT INTO `NJUers`(`nom`, `prenom`, `email`, `mdp`, `numero`, `sexe`) VALUES(?,?,?,?,?,?)");
-            $sth->execute(array($nom, $prenom, $email, $mdp, $numero, $sexe));
+            $sth->execute(array($nom, $prenom, $email, sha1($mdp.SEL), $numero, $sexe));
             return TRUE;
         } else {
             return null;
@@ -260,13 +260,32 @@ class User {
     public static function checkPassword($dbh, $email, $mdp) {
         $user = User::getUserByEmail($dbh, $email);
         if ($user != null) {
-            if ($user->mdp == $mdp) {
+            if ($user->mdp == sha1($mdp.SEL)) {
                 return true;
             } else {
                 return false;
             }
         }
         return false;
+    }
+    
+    public static function checkPasswordByID($dbh, $id, $mdp) {
+        $user = User::getUserByID($dbh, $id);
+        if ($user != null) {
+            if ($user->mdp == sha1($mdp.SEL)) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        return false;
+    }
+    
+    public static function changePassword($dbh, $id, $mdp){
+        $query="UPDATE `NJUers` SET `mdp`=? WHERE id=?";
+        $sth=$dbh->prepare($query);
+        $sth->execute(array(sha1($mdp.SEL),$id));
+        return $sth->rowCount();
     }
     
     public static function update($dbh, $query, $query_array) {

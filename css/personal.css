@@ -105,6 +105,7 @@ img {
 
 #userName {
     color: white;
+    cursor: pointer;
 }
 
 .popup-trigger .popup-content {
@@ -430,6 +431,8 @@ img.avatar {
 .information-tile {
     padding-top: 5px;
     padding-bottom: 5px;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .activity-tile {

@@ -27,6 +27,10 @@
     left:-320px;
 }
 
+.block-title{
+     white-space: nowrap;
+}
+
 .head-filter,
 .head-results{
     font-size: 22px;
@@ -141,7 +145,7 @@
 #response {
     display: block;
     overflow: hidden;
-    min-height: 380px;
+    min-height: 430px;
 }
 
 .profile-card {

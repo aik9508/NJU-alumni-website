@@ -77,7 +77,6 @@ $(document).ready(function () {
     });
 });
 
-
 function isAllValid() {
     var allValid = isNonEmpty($("#nom").val())
             && isNonEmpty($("#prenom").val())

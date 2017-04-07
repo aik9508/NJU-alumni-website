@@ -101,7 +101,7 @@ $display = isset($_POST["alumni_id"]) && isset($_SESSION["currentUser"]) && $_PO
                     </ul>
                 </div>
             </div>
-<?php if ($display) { ?>
+            <?php if ($display) { ?>
                 <div class="back">
                     <div class="profil-photo">
                         <nav class="navbar navbar-inverse">
@@ -138,6 +138,7 @@ $display = isset($_POST["alumni_id"]) && isset($_SESSION["currentUser"]) && $_PO
             <div class="overflow-hidden">
                 <button class="profil-button" id="profil-annuler">Annuler</button>
                 <button class="profil-button" id="profil-valider">Valider</button>
+                <button class="profil-button" id="modifier-mdp">Modifer Votre Mot de Passe</button>
             </div>
             <div class="col-sm-6">
                 <label>Nom : </label>
@@ -234,9 +235,32 @@ EOT;
             </div>
             <input type="hidden" name="id" <?php echo "value=" . $id ?>>
         </div>
+        <div class="pwd-edit-wrapper vertical-center-parent display-none">
+            <div class="overflow-hidden">
+                <button class="profil-button" id="mdp-annuler">Annuler</button>
+                <button class="profil-button" id="mdp-valider">Valider</button>
+            </div>
+            <div class="pwd-input-container">
+                <div class="tooltip">
+                    <label for="ancien_mdp">Ancien mot de passe : </label>
+                    <input class="form-control" type="password" name="ancien-mdp" placeholder="Ancien mot de passe">
+                    <span class="tooltiptext"></span>
+                </div>
+                <div class="tooltip">
+                    <label for="nouveau_mdp">Nouveau mot de passe : </label>
+                    <input class="form-control" type="password" name="nouveau-mdp" placeholder="Mot de passe">
+                    <span class="tooltiptext"></span>
+                </div>
+                <div class="tooltip">
+                    <label for="confirmer_mdp">Confirmer votre nouveau mot de passe : </label>
+                    <input class="form-control" type="password" name="confirmer-mdp" placeholder="Mot de passe">
+                    <span class="tooltiptext"></span>
+                </div>
+            </div>
+        </div>
         <script src="js/cropper.js"></script>
-        <script src="js/profile-fr.js"></script>
-<?php }
-?>
+        <script src="js/profile-fr.js?<?php echo date('l jS \of F Y h:i:s A'); ?>"></script>
+    <?php }
+    ?>
 </div>
 

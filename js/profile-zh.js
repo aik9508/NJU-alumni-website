@@ -132,6 +132,43 @@ $(document).ready(function () {
         $(".flip-container").show();
     });
 
+    $("#modifier-mdp").click(function () {
+        $(".pwd-edit-wrapper").show();
+        $(".profil-edit-wrapper").hide();
+    });
+
+    $("#mdp-annuler").click(function () {
+        $(".profil-edit-wrapper").show();
+        $(".pwd-edit-wrapper").hide();
+        clearAllPassword();
+    });
+
+    $("#mdp-valider").click(function () {
+        if (isPswValid($("input[name='ancien-mdp']").val())
+                && isNonEmpty($("input[name='nouveau-mdp']").val())
+                && isPswCorrect($("input[name='confirmer-mdp']").val())) {
+            $.post("utils/checkPassword.php", {
+                pwd: $("input[name='ancien-mdp']").val().trim(),
+                new_pwd: $("input[name='nouveau-mdp']").val().trim()
+            }, function (response) {
+                if (!response) {
+                    $("input[name='ancien-mdp']").css('border-color', 'red');
+                    toolTipError($("input[name='ancien-mdp']"), "密码错误。")();
+                } else if (response === "Not Login") {
+                    alert("Veuillez vous connecter!");
+                } else {
+                    $(".profil-edit-wrapper").show();
+                    $(".pwd-edit-wrapper").hide();
+                    clearAllPassword();
+                }
+            });
+        } else {
+            $("input[name='ancien-mdp']").focusout();
+            $("input[name='nouveau-mdp']").focusout();
+            $("input[name='confirmer-mdp']").focusout();
+        }
+    });
+
     inputs[0].autocheck(isNonEmpty, toolTipError(inputs[0], '此项不能为空。'));
     inputs[1].autocheck(isNonEmpty, toolTipError(inputs[1], '此项不能为空。'));
     inputs[2].autocheck(isEmailValid, toolTipError(inputs[2], '邮件格式错误。'));
@@ -141,6 +178,36 @@ $(document).ready(function () {
     inputs[6].autocheck(isTelValid, toolTipError(inputs[6], "手机号码格式错误。"));
     inputs[7].autocheck(isEntrepriseValid, toolTipError(inputs[7], "请注明就职单位。"));
     inputs[8].autocheck(isFonctionValid, toolTipError(inputs[8], "请注明就职单位。"));
+    
+    $("input[name='ancien-mdp']").autocheck(isNonEmpty,toolTipError($(this), "请输入您现在的密码。"));
+    $("input[name='nouveau-mdp']").focusin(function () {
+        $(this).css('border-color', 'rgb(102,175,233)');
+    });
+    $("input[name='nouveau-mdp']").focusout(function () {
+        if (!isNonEmpty($(this).val())) {
+            $(this).css('border-color', 'red');
+            toolTipError($(this), "新密码不能为空。")();
+        } else if (!isPswValid($(this).val())) {
+            $(this).css('border-color', 'red');
+            toolTipError($(this), "过短的密码很容易被猜到。请尝试使用至少包含 8 个字符的密码。")();
+        } else {
+            $(this).css('border-color', 'rgb(204,204,204)');
+        }
+    });
+    $("input[name='confirmer-mdp']").focusin(function () {
+        $(this).css('border-color', 'rgb(102,175,233)');
+    });
+    $("input[name='confirmer-mdp']").focusout(function () {
+        if (!isNonEmpty($(this).val())) {
+            $(this).css('border-color', 'red');
+            toolTipError($(this), "请确认密码。")();
+        } else if (!isPswCorrect($(this).val())) {
+            $(this).css('border-color', 'red');
+            toolTipError($(this), "两个密码不匹配。是否重试？")();
+        } else {
+            $(this).css('border-color', 'rgb(204,204,204)');
+        }
+    });
 
     function hasChanged() {
         for (var i = 0; i < inputs.length; i++) {
@@ -168,6 +235,12 @@ $(document).ready(function () {
     });
 });
 
+function clearAllPassword() {
+    $("input[name='ancien-mdp']").val("").css("border-color", "rgb(204,204,204)");
+    $("input[name='nouveau-mdp']").val("").css("border-color", "rgb(204,204,204)");
+    $("input[name='confirmer-mdp']").val("").css("border-color", "rgb(204,204,204)");
+}
+
 function isAllValid() {
     var allValid = isNonEmpty($("input[name='nom']").val())
             && isNonEmpty($("input[name='prenom']").val())
@@ -184,7 +257,7 @@ function isAllValid() {
                 + $("input[name='promo-master']").val()
                 + $("input[name='promo-doctorat']").val().trim() != "";
         if (!allValid) {
-            alert("Veuillez choisir au moins un diplôme que vous avez obtenu à l'université de Nanjing et remplir votre promotion ainsi que votre département.");
+            alert("请至少选择一段您在南京大学的学习经历,并注明入学年份和院系。");
         }
     }
     return allValid;
@@ -236,6 +309,22 @@ function toolTipError(element, text) {
 function isNonEmpty(val) {
     if (val.trim() != "") {
         return val.trim();
+    } else {
+        return false;
+    }
+}
+
+function isPswValid(psw) {
+    if (psw.trim().length < 8 && psw.trim().length > 0) {
+        return false;
+    } else {
+        return psw;
+    }
+}
+
+function isPswCorrect(psw) {
+    if (psw === $("input[name='nouveau-mdp']").val().trim()) {
+        return psw;
     } else {
         return false;
     }

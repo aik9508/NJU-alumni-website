@@ -138,6 +138,7 @@ $display = isset($_POST["alumni_id"]) && isset($_SESSION["currentUser"]) && $_PO
             <div class="overflow-hidden">
                 <button class="profil-button" id="profil-annuler">取消</button>
                 <button class="profil-button" id="profil-valider">保存</button>
+                <button class="profil-button" id="modifier-mdp">修改密码</button>
             </div>
             <div class="col-sm-6">
                 <label>姓: </label>
@@ -235,8 +236,31 @@ EOT;
             </div>
             <input type="hidden" name="id" <?php echo "value=" . $id ?>>
         </div>
+        <div class="pwd-edit-wrapper vertical-center-parent display-none">
+            <div class="overflow-hidden">
+                <button class="profil-button" id="mdp-annuler">取消</button>
+                <button class="profil-button" id="mdp-valider">确定</button>
+            </div>
+            <div class="pwd-input-container">
+                <div class="tooltip">
+                    <label for="ancien_mdp">当前密码: </label>
+                    <input class="form-control" type="password" name="ancien-mdp" placeholder="当前密码">
+                    <span class="tooltiptext"></span>
+                </div>
+                <div class="tooltip">
+                    <label for="nouveau_mdp">新密码: </label>
+                    <input class="form-control" type="password" name="nouveau-mdp" placeholder="新密码">
+                    <span class="tooltiptext"></span>
+                </div>
+                <div class="tooltip">
+                    <label for="confirmer_mdp">确认密码: </label>
+                    <input class="form-control" type="password" name="confirmer-mdp" placeholder="确认密码">
+                    <span class="tooltiptext"></span>
+                </div>
+            </div>
+        </div>
         <script src="js/cropper.js"></script>
-        <script src="js/profile-zh.js"></script>
+        <script src="js/profile-zh.js?<?php echo date('l jS \of F Y h:i:s A'); ?>"></script>
 <?php }
 ?>
 </div>

@@ -132,6 +132,43 @@ $(document).ready(function () {
         $(".flip-container").show();
     });
 
+    $("#modifier-mdp").click(function () {
+        $(".pwd-edit-wrapper").show();
+        $(".profil-edit-wrapper").hide();
+    });
+
+    $("#mdp-annuler").click(function () {
+        $(".profil-edit-wrapper").show();
+        $(".pwd-edit-wrapper").hide();
+        clearAllPassword();
+    });
+
+    $("#mdp-valider").click(function () {
+        if (isPswValid($("input[name='ancien-mdp']").val())
+                && isNonEmpty($("input[name='nouveau-mdp']").val())
+                && isPswCorrect($("input[name='confirmer-mdp']").val())) {
+            $.post("utils/checkPassword.php", {
+                pwd: $("input[name='ancien-mdp']").val().trim(),
+                new_pwd: $("input[name='nouveau-mdp']").val().trim()
+            }, function (response) {
+                if (!response) {
+                    $("input[name='ancien-mdp']").css('border-color', 'red');
+                    toolTipError($("input[name='ancien-mdp']"), "Mot de passe invalide.")();
+                } else if (response === "Not Login") {
+                    alert("Veuillez vous connecter!");
+                } else {
+                    $(".profil-edit-wrapper").show();
+                    $(".pwd-edit-wrapper").hide();
+                    clearAllPassword();
+                }
+            });
+        } else {
+            $("input[name='ancien-mdp']").focusout();
+            $("input[name='nouveau-mdp']").focusout();
+            $("input[name='confirmer-mdp']").focusout();
+        }
+    });
+
     inputs[0].autocheck(isNonEmpty, toolTipError(inputs[0], 'Le nom ne doit pas être vide.'));
     inputs[1].autocheck(isNonEmpty, toolTipError(inputs[1], 'Le prénom ne doit pas être vide.'));
     inputs[2].autocheck(isEmailValid, toolTipError(inputs[2], 'Adresse e-mail invalide.'));
@@ -141,6 +178,36 @@ $(document).ready(function () {
     inputs[6].autocheck(isTelValid, toolTipError(inputs[6], "Ce format de numéro de téléphone n'est pas reconnu."));
     inputs[7].autocheck(isEntrepriseValid, toolTipError(inputs[7], "Veuillez indiquer votre entreprise."));
     inputs[8].autocheck(isFonctionValid, toolTipError(inputs[8], "Veuillez indiquer votre entreprise."));
+    
+    $("input[name='ancien-mdp']").autocheck(isNonEmpty,toolTipError($(this), "Veuillez entrer votre ancien mot de passe."));
+    $("input[name='nouveau-mdp']").focusin(function () {
+        $(this).css('border-color', 'rgb(102,175,233)');
+    });
+    $("input[name='nouveau-mdp']").focusout(function () {
+        if (!isNonEmpty($(this).val())) {
+            $(this).css('border-color', 'red');
+            toolTipError($(this), "Le nouveau mot de passe ne peut pas être vide.")();
+        } else if (!isPswValid($(this).val())) {
+            $(this).css('border-color', 'red');
+            toolTipError($(this), "Les mots de passe courts sont faciles à deviner. Veuillez recommencer en utilisant au moins 8 caractères.")();
+        } else {
+            $(this).css('border-color', 'rgb(204,204,204)');
+        }
+    });
+    $("input[name='confirmer-mdp']").focusin(function () {
+        $(this).css('border-color', 'rgb(102,175,233)');
+    });
+    $("input[name='confirmer-mdp']").focusout(function () {
+        if (!isNonEmpty($(this).val())) {
+            $(this).css('border-color', 'red');
+            toolTipError($(this), "Veuillez confirmer votre mot de passe.")();
+        } else if (!isPswCorrect($(this).val())) {
+            $(this).css('border-color', 'red');
+            toolTipError($(this), "Les mots de passe ne correspondent pas. Voulez-vous réessayer?")();
+        } else {
+            $(this).css('border-color', 'rgb(204,204,204)');
+        }
+    });
 
     function hasChanged() {
         for (var i = 0; i < inputs.length; i++) {
@@ -167,6 +234,12 @@ $(document).ready(function () {
         }
     });
 });
+
+function clearAllPassword() {
+    $("input[name='ancien-mdp']").val("").css("border-color", "rgb(204,204,204)");
+    $("input[name='nouveau-mdp']").val("").css("border-color", "rgb(204,204,204)");
+    $("input[name='confirmer-mdp']").val("").css("border-color", "rgb(204,204,204)");
+}
 
 function isAllValid() {
     var allValid = isNonEmpty($("input[name='nom']").val())
@@ -236,6 +309,22 @@ function toolTipError(element, text) {
 function isNonEmpty(val) {
     if (val.trim() != "") {
         return val.trim();
+    } else {
+        return false;
+    }
+}
+
+function isPswValid(psw) {
+    if (psw.trim().length < 8 && psw.trim().length > 0) {
+        return false;
+    } else {
+        return psw;
+    }
+}
+
+function isPswCorrect(psw) {
+    if (psw === $("input[name='nouveau-mdp']").val().trim()) {
+        return psw;
     } else {
         return false;
     }

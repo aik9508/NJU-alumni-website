@@ -97,13 +97,16 @@ and open the template in the editor.
     font-size: 17px;
 }
 
-.profil-edit-wrapper{
+.profil-edit-wrapper,
+.pwd-edit-wrapper{
     background-color: #edeadf;
     padding: 20px;
     height: 383px;
 }
 
-#profil-valider{
+#modifier-mdp,
+#profil-valider,
+#mdp-valider{
     margin-right: 20px;
 }
 
@@ -126,6 +129,7 @@ and open the template in the editor.
 }
 
 .profil-edit-wrapper .form-control,
+.pwd-edit-wrapper .form-control,
 .profil-edit-wrapper select{
     padding: 4px 8px;
     margin: 4px;
@@ -193,6 +197,9 @@ select {
     position: relative;
     display: inline-block;
     opacity: 1;
+}
+.pwd-input-container .tooltip{
+    width: 100%;
 }
 
 .tooltip .tooltiptext {

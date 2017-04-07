@@ -1,15 +1,15 @@
-$(document).ready(function() {
+$(document).ready(function () {
     // Return substitute of '{{propName}}'
     // with propValue in given 'string'
-    var insertProperty = function(string, propName, propValue) {
+    var insertProperty = function (string, propName, propValue) {
         var propToReplace = "{{" + propName + "}}";
         string = string
-            .replace(new RegExp(propToReplace, "g"), propValue);
+                .replace(new RegExp(propToReplace, "g"), propValue);
         return string;
     };
 
     // Remove the class 'active' from home and switch to Menu button
-    var switchMenuToActive = function() {
+    var switchMenuToActive = function () {
         // Remove 'active' from home button
         var classes = document.querySelector("#navHomeButton").className;
         classes = classes.replace(new RegExp("active", "g"), "");
@@ -26,7 +26,7 @@ $(document).ready(function() {
 
     // Gotop button appears and disappears
     $('#gotop').ready($('#gotop').fadeOut(0)); // Initially non visible
-    $(window).scroll(function() {
+    $(window).scroll(function () {
         if ($(window).scrollTop() > 150) { // 150: when the menu bar disappears
             $("#gotop").fadeIn(400);
         } else {
@@ -34,71 +34,80 @@ $(document).ready(function() {
         }
     });
     // Page scrolls to top when gotop button clicked
-    $("#gotop").click(function() {
-        $("html,body").animate({ scrollTop: "0px" }, 200); // during 200ms
+    $("#gotop").click(function () {
+        $("html,body").animate({scrollTop: "0px"}, 200); // during 200ms
     });
 
-    $('#button-inscription').mouseover(function() {
+    $('#button-inscription').mouseover(function () {
         $("#popup-login").stop(true).fadeIn();
     });
 
-    $('#button-inscription').mouseout(function() {
+    $('#button-inscription').mouseout(function () {
         $("#popup-login").stop(true).fadeOut();
     });
-    $('#button-lang').mouseover(function() {
+    $('#button-lang').mouseover(function () {
         var popup = document.getElementById("popup-lang");
         popup.classList.toggle("show");
     });
-    $('#button-lang').mouseout(function() {
+    $('#button-lang').mouseout(function () {
         var popup = document.getElementById("popup-lang");
         popup.classList.toggle("show");
     });
 
-    $('#button-signup').click(function() {
-        window.open('utils/register-zh.php', '_self');
+    $('#button-signup').click(function () {
+        $.post("utils/getSession.php", {
+            lang: true
+        }, function (response) {
+            var results = $.parseJSON(response);
+            var lang = results[1];
+            if (!lang || lang != "fr") {
+                lang = "zh";
+            }
+            window.open('utils/register-' + lang + '.php', '_self');
+        });
     });
 
-    $('#button-signin').click(function() {
+    $('#button-signin').click(function () {
         $('#loginform-container').css('display', 'block');
     });
 
-    $('#close-login').click(function() {
+    $('#close-login').click(function () {
         $('#loginform-container').css('display', 'none');
     });
 
-    $('#loginform-container').click(function(event) {
+    $('#loginform-container').click(function (event) {
         if (event.target == this) {
             $('#loginform-container').css('display', 'none');
         }
     });
-    $('#profile-menu>ul>li').each(function(i) {
+    $('#profile-menu>ul>li').each(function (i) {
         $(this).attr('id', 'profile-item' + i);
-        $('#profile-item' + i).click(function() {
+        $('#profile-item' + i).click(function () {
             $($('.profile-content-title>span')[1]).html($('#profile-item' + i + ">span")[1].innerHTML);
             $('#profile-content').load("snippets/" + $('#profile-item' + i + ">span")[1].getAttribute("data-name") + "-snippet.php");
         });
     });
 
-    $('#activity-menu>ul>li').each(function(i) {
+    $('#activity-menu>ul>li').each(function (i) {
         $(this).attr('id', 'activity-item' + i);
-        $('#activity-item' + i).click(function() {
+        $('#activity-item' + i).click(function () {
             $($('.activity-content-title>span')[1]).html($('#activity-item' + i + ">span")[1].innerHTML);
             $('#activity-content').load("snippets/" + $('#activity-item' + i + ">span")[1].getAttribute("data-name") + "-snippet.php");
         });
     });
 
-    $(document).on("click", ".activity-modal-link", function() {
+    $(document).on("click", ".activity-modal-link", function () {
         var num = $(this).attr('data-num');
         $(".modal-content").load("snippets/activity/" + num + ".php");
 
     });
 
-    $(document).on("click", ".photo-modal-link", function() {
+    $(document).on("click", ".photo-modal-link", function () {
         var num = $(this).attr('data-num');
         $("#gallery-container").load("snippets/photo/" + num + ".php");
     });
 
-    $(document).on("click", ".modal-box", function(event) {
+    $(document).on("click", ".modal-box", function (event) {
         if (event.target == this) {
             $(".modal-box").css('display', 'none');
             $("#gallery").html("");
