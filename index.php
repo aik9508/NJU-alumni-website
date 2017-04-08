@@ -153,19 +153,19 @@ if (strpos($actual_link, 'lang=fr')) {
             <?php echo $menu_items[1] ?>
           </a>
         </p>
-        <p class="wrap-item wrap-item-third"><?php echo $profile_names[0];?></p>
-        <p class="wrap-item wrap-item-third"><?php echo $profile_names[1];?></p>
-        <p class="wrap-item wrap-item-third"><?php echo $profile_names[2];?></p>
-        <p class="wrap-item wrap-item-third"><?php echo $profile_names[3];?></p>
-        <p class="wrap-item wrap-item-third"><?php echo $profile_names[4];?></p>
+        <a href="index.php?page=profile&subpage=0<?php echo $lang; ?>"><p class="wrap-item wrap-item-third wrap-profile-button"><?php echo $profile_names[0];?></p></a>
+        <a href="index.php?page=profile&subpage=1<?php echo $lang; ?>"><p class="wrap-item wrap-item-third wrap-profile-button"><?php echo $profile_names[1];?></p></a>
+        <a href="index.php?page=profile&subpage=2<?php echo $lang; ?>"><p class="wrap-item wrap-item-third wrap-profile-button"><?php echo $profile_names[2];?></p></a>
+        <a href="index.php?page=profile&subpage=3<?php echo $lang; ?>"><p class="wrap-item wrap-item-third wrap-profile-button"><?php echo $profile_names[3];?></p></a>
+        <a href="index.php?page=profile&subpage=4<?php echo $lang; ?>"><p class="wrap-item wrap-item-third wrap-profile-button"><?php echo $profile_names[4];?></p></a>
 
         <p id="wrap-button-activity"  class="wrap-item wrap-item-second">
           <a href="index.php?page=activity<?php echo $lang; ?>">
             <?php echo $menu_items[2] ?>
           </a>
         </p>
-        <p class="wrap-item wrap-item-third"><?php echo $activity_names[0];?></p>
-        <p class="wrap-item wrap-item-third"><?php echo $activity_names[1];?></p>
+        <a href="index.php?page=activity&subpage=0<?php echo $lang; ?>"><p class="wrap-item wrap-item-third wrap-activity-button"><?php echo $activity_names[0];?></p></a>
+        <a href="index.php?page=activity&subpage=1<?php echo $lang; ?>"><p class="wrap-item wrap-item-third wrap-activity-button"><?php echo $activity_names[1];?></p></a>
 
         <p id="wrap-button-community"  class="wrap-item wrap-item-second">
           <a href="index.php?page=community<?php echo $lang; ?>">

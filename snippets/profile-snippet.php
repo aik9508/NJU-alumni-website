@@ -74,7 +74,9 @@ foreach ($items as $item) {?>
       <div class="profile-content-title block-title">
         <span class="glyphicon glyphicon-chevron-right"></span>
         <?php
-$item_title = $langIszh ? "南大简介":"À propos de NJU";
+        $lang = (isset($_GET["lang"]))?$_GET["lang"]:"zh";
+$subpage = (isset($_GET["subpage"]))?$_GET["subpage"]:"0";
+$item_title = $names[$subpage];
 echo "<span>$item_title</span>";
 ?>
 
@@ -82,8 +84,8 @@ echo "<span>$item_title</span>";
       <div class='bighr'></div>
       <div id="profile-content">
         <?php
-$lang = (isset($_GET["lang"]))?$_GET["lang"]:"zh";
-require 'snippets/NJU-snippet-'.$lang.'.php';
+
+require 'snippets/'.$items[$subpage].'-snippet-'.$lang.'.php';
 ?>
       </div>
       <div class='bighr'></div>
