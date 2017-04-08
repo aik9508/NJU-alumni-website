@@ -377,5 +377,5 @@ if (strpos($actual_link, 'lang=fr')) {
             <script src="js/ug-theme-default.js"></script>
         </div>
     </body>
-
 </html>
+

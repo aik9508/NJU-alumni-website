@@ -172,22 +172,52 @@ $(document).ready(function () {
         }
     });
 
-    $('#wrap-button').click(function () {
-        if ($("#wrap-menu").css('display') == 'none') {
-//        $("#overal-container").css('width','75%');
-            $("#overal-container").css("left", "200px");
-            $("#wrap-menu").css('display', 'block').css("height", $(window).outerHeight());
-            setTimeout(function () {
-//                $("body").addClass("overflow-hidden");
-                $("#overal-container").css("position","fixed").css("overflow-y","scroll");
-            }, 600);
+    $('#wrap-button').click(function (e) {
+        e.stopPropagation();
+        if ($("#wrap-menu").offset().left != 0) {
+            $("#overal-container").css('left', '180px');
+            $("#wrap-menu").css('left', '0').css('height', $(window).outerHeight());
+            setTimeout(function() {
+                $("#overal-container").css('position','fixed').css('overflow-y','scroll');
+            },600);
+            $("#overal-container").css('opacity', '0.8');
+
         } else {
-            $("#overal-container").css("left", "0");
+            $("#overal-container").css('left', '0');
+            $("#wrap-menu").css('left', '-180px');
             setTimeout(function () {
-//                $("body").removeClass("overflow-hidden");
-                $("#overal-container").css("position","absolute").css("overflow-y","auto");
-                $("#wrap-menu").css('display', 'none');
+                $("#overal-container").css('position','absolute').css('overflow-y','auto');
             }, 600);
+             $("#overal-container").css('opacity', '1.0');
+        }
+    });
+
+    $('#wrap-menu').click(function (e) {
+        e.stopPropagation();
+    });
+
+    $(window).resize(function () {
+        if ($(window).outerHeight() > $("#wrap-menu").height()) {
+            $("#wrap-menu").css('height', $(window).outerHeight());
+        }
+        if ($(window).outerWidth() > 767) {
+            $("#overal-container").css('left', '0');
+            $("#wrap-menu").css('left', '-180px');
+            setTimeout(function () {           
+                $("#overal-container").css('position','absolute').css('overflow-y','auto');
+            }, 600);
+             $("#overal-container").css('opacity', '1.0');
+        }
+    });
+
+    $('body').click(function () {
+        if ($("#wrap-menu").offset().left == 0) {
+            $("#overal-container").css('left', '0');
+            $("#wrap-menu").css('left', '-180px');
+            setTimeout(function () {           
+                $("#overal-container").css('position','absolute').css('overflow-y','auto');
+            }, 600);
+             $("#overal-container").css('opacity', '1.0');
         }
     });
 

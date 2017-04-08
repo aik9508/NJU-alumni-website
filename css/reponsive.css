@@ -21,8 +21,9 @@ body{
 }
 
 #wrap-menu {
-  display: none;
-  width: 200px;
+  position: absolute;
+  left: -180px;
+  width: 180px;
   background-color: #333;
   float: left;
   color: #ffffff;
@@ -31,10 +32,9 @@ body{
 
 #overal-container {
   float: left;
-  position: absolute;
   width: 100%;
-  left: 0;
-  top: 0;
+  position: absolute;
+  left: 0px;
   transition: 0.6s;
 }
 
@@ -123,17 +123,6 @@ body{
   opacity: 0.3;
   cursor: pointer;
 }
-
-
-
-/********** Large devices only **********/
-
-@media (min-width: 1200px) {}
-
-
-/********** Medium devices only **********/
-
-@media (min-width: 992px) and (max-width: 1199px) {}
 
 
 /********** Small devices only **********/
