@@ -71,7 +71,7 @@ EOT;
                 <div class="results" >
                     <div class="block-title">
                         <span class="glyphicon glyphicon-chevron-right" id="search-show"></span>
-                        <span id='nb-results' class="head-results">Chercher les alumni de l'Université de Nanjing</span>
+                        <span id='nb-results' class="head-results">Chercher les alumni</span>
                     </div>
                     <div class="bighr"></div>
                     <div id="response" ></div>
