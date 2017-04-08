@@ -125,7 +125,7 @@ img {
     border-color: #ffffff;
     padding: 8px 0;
     position: absolute;
-    z-index: 2;
+    z-index: 20;
     top: 40px;
     left: 50%;
     margin-left: -80px;
@@ -286,7 +286,7 @@ img.avatar {
     /* Hidden by default */
     position: fixed;
     /* Stay in place */
-    z-index: 5;
+    z-index: 20;
     /* Sit on top */
     left: 0;
     top: 0;
@@ -772,7 +772,7 @@ p {
     /* Hidden by default */
     position: fixed;
     /* Stay in place */
-    z-index: 5;
+    z-index: 20;
     /* Sit on top */
     padding-top: 100px;
     /* Location of the box */

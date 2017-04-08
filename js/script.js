@@ -177,18 +177,18 @@ $(document).ready(function () {
         if ($("#wrap-menu").offset().left != 0) {
             $("#overal-container").css('left', '180px');
             $("#wrap-menu").css('left', '0').css('height', $(window).outerHeight());
-            setTimeout(function() {
-                $("#overal-container").css('position','fixed').css('overflow-y','scroll');
-            },600);
+            setTimeout(function () {
+                $("#overal-container").css('position', 'fixed').css('overflow-y', 'scroll');
+            }, 600);
             $("#overal-container").css('opacity', '0.8');
 
         } else {
             $("#overal-container").css('left', '0');
             $("#wrap-menu").css('left', '-180px');
             setTimeout(function () {
-                $("#overal-container").css('position','absolute').css('overflow-y','auto');
+                $("#overal-container").css('position', 'absolute').css('overflow-y', 'auto');
             }, 600);
-             $("#overal-container").css('opacity', '1.0');
+            $("#overal-container").css('opacity', '1.0');
         }
     });
 
@@ -203,10 +203,10 @@ $(document).ready(function () {
         if ($(window).outerWidth() > 767) {
             $("#overal-container").css('left', '0');
             $("#wrap-menu").css('left', '-180px');
-            setTimeout(function () {           
-                $("#overal-container").css('position','absolute').css('overflow-y','auto');
+            setTimeout(function () {
+                $("#overal-container").css('position', 'absolute').css('overflow-y', 'auto');
             }, 600);
-             $("#overal-container").css('opacity', '1.0');
+            $("#overal-container").css('opacity', '1.0');
         }
     });
 
@@ -214,10 +214,10 @@ $(document).ready(function () {
         if ($("#wrap-menu").offset().left == 0) {
             $("#overal-container").css('left', '0');
             $("#wrap-menu").css('left', '-180px');
-            setTimeout(function () {           
-                $("#overal-container").css('position','absolute').css('overflow-y','auto');
+            setTimeout(function () {
+                $("#overal-container").css('position', 'absolute').css('overflow-y', 'auto');
             }, 600);
-             $("#overal-container").css('opacity', '1.0');
+            $("#overal-container").css('opacity', '1.0');
         }
     });
 
@@ -240,4 +240,5 @@ $(document).ready(function () {
         $('#wrap-button').click();
         $('#button-signup').click();
     });
+
 });

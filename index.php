@@ -114,39 +114,77 @@ if (strpos($actual_link, 'lang=fr')) {
     $link_fr = $actual_link . "?lang=fr";
 }
 ?>
-<!doctype html>
-<html>
 
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>AAENF</title>
-        <link rel="stylesheet" href="css/master.css">
-        <link rel="stylesheet" href="css/profile.css?<?php echo date('l jS \of F Y h:i:s A'); ?>">
-        <link rel="stylesheet" href="css/personal.css?<?php echo date('l jS \of F Y h:i:s A'); ?>">
-        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Slabo+27px" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
-        <link href="css/community.css?<?php echo date('l jS \of F Y h:i:s A'); ?>" rel="stylesheet">
-        <link href="css/unite-gallery.css" rel="stylesheet">
-        <link href="css/ug-theme-default.css" rel="stylesheet">
-        <link href="css/cropper.css" rel="stylesheet">
-        <link href="css/reponsive.css?<?php echo date('l jS \of F Y h:i:s A'); ?>" rel="stylesheet">
+  <!doctype html>
+  <html>
 
-        <script src="js/jquery.js"></script>
-        <script src="js/bootstrap.js"></script>
-        <script src="js/cropper.js"></script>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AAENF</title>
+    <link rel="stylesheet" href="css/master.css">
+    <link rel="stylesheet" href="css/profile.css?<?php echo date('l jS \of F Y h:i:s A'); ?>">
+    <link rel="stylesheet" href="css/personal.css?<?php echo date('l jS \of F Y h:i:s A'); ?>">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Slabo+27px" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
+    <link href="css/community.css?<?php echo date('l jS \of F Y h:i:s A'); ?>" rel="stylesheet">
+    <link href="css/unite-gallery.css" rel="stylesheet">
+    <link href="css/ug-theme-default.css" rel="stylesheet">
+    <link href="css/cropper.css" rel="stylesheet">
+    <link href="css/reponsive.css?<?php echo date('l jS \of F Y h:i:s A'); ?>" rel="stylesheet">
 
-    </head>
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/cropper.js"></script>
 
-    <body>
-        <div id="wrap-menu">
-            <p class="wrap-item wrap-item-first"><?php echo $langIszh ? '导航' : 'PILOTAGE'; ?></p>
-            <p id="wrap-button-accueil"  class="wrap-item wrap-item-second">
-                <a href="index.php?page=home<?php echo $lang; ?>">
-                    <?php echo $menu_items[0] ?>
-                </a>
-            </p>
+  </head>
+
+  <body>
+    <div id="wrap-menu">
+      <p class="wrap-item wrap-item-first"><?php echo $langIszh?'导航':'PILOTAGE';?></p>
+        <a href="index.php?page=home<?php echo $lang; ?>"><p id="wrap-button-accueil"  class="wrap-item wrap-item-second">        
+            <?php echo $menu_items[0] ?>     
+        </p> </a>
+
+        <a href="index.php?page=profile<?php echo $lang; ?>"><p id="wrap-button-profile"  class="wrap-item wrap-item-second">        
+            <?php echo $menu_items[1] ?>        
+        </p></a>
+        <a href="index.php?page=profile&subpage=0<?php echo $lang; ?>"><p class="wrap-item wrap-item-third wrap-profile-button"><?php echo $profile_names[0];?></p></a>
+        <a href="index.php?page=profile&subpage=1<?php echo $lang; ?>"><p class="wrap-item wrap-item-third wrap-profile-button"><?php echo $profile_names[1];?></p></a>
+        <a href="index.php?page=profile&subpage=2<?php echo $lang; ?>"><p class="wrap-item wrap-item-third wrap-profile-button"><?php echo $profile_names[2];?></p></a>
+        <a href="index.php?page=profile&subpage=3<?php echo $lang; ?>"><p class="wrap-item wrap-item-third wrap-profile-button"><?php echo $profile_names[3];?></p></a>
+        <a href="index.php?page=profile&subpage=4<?php echo $lang; ?>"><p class="wrap-item wrap-item-third wrap-profile-button"><?php echo $profile_names[4];?></p></a>
+
+        <a href="index.php?page=activity<?php echo $lang; ?>"><p id="wrap-button-activity"  class="wrap-item wrap-item-second">
+            <?php echo $menu_items[2] ?>  
+        </p></a>
+        <a href="index.php?page=activity&subpage=0<?php echo $lang; ?>"><p class="wrap-item wrap-item-third wrap-activity-button"><?php echo $activity_names[0];?></p></a>
+        <a href="index.php?page=activity&subpage=1<?php echo $lang; ?>"><p class="wrap-item wrap-item-third wrap-activity-button"><?php echo $activity_names[1];?></p></a>
+
+        <a href="index.php?page=community<?php echo $lang; ?>"><p id="wrap-button-community"  class="wrap-item wrap-item-second">
+            <?php echo $menu_items[3] ?>     
+        </p></a>
+
+      <p class="wrap-item wrap-item-first"><?php echo $langIszh?'账户':'COMPTE';?></p>
+      <p class="wrap-item wrap-item-second"><?php echo $langIszh?'登录':'Se connecter';?></p>
+      <p class="wrap-item wrap-item-second"><?php echo $langIszh?'注册':"S'inscrire";?></p>
+      <p class="wrap-item wrap-item-second"><?php echo $langIszh?'退出登录':'Se déconnecter';?></p>
+
+      <p class="wrap-item wrap-item-first"><?php echo $langIszh?'语言':'LANGUE';?></p>
+      <a href='<?php echo $langIszh?$link_fr:$link_zh; ?>'><p class="wrap-item wrap-item-second"><?php echo $langIszh?'Français':'中文';?></p></a>
+    </div>
+
+    <div id="overal-container">
+      <!-- This is the whole page content, seperated form the side-menu -->
+      <header>
+        <div class="container">
+          <div class="row">
+            <div id="wrap-button" class="glyphicon glyphicon-th-list col-xs-1"></div>
+            <div id="logo" class="col-lg-4 col-md-4 col-sm-6 col-xs-9">
+              <a href="index.php"><img src="images/nju-logo.png" alt="logo" /></a>
+            </div>
 
             <p id="wrap-button-profile"  class="wrap-item wrap-item-second">
                 <a href="index.php?page=profile<?php echo $lang; ?>">

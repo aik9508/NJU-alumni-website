@@ -71,14 +71,15 @@ foreach ($items as $item) {?>
       <div class="activity-content-title block-title">
         <span class="glyphicon glyphicon-chevron-right"></span>
         <?php
-$item_title = $langIszh ? "活动交流" : "Activités";
+$subpage = (isset($_GET["subpage"]))?$_GET["subpage"]:"0";
+$item_title = $names[$subpage];
 echo "<span>$item_title</span>";
 ?>
       </div>
       <div class='bighr'></div>
       <div id="activity-content">
         <?php
-require 'snippets/event-snippet.php';
+require "snippets/$items[$subpage]-snippet.php";
 ?>
 
       </div>
