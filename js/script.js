@@ -4,7 +4,7 @@ $(document).ready(function () {
     var insertProperty = function (string, propName, propValue) {
         var propToReplace = "{{" + propName + "}}";
         string = string
-            .replace(new RegExp(propToReplace, "g"), propValue);
+                .replace(new RegExp(propToReplace, "g"), propValue);
         return string;
     };
 
@@ -29,11 +29,11 @@ $(document).ready(function () {
         var url = document.location.toString();
         if (url.indexOf('?') !== -1) {
             var query = url
-                // get the query string
-                .replace(/^.*?\?/, '')
-                // and remove any existing hash string (thanks, @vrijdenker)
-                .replace(/#.*$/, '')
-                .split('&');
+                    // get the query string
+                    .replace(/^.*?\?/, '')
+                    // and remove any existing hash string (thanks, @vrijdenker)
+                    .replace(/#.*$/, '')
+                    .split('&');
 
             for (var i = 0, l = query.length; i < l; i++) {
                 var aux = decodeURIComponent(query[i]).split('=');
@@ -116,7 +116,7 @@ $(document).ready(function () {
     $('.profile-head-menu').each(function (i) {
         $(this).attr('id', 'profile-head-item' + i);
         $('#profile-head-item' + i).click(function () {
-            $(".accordion-menu").css('display','none');
+            $(".accordion-menu").css('display', 'none');
             var lang = getLang();
             $($('.profile-content-title>span')[1]).html($('#profile-head-item' + i + ">span")[1].innerHTML);
             $('#profile-content').load("snippets/" + $('#profile-head-item' + i + ">span")[1].getAttribute("data-name") + "-snippet-" + lang + ".php");
@@ -126,7 +126,7 @@ $(document).ready(function () {
     $('.activity-head-menu').each(function (i) {
         $(this).attr('id', 'activity-head-item' + i);
         $('#activity-head-item' + i).click(function () {
-            $(".accordion-menu").css('display','none');
+            $(".accordion-menu").css('display', 'none');
             var lang = getLang();
             $($('.activity-content-title>span')[1]).html($('#activity-head-item' + i + ">span")[1].innerHTML);
             $('#activity-content').load("snippets/" + $('#activity-head-item' + i + ">span")[1].getAttribute("data-name") + "-snippet.php", {
@@ -167,22 +167,33 @@ $(document).ready(function () {
     $(".accordion").click(function () {
         if ($(".accordion-menu").css('display') == 'none') {
             $(".accordion-menu").css('display', 'block');
-        }
-        else {
-            $(".accordion-menu").css('display','none');
+        } else {
+            $(".accordion-menu").css('display', 'none');
         }
     });
 
-    $('#wrap-button').click(function() {
-        if ($("#wrap-menu").css('display')=='none') {
-        $("#overal-container").css('width','75%');
-        $("#wrap-menu").css('display','block');
-    }
-    else {
-        $("#overal-container").css('width','100%');
-        $("#wrap-menu").css('display','none');
-    }
+    $('#wrap-button').click(function () {
+        if ($("#wrap-menu").css('display') == 'none') {
+//        $("#overal-container").css('width','75%');
+            $("#overal-container").css("left", "200px");
+            $("#wrap-menu").css('display', 'block').css("height", $(window).outerHeight());
+            setTimeout(function () {
+//                $("body").addClass("overflow-hidden");
+                $("#overal-container").css("position","fixed").css("overflow-y","scroll");
+            }, 600);
+        } else {
+            $("#overal-container").css("left", "0");
+            setTimeout(function () {
+//                $("body").removeClass("overflow-hidden");
+                $("#overal-container").css("position","absolute").css("overflow-y","auto");
+                $("#wrap-menu").css('display', 'none');
+            }, 600);
+        }
     });
 
-
+    $(window).resize(function () {
+        if ($(window).outerHeight() > $("#wrap-menu").height()) {
+            $("#wrap-menu").css("height", $(window).outerHeight());
+        }
+    });
 });
