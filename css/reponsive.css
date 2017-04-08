@@ -17,15 +17,21 @@
 }
 
 #wrap-menu {
-  display: none;
-  width: 25%;
+  position: absolute;
+  left: -180px;
+  width: 180px;
   background-color: #333;
   float: left;
   color: #ffffff;
+  transition: 0.6s;
 }
 
 #overal-container {
   float: left;
+  width: 100%;
+  position: absolute;
+  left: 0px;
+  transition: 0.6s;
 }
 
 .accordion-list {
@@ -113,17 +119,6 @@
   opacity: 0.3;
   cursor: pointer;
 }
-
-
-
-/********** Large devices only **********/
-
-@media (min-width: 1200px) {}
-
-
-/********** Medium devices only **********/
-
-@media (min-width: 992px) and (max-width: 1199px) {}
 
 
 /********** Small devices only **********/

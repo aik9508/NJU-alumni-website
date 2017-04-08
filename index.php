@@ -373,7 +373,7 @@ else
       <script src="js/index_sup.js?<?php echo date('l jS \of F Y h:i:s A'); ?>"></script>
       <script src="js/unitegallery.min.js"></script>
       <script src="js/ug-theme-default.js"></script>
-  </body>
+  
   </div>
-
+</body>
   </html>

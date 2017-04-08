@@ -1,5 +1,7 @@
 /* HEADER */
-
+body {
+    overflow: auto;
+}
 header {
     background-color: #63065f;
     padding: 20px;
