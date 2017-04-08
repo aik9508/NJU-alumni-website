@@ -52,7 +52,7 @@ $_SESSION["DEPARTEMENT_ARRAY"] = array(
     </head>
     <body>
         <div id="header">
-            <a id="logo"><img src="../images/nju-logo.png" class="img-responsive" alt="NJU"></a>
+            <a id="logo" href="../index.php?page=home&lang=<?php echo $_SESSION['lang']; ?>"><img src="../images/nju-logo.png" class="img-responsive" alt="NJU"></a>
             <!--            <a id="langue"><div class="glyphicon glyphicon-globe"></div></a>
                         <a id="connecter"><div class="glyphicon glyphicon-user"></div></a>-->
         </div>

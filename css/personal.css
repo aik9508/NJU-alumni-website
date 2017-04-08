@@ -751,7 +751,6 @@ p {
     width: 170px;
     height: 100%;
     float: left;
-    margin-right: 20px;
 }
 
 .member-thumnail img {
@@ -761,6 +760,16 @@ p {
 .member-description {
     padding-left: 170px;
     display: block;
+}
+
+.member-description > p {
+    display: inline-block;
+    padding-left: 20px;
+}
+
+.member-description > p:nth-child(1) {
+    font-size: 18px;
+    font-weight: bold;
 }
 #certificat {
     text-align: center;

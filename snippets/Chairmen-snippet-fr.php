@@ -7,8 +7,7 @@
             <p>
                 JI Hong</p>
             <div class="hr"></div>
-            <p>南京大学法国校友会会长,南京大学物理系79级本科学士,1992年获得巴黎六大理学博士.现任法国养老金管理公司 AG2R LaMondiale 巴黎信息部主任.
-                主要工作领域:法国国家企业的各种管理系统软件,养老金信息管理系统;信息系统安全的设计和构建;大型计算机系统的集成组装和调试;法国国家企业的技术及项目管理经验;法国国家高可靠性,智能高精度监控系统.
+            <p>Association Nanjing anciens de l'Université en France, 79 de premier cycle baccalauréat Département de physique de l'Université de Nanjing, 1992, docteur ès sciences à Paris six société de gestion de retraite française actuelle AG2R LaMondiale Paris Département Informations principaux domaines de travail: les entreprises nationales françaises de divers postes de gestion logiciel système, système de gestion de l'information de retraite, la conception et la construction des systèmes d'information sécurisés, le montage et la mise en service de grands systèmes informatiques intégrés, expérience technique et la gestion de projets dans les entreprises nationales françaises, nationale française de haute fiabilité, haute précision système de contrôle intelligent.
             </p>
         </div>
     </li>
@@ -21,10 +20,7 @@
             <p>
                 LIU Qunkai</p>
             <div class="hr"></div>
-            <p>南京大学法国校友会常务副会长, 南京大学电子科学与信息系本科,法国高科Telecom ParisTech 工程师文凭(Diplôme d’ingénieur).现任阿里云法国大客户总监.
-                专长: 市场营销战略, 营销管理,商务拓展,企业通信业务 (数据通信,
-                协同通信,云计算),团队管理.2007年至2010担任巴黎高科中法友好协会主席.2010创立”中国人在法国”(Chinois en France)
-                网上社交社区,为留法华人职业人士,研究生和对中国感兴趣的法国职业人士提供一个交流合作的平台, 目前已有超过2500会员.
+            <p>Association des anciens français de vice président de l'Université de Nanjing, Nanjing Université de science et Département de l'information de premier cycle, France Salut-Tech Telecom diplôme d'ingénieur ParisTech (Diplôme d'ingénieur). Actuel Account Director Ali cloud France. Expertise: stratégie marketing, gestion du marketing, développement des affaires, des services de communication d'entreprise (communication de données, Communication coopérative, cloud computing), la gestion de l'équipe. En 2007-2010 a été Président de l'Association d'amitié France-ParisTech. 2010 création de "La Chine en France" (en France Chinois) Communauté en ligne pour les professionnels chinois en France, les professionnels français et étudiants des cycles supérieurs intéressés en Chine pour fournir une plate-forme d'échange et de coopération, il y a plus de 2500 membres.
             </p>
         </div>
     </li>
@@ -38,9 +34,7 @@
                 SHI Yujie</p>
             <div class="hr"></div>
             <p>
-                南京大学法国校友会常务副会长,2002年获得南京大学计算机科学与技术理科学士,2004年获法国巴黎国立高等电信学院通讯与信息技术工程师硕士学位,曾在多家大型跨国企业担任工程师,如法国斯伦贝谢Shlummberger石油技术服务公司等.
-                业余时间参与创立了经营绿色能源产品的公司Green–Vision.fr 产品涵盖哩电池,LED照明设备,电动车等. 曾担任巴黎高科中法友好协会AFCP副主席,
-                AFCP西安主席顾问团成员. 2011与友人合作创立了以品酒,葡萄酒文化推广以及创业投资为主题的巴黎酒社Paris Business & Wine Club.
+                Association des anciens français de vice président de l'Université de Nanjing, 2002 Baccalauréat en informatique, Université de Nanjing de la science et de la technologie, titulaire d'une maîtrise en 2004 à Paris Ecole Nationale Supérieure des Télécommunications de l'ingénieur Communication et Technologies de l'information et servi dans un certain nombre de grands ingénieurs multinationaux, tels que France Schlumberger Shlummberger société de services de technologie pétrolière. temps libre ParisTech à participer à la création d'un des produits d'énergie verte business Association d'amitié sino-française AFCP entreprises Green-Vision.fr produits couverts cellule miles, éclairage LED, véhicules électriques et ont eu vice-président, AFCP Xi'an Président des membres du conseil consultatif. 2011 et ses amis ont fondé avec dégustation de vins, la promotion de la culture du vin et du capital-risque de vins à Paris sur le thème club de Paris Business & Wine club.
             </p>
         </div>
     </li>
@@ -54,9 +48,7 @@
             <p>
                 JIA Xiaoping</p>
             <div class="hr"></div>
-            <p>南京大学法国校友会副会长, 物理学教授, 博士生导师.
-                1984年获南京大学物理学学士学位(声学专业).1985年公费留学于巴黎高等物理化学学院,1988年获得巴黎东大学物理学教授.自2012年起,在巴黎物理化学血压un朗之万研究所从事颗粒物质物理,
-                无序介质中的弹性波多重散射和非线性动力学方面的研究,并在物理评论快报,自然杂志和应用物理通信等技术刊物上发表了多篇论文.
+            <p>France, vice-président de l'Association Nanjing anciens de l'Université, professeur de physique, professeur de doctorat. Diplôme de 1984 baccalauréat Université de Nanjing en matière de physique (professionnelle acoustique). Bourse 1985 pour étudier à l'étranger à Paris Ecole Supérieure de Chimie et de Physique, en 1988 professeur de physique à l'Université de Paris Est depuis 2012, Wan étude Paris un Langevin physique et chimique de la pression artérielle la matière particulaire en physique, désordonnée milieu de diffusion d'ondes élastiques et de multiples études de dynamique non linéaire, et a publié plusieurs articles dans la revue technique lettres d'examen physique, la revue Nature et appliquée communications physique.
             </p>
         </div>
     </li>
@@ -69,8 +61,7 @@
             <p>
                 PEI Cheng</p>
             <div class="hr"></div>
-            <p>南京大学法国校友会副会长,南大哲学系78届本科,索邦大型哲学博士. 现任法国国家图书馆东方部主任: 主管东欧, 近中东,
-                亚洲等地三十多个语种的书籍采访,购买,编辑,保存,调阅,读者服务等业务, 并不定期主办与东方文化有关的各类会展.本部门包括干部编制30人,工人编制35人.
+            <p>France, vice-président de l'Association Nanjing anciens de l'Université, NTU Département de philosophie 78e de premier cycle, Ph.D., Sorbonne grand directeur titulaire de la Bibliothèque nationale française Est: Entretien avec le chef de livres plus de trente langues en Europe de l'Est, Proche et Moyen-Orient, d'Asie et d'autres endroits, acheter , modifier, enregistrer, l'accès aux lecteurs et autres services d'affaires, et de temps en temps pour accueillir toutes sortes d'expositions et liés à la culture orientale. ce secteur comprend la préparation de 30 cadres, les travailleurs se préparent 35 personnes.
             </p>
         </div>
     </li>
@@ -83,8 +74,7 @@
             <p>
                 SHAO Hui</p>
             <div class="hr"></div>
-            <p>南京大学法国校友会副会长,
-                南京外国语学校、南大外文系法语专业，90年本科毕业赴巴黎留学，94年获巴黎六大人工智能硕士，98年获巴黎九大金融管理硕士，曾在巴黎协和会计事务所和安迪娜进出口贸易公司从事财务与行政管理。现为职业翻译，主要接待国内公务、培训代表团.
+            <p>France, vice-président de l'Association des anciens de l'Université de Nanjing, École des langues étrangères Nanjing, professionnel Département des langues étrangères sud français, 90 ans d'études supérieures à Paris, 94 des Masters de Paris sur six intelligence artificielle, Maître 98 ans de gestion financière de Paris-Dauphine, a travaillé dans des cabinets comptables de Paris Concorde et l'apport Andi Na société de négoce d'exportation engagé dans la gestion financière et administrative. Maintenant, un traducteur professionnel, principalement la réception publique nationale, les délégations de formation.
             </p>
         </div>
     </li>
@@ -97,8 +87,7 @@
             <p>
                 ZHANG Yi</p>
             <div class="hr"></div>
-            <p>南京大学法国校友会秘书长, 2004年入学南大物理系， 在法国巴黎综合理工（Ecole Polytechnique）获得工程师学位, 巴黎矿院(Ecole
-                desMines)获得博士学位. 目前就职于AREVA, 力学工程师.
+            <p>Nanjing anciens de l'Université Association Secrétaire général de la France en 2004, l'entrée sud de la physique, a obtenu un diplôme d'ingénieur en Polytechnique à Paris, France (Ecole Polytechnique), hôpital moi à Paris (Ecole des Mines) a obtenu son doctorat AREVA travaille actuellement, ingénieur en mécanique.
             </p>
         </div>
     </li>

@@ -1,21 +1,24 @@
 <div>
-  <h3>FR南京大学法国校友会2016年迎新及庆国庆活动</h3>
-  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2016年10月1日，值此国庆佳节，南京大学法国校友会在会长家里举行了盛大的迎新活动。同学们踊跃报名参加，加上天公作美，大家渡过了一个愉快而难忘的下午。</p>
-  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;来的校友中有刚抵达法国这片土地不久的新生，也有在此扎根十几年的老校友，总之老中青三代齐聚一堂，大家尽情畅谈，其乐融融。会长家准备了足够的具有中国特色的菜：扣肉，珍珠丸子，卤蛋，卤香干等等，同时还有很多烧烤的传统食品以及啤酒，红酒等，很多同学也带来了饮料，水果，各种小吃和蛋糕。同学们轮番上阵参与烤肉，系上厨房用的围兜，像模像样，其乐无穷，而且烤出的东西很受欢迎，很快就被一扫而光。吃饱喝足后，不管是年轻的还是年长的，大家都兴致勃勃地 娱乐起来，有的打牌：炒地皮，掼蛋；有的则是玩推理游戏，还有的打很多年没机会打的乒乓球。</p>
-  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;欢乐的时间总是过得很快，一晃就到了分别的时候了，大家依依不舍，相约下次再聚！</p>
+  <h3>Célébration de la Journée Nationale Chinoise</h3>
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1 octobre 2016, à l'occasion de la Journée nationale Association, anciens de l'Université de Nanjing a tenu un grand programme d'orientation français à la maison président. Les étudiants sont encouragés à vous inscrire pour participer, plus les temps, nous avons eu un après-midi merveilleux et mémorable.
+</p>
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Pour les anciens élèves viennent d'arriver en France ce morceau de terre à proximité d'une nouvelle vie, mais aussi enracinée dans cette ancienne ancien élève de dix ans, en bref, les gens de tous âges se sont réunis pour parler de nous jouissons, agréable. Président de la famille a préparé assez de nourriture avec des caractéristiques chinoises: porc, boules de perles, corned oeuf épicée, halogène Xianggan etc., ainsi que la nourriture traditionnelle et beaucoup de bière barbecue, vin, etc., de nombreux étudiants boissons aussi apporté, fruits , une variété de collations et des gâteaux. Les étudiants se sont relayés participant au barbecue, à égalité avec bavette de cuisine, plus grand chemin, amusant, et quelque chose cuire très populaire, qui sera bientôt balayé. Rassasie, qu'ils soient jeunes ou vieux, nous avons tous heureux divertissement ensemble, jouer aux cartes: la spéculation foncière, œuf battu, certains d'entre eux jouent un jeu de raisonnement, il n'y a aucune chance de jouer beaucoup de combat tennis de table.
+</p>
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Heureux temps vole toujours, ont été flashé à l'époque, à contrecœur, se réunir à nouveau la prochaine fois!
+</p>
   <img src="images/activity4/m25.jpg" alt="activity photo">
-  <p>大家一起准备羊肉串</p>
+  <p>Préparation ensemble</p>
   <img src="images/activity4/m43.jpg" alt="activity photo">
-  <p>烧烤</p>
+  <p>Barbeque</p>
   <img src="images/activity4/m33.jpg" alt="activity photo">
   <img src="images/activity4/m30.jpg" alt="activity photo">
-  <p>棋牌</p>
+  <p>Jeux de card</p>
   <img src="images/activity4/m13.jpg" alt="activity photo">
   <img src="images/activity4/m10.jpg" alt="activity photo">
-  <p>乒乓球</p>
+  <p>Ping-pong</p>
   <img src="images/activity4/m4.jpg" alt="activity photo">
   <img src="images/activity4/m7.jpg" alt="activity photo">
-  <p>合影</p>
+  <p>Photo ensemble</p>
 </div>
 <script>
   $(".modal-box").css('display', 'block');
