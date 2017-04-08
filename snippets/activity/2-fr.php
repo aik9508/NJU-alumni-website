@@ -1,6 +1,5 @@
 <div>
   <h3>Réunion des anciens de NJU au Fontainbleu</h3>
-
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Pour Paris depuis longtemps, je ne l'ai pas été à Fontainebleau. Hier est allé, mais n'a pas vu le château du roi.
 </p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Pour célébrer l'anniversaire de l'Université de Nanjing, le 28 mai, l'Association des anciens de l'Université de Nanjing France a organisé des activités d'anciens élèves, à Fontainebleau. Tôt le matin, je suis parti de la maison, en Italie pour prendre la porte M. Wang Fanghui de la voiture.

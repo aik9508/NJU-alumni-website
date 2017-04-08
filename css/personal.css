@@ -13,6 +13,13 @@ a {
     color: inherit;
 }
 
+
+p {
+    word-wrap: break-word;
+    margin-bottom: 0px;
+    text-align: justify;
+}
+
 header a:hover,
 footer a:hover {
     text-decoration: none;
@@ -473,10 +480,6 @@ img.avatar {
     margin-bottom: 0px;
 }
 
-p {
-    word-wrap: break-word;
-    margin-bottom: 0px;
-}
 
 #home-right-column {
     float: right;
