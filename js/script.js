@@ -4,7 +4,7 @@ $(document).ready(function () {
     var insertProperty = function (string, propName, propValue) {
         var propToReplace = "{{" + propName + "}}";
         string = string
-            .replace(new RegExp(propToReplace, "g"), propValue);
+                .replace(new RegExp(propToReplace, "g"), propValue);
         return string;
     };
 
@@ -29,11 +29,11 @@ $(document).ready(function () {
         var url = document.location.toString();
         if (url.indexOf('?') !== -1) {
             var query = url
-                // get the query string
-                .replace(/^.*?\?/, '')
-                // and remove any existing hash string (thanks, @vrijdenker)
-                .replace(/#.*$/, '')
-                .split('&');
+                    // get the query string
+                    .replace(/^.*?\?/, '')
+                    // and remove any existing hash string (thanks, @vrijdenker)
+                    .replace(/#.*$/, '')
+                    .split('&');
 
             for (var i = 0, l = query.length; i < l; i++) {
                 var aux = decodeURIComponent(query[i]).split('=');
@@ -221,18 +221,24 @@ $(document).ready(function () {
         }
     });
 
+    $(window).resize(function () {
+        if ($(window).outerHeight() > $("#wrap-menu").height()) {
+            $("#wrap-menu").css("height", $(window).outerHeight());
+        }
+    });
+    
+    $("#wrap-signin").click(function(){
+        $('#wrap-button').click();
+        $('#button-signin').click();
+    });
+    
+    $("#wrap-signout").click(function(){
+        $('#button-signout').click();
+    });
+    
+    $("#wrap-signup").click(function(){
+        $('#wrap-button').click();
+        $('#button-signup').click();
+    });
 
-    // $('.wrap-profile-button').each(function (i) {
-    //     $(this).attr('id', 'wrap-profile-item' + i);
-    //     $('#wrap-profile-item' + i).click(function () {
-    //         console.log($('#wrap-profile-item' + i + ">span")[1].getAttribute("data-name"));
-    //         $.ajax("snippets/profile-snippet.php", {
-    //             "subpage":
-    //             $('#wrap-profile-item' + i + ">span")[1].getAttribute("data-name")
-    //         });
-    //         // var lang = getLang();
-    //         // $($('.profile-content-title>span')[1]).html($('#wrap-profile-item' + i + ">span")[1].innerHTML);
-    //         // $('#profile-content').load("snippets/" + $('#wrap-profile-item' + i + ">span")[1].getAttribute("data-name") + "-snippet-" + lang + ".php");
-    //     });
-    // });
 });
