@@ -120,6 +120,7 @@ if (strpos($actual_link, 'lang=fr')) {
   <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AAENF</title>
     <link rel="stylesheet" href="css/master.css">
     <link rel="stylesheet" href="css/profile.css?<?php echo date('l jS \of F Y h:i:s A'); ?>">
@@ -142,36 +143,28 @@ if (strpos($actual_link, 'lang=fr')) {
   <body>
     <div id="wrap-menu">
       <p class="wrap-item wrap-item-first"><?php echo $langIszh?'导航':'PILOTAGE';?></p>
-        <p id="wrap-button-accueil"  class="wrap-item wrap-item-second">
-          <a href="index.php?page=home<?php echo $lang; ?>">
-            <?php echo $menu_items[0] ?>
-          </a>
-        </p>
+        <a href="index.php?page=home<?php echo $lang; ?>"><p id="wrap-button-accueil"  class="wrap-item wrap-item-second">        
+            <?php echo $menu_items[0] ?>     
+        </p> </a>
 
-        <p id="wrap-button-profile"  class="wrap-item wrap-item-second">
-          <a href="index.php?page=profile<?php echo $lang; ?>">
-            <?php echo $menu_items[1] ?>
-          </a>
-        </p>
+        <a href="index.php?page=profile<?php echo $lang; ?>"><p id="wrap-button-profile"  class="wrap-item wrap-item-second">        
+            <?php echo $menu_items[1] ?>        
+        </p></a>
         <a href="index.php?page=profile&subpage=0<?php echo $lang; ?>"><p class="wrap-item wrap-item-third wrap-profile-button"><?php echo $profile_names[0];?></p></a>
         <a href="index.php?page=profile&subpage=1<?php echo $lang; ?>"><p class="wrap-item wrap-item-third wrap-profile-button"><?php echo $profile_names[1];?></p></a>
         <a href="index.php?page=profile&subpage=2<?php echo $lang; ?>"><p class="wrap-item wrap-item-third wrap-profile-button"><?php echo $profile_names[2];?></p></a>
         <a href="index.php?page=profile&subpage=3<?php echo $lang; ?>"><p class="wrap-item wrap-item-third wrap-profile-button"><?php echo $profile_names[3];?></p></a>
         <a href="index.php?page=profile&subpage=4<?php echo $lang; ?>"><p class="wrap-item wrap-item-third wrap-profile-button"><?php echo $profile_names[4];?></p></a>
 
-        <p id="wrap-button-activity"  class="wrap-item wrap-item-second">
-          <a href="index.php?page=activity<?php echo $lang; ?>">
-            <?php echo $menu_items[2] ?>
-          </a>
-        </p>
+        <a href="index.php?page=activity<?php echo $lang; ?>"><p id="wrap-button-activity"  class="wrap-item wrap-item-second">
+            <?php echo $menu_items[2] ?>  
+        </p></a>
         <a href="index.php?page=activity&subpage=0<?php echo $lang; ?>"><p class="wrap-item wrap-item-third wrap-activity-button"><?php echo $activity_names[0];?></p></a>
         <a href="index.php?page=activity&subpage=1<?php echo $lang; ?>"><p class="wrap-item wrap-item-third wrap-activity-button"><?php echo $activity_names[1];?></p></a>
 
-        <p id="wrap-button-community"  class="wrap-item wrap-item-second">
-          <a href="index.php?page=community<?php echo $lang; ?>">
-            <?php echo $menu_items[3] ?>
-          </a>
-        </p>
+        <a href="index.php?page=community<?php echo $lang; ?>"><p id="wrap-button-community"  class="wrap-item wrap-item-second">
+            <?php echo $menu_items[3] ?>     
+        </p></a>
 
       <p class="wrap-item wrap-item-first"><?php echo $langIszh?'账户':'COMPTE';?></p>
       <p class="wrap-item wrap-item-second"><?php echo $langIszh?'登录':'Se connecter';?></p>
