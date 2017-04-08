@@ -226,4 +226,18 @@ $(document).ready(function () {
             $("#wrap-menu").css("height", $(window).outerHeight());
         }
     });
+    
+    $("#wrap-signin").click(function(){
+        $('#wrap-button').click();
+        $('#button-signin').click();
+    });
+    
+    $("#wrap-signout").click(function(){
+        $('#button-signout').click();
+    });
+    
+    $("#wrap-signup").click(function(){
+        $('#wrap-button').click();
+        $('#button-signup').click();
+    });
 });

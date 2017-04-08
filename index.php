@@ -174,10 +174,12 @@ if (strpos($actual_link, 'lang=fr')) {
             </p>
 
             <p class="wrap-item wrap-item-first"><?php echo $langIszh ? '账户' : 'COMPTE'; ?></p>
-            <p class="wrap-item wrap-item-second"><?php echo $langIszh ? '登录' : 'Se connecter'; ?></p>
-            <p class="wrap-item wrap-item-second"><?php echo $langIszh ? '注册' : "S'inscrire"; ?></p>
-            <p class="wrap-item wrap-item-second"><?php echo $langIszh ? '退出登录' : 'Se déconnecter'; ?></p>
-
+            <?php if (!isset($_SESSION["currentUser"])) { ?>
+                <p class="wrap-item wrap-item-second" id="wrap-signin"><?php echo $langIszh ? '登录' : 'Se connecter'; ?></p>
+                <p class="wrap-item wrap-item-second" id="wrap-signup"><?php echo $langIszh ? '注册' : "S'inscrire"; ?></p>
+            <?php } else { ?>
+                <p class="wrap-item wrap-item-second" id="wrap-signout"><?php echo $langIszh ? '退出登录' : 'Se déconnecter'; ?></p>
+            <?php } ?>
             <p class="wrap-item wrap-item-first"><?php echo $langIszh ? '语言' : 'LANGUE'; ?></p>
             <a href='<?php echo $langIszh ? $link_fr : $link_zh; ?>'><p class="wrap-item wrap-item-second"><?php echo $langIszh ? 'Français' : '中文'; ?></p></a>
         </div>
@@ -215,9 +217,11 @@ if (strpos($actual_link, 'lang=fr')) {
                                     ?>
                                 </div>
                             </div>
-                            <div id="userName" <?php if (isset($_SESSION["currentUser"])) {
-                                        echo "userid=" . $_SESSION["currentUser"]["id"];
-                                    } ?> >
+                            <div id="userName" <?php
+                            if (isset($_SESSION["currentUser"])) {
+                                echo "userid=" . $_SESSION["currentUser"]["id"];
+                            }
+                            ?> >
                                 <span><?php
                                     if (isset($_SESSION["currentUser"])) {
                                         echo ucfirst($_SESSION["currentUser"]["prenom"]) . " " . ucfirst($_SESSION["currentUser"]["nom"]);

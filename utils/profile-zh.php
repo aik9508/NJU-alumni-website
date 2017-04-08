@@ -83,7 +83,7 @@ $display = isset($_POST["alumni_id"]) && isset($_SESSION["currentUser"]) && $_PO
                             echo "<li> 就职单位: " . $entreprise . "</li>";
                         }
                         if ($fonction) {
-                            echo "<li> 职位:&nbsp;&nbsp;: " . $fonction . "</li>";
+                            echo "<li> 职位:&nbsp;&nbsp; " . $fonction . "</li>";
                         }
                         echo "</ul>";
                     }
