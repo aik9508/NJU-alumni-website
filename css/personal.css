@@ -505,6 +505,18 @@ img.avatar {
     padding-top: 18px;
 }
 
+#statistic table{
+    float: right;
+}
+
+#statistic tr td:first-child{
+    text-align: right;
+}
+
+#statistic td{
+    padding-right:  20px;
+}
+
 .activity-thumnail {
     width: 100px;
     float: left;

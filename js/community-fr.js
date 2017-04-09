@@ -219,6 +219,9 @@ $(document).ready(function () {
         promo_end_filter = $("#promo-filter2").val().trim();
         $("#response").html("");
         search(true);
+        if($(window).width()<768){
+            $("#search-hide").click();
+        }
     });
 
     function search(count) {
@@ -314,5 +317,7 @@ $(document).ready(function () {
             }
         }
     });
+    
+    $("#button-recherche").click();
 
 });

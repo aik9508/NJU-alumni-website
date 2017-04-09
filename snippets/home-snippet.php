@@ -67,13 +67,23 @@ EOT;
         </div><!--End of information block-->
         <div id="statistic" class="block-tile fix-block">
             <?php
-            $alumnis = 2043;
-            $visitors = 2625;
+            $alumnis = 2000 + $_SESSION["alumni_number"];
+            $visitors =2000 + $_SESSION["val_visited"];
             $nbrOfAlumnis = number_format($alumnis, 0, ',', ' ');
             $nbrOfVisitors = number_format($visitors, 0, ',', ' '); 
             ?>
-            <div><strong id='alumni-number' class='count-number' data-count=<?php echo $alumnis ?>><?php echo $nbrOfAlumnis ?></strong><span class='count-name'>&nbsp;&nbsp;<?php echo (!isset($_GET["lang"]) || $_GET["lang"] == "zh") ? "注册校友" : "Alumni"; ?></span></div>
-            <div><strong id='visitor-number' class='count-number' data-count='<?php echo $visitors ?>'><?php echo $nbrOfVisitors?></strong><span class='count-name'>&nbsp;&nbsp;<?php echo (!isset($_GET["lang"]) || $_GET["lang"] == "zh") ? "访问人次" : "Visiteurs"; ?></span></div>
+            <table>
+                <tbody>
+                    <tr>
+                        <td><strong id='alumni-number' class='count-number' data-count=<?php echo $alumnis ?>><?php echo $nbrOfAlumnis ?></strong></td>
+                        <td><span class='count-name'><?php echo (!isset($_GET["lang"]) || $_GET["lang"] == "zh") ? "注册校友" : "Alumni"; ?></span></td>
+                    </tr>
+                    <tr>
+                        <td><strong id='visitor-number' class='count-number' data-count='<?php echo $visitors ?>'><?php echo $nbrOfVisitors?></strong></td>
+                        <td><span class='count-name'><?php echo (!isset($_GET["lang"]) || $_GET["lang"] == "zh") ? "访问人次" : "Visiteurs"; ?></span></td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 
