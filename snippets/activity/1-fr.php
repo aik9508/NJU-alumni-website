@@ -1,3 +1,4 @@
+<div class="longtext">
 <h3>Conférence d'Innovation et d'Entrepreneuriat</h3>
 
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Cheung Kong Graduate School of Association Nanjing anciens de l'Université à se joindre à la main avec le thème des activités d'entrepreneuriat et d'innovation des employés de bureau et des entrepreneurs européens d'outre-mer organisé par l'Association l'après-midi du 13 Février a eu lieu avec succès dans l'éducation à l'ambassade de Chine en France. Ministre de l'Education Ambassade de Chine en France Ma Yansheng la participation du public, Association Nanjing anciens de l'Université France Jihong, Cheung Kong chef saison européenne Bobo Shi, président de l'Association française des étudiants étrangers qui étudient l'esprit d'entreprise Li Tianlun etc. assisté à l'événement.</p>
@@ -21,7 +22,7 @@
 <img src="images/activity1/m3.jpg" alt="activity photo">
 <img src="images/activity1/m4.jpg" alt="activity photo">
 <img src="images/activity1/m5.jpg" alt="activity photo">
-
+</div>
 <script>
   $(".modal-box").css('display', 'block');
 </script>

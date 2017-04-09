@@ -1,4 +1,4 @@
-
+<div class="longtext">
 <ul class="member-intro">
     <li>
         <div class="member-thumnail">
@@ -65,3 +65,4 @@
         </div>
     </li>
 </ul>
+</div>

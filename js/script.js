@@ -175,7 +175,7 @@ $(document).ready(function () {
     $('#wrap-button').click(function (e) {
         e.stopPropagation();
         if ($("#wrap-menu").offset().left != 0) {
-            $("#overal-container").css('left', '180px');
+            $("#overal-container").css('left', '190px');
             $("#wrap-menu").css('left', '0').css('height', $(window).outerHeight());
             setTimeout(function () {
                 $("#overal-container").css('position', 'fixed').css('overflow-y', 'scroll');
@@ -184,7 +184,7 @@ $(document).ready(function () {
 
         } else {
             $("#overal-container").css('left', '0');
-            $("#wrap-menu").css('left', '-180px');
+            $("#wrap-menu").css('left', '-190px');
             setTimeout(function () {
                 $("#overal-container").css('position', 'absolute').css('overflow-y', 'auto');
             }, 600);
@@ -202,7 +202,7 @@ $(document).ready(function () {
         }
         if ($(window).outerWidth() > 767) {
             $("#overal-container").css('left', '0');
-            $("#wrap-menu").css('left', '-180px');
+            $("#wrap-menu").css('left', '-190px');
             setTimeout(function () {
                 $("#overal-container").css('position', 'absolute').css('overflow-y', 'auto');
             }, 600);
@@ -213,7 +213,7 @@ $(document).ready(function () {
     $('body').click(function () {
         if ($("#wrap-menu").offset().left == 0) {
             $("#overal-container").css('left', '0');
-            $("#wrap-menu").css('left', '-180px');
+            $("#wrap-menu").css('left', '-190px');
             setTimeout(function () {
                 $("#overal-container").css('position', 'absolute').css('overflow-y', 'auto');
             }, 600);

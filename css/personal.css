@@ -13,10 +13,12 @@ a {
     color: inherit;
 }
 
-
 p {
-    word-wrap: break-word;
     margin-bottom: 0px;
+    word-wrap: break-word;
+}
+
+.longtext p {
     text-align: justify;
 }
 
@@ -812,7 +814,7 @@ img.avatar {
     margin: auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 60%;
+    width: 860px;
     border-radius: 0;
 }
 

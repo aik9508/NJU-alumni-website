@@ -1,4 +1,4 @@
-<div>
+<div class="longtext">
   <h3>Réunion des anciens de NJU au Fontainbleu</h3>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Pour Paris depuis longtemps, je ne l'ai pas été à Fontainebleau. Hier est allé, mais n'a pas vu le château du roi.
 </p>

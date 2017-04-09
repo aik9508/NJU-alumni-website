@@ -1,3 +1,4 @@
+<div>
 <h3>南京大学校友会携手长江商学院欧洲办公室及海外留学人员创业者协会举办的以创业与创新为主题的活动</h3>
 
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;南京大学校友会携手长江商学院欧洲办公室及海外留学人员创业者协会举办的以创业与创新为主题的活动于2月13日下午在中国驻法国大使馆教育处圆满举行。中国驻法大使馆教育处公使马燕生公参、南京大学法国校友会会长季红、长江商学院欧洲首席代表季波博士、法国海外留学人员创业者协会会长李天伦等人士出席此次活动。</p>
@@ -18,7 +19,7 @@
 <img src="images/activity1/m3.jpg" alt="activity photo">
 <img src="images/activity1/m4.jpg" alt="activity photo">
 <img src="images/activity1/m5.jpg" alt="activity photo">
-
+</div>
 <script>
   $(".modal-box").css('display', 'block');
 </script>

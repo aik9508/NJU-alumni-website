@@ -1,4 +1,4 @@
-<div>
+<div class="longtext">
   <h3>Célébration de la Journée Nationale Chinoise</h3>
   <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1 octobre 2016, à l'occasion de la Journée nationale Association, anciens de l'Université de Nanjing a tenu un grand programme d'orientation français à la maison président. Les étudiants sont encouragés à vous inscrire pour participer, plus les temps, nous avons eu un après-midi merveilleux et mémorable.
 </p>

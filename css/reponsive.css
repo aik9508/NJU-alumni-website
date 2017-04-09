@@ -22,8 +22,8 @@ body{
 
 #wrap-menu {
     position: absolute;
-    left: -180px;
-    width: 180px;
+    left: -190px;
+    width: 190px;
     background-color: #252525;
     float: left;
     color: #ffffff;
@@ -130,6 +130,11 @@ body{
 
 
 /********** Small devices only **********/
+@media (max-width: 860px) {
+    .modal-content {
+        width: 90%;
+    }
+}
 
 @media (min-width: 768px) and (max-width: 991px) {
     header {
@@ -162,9 +167,9 @@ body{
     #loginform {
         width: 60%;
     }
-    .modal-content {
+    /*.modal-content {
         width: 80%;
-    }
+    }*/
     .jumbotron {
         width: 100%;
     }
@@ -215,9 +220,9 @@ body{
     #loginform {
         width: 100%;
     }
-    .modal-content {
+    /*.modal-content {
         width: 80%;
-    }
+    }*/
     .jumbotron {
         width: 100%;
     }
