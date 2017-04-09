@@ -43,6 +43,10 @@
     padding-top: 10px;
 }
 
+.form-group.main-filter input.form-control{
+    padding: 3px 10px;
+}
+
 .form-control,
 .dropdown-menu {
     border-radius: 0px;

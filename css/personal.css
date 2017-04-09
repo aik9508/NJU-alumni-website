@@ -531,12 +531,15 @@ img.avatar {
     font-size: 50px;
     color: #63065f;
     font-family: 'OpenSans', sans-serif;
+    white-space: nowrap;
+    
 }
 
 .count-name {
     font-size: 30px;
     color: #63065f;
     font-family: 'OpenSans', sans-serif;
+    white-space: nowrap;
 }
 
 
