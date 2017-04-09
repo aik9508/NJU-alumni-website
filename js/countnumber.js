@@ -15,12 +15,11 @@
     };
 
     var alumni = $('#alumni-number').attr('data-count');
-    console.log(alumni);
     var visitors = $('#visitor-number').attr('data-count');
     var fun = function() {
         if (isShow($('#alumni-number'))) {
             var i = 0;
-            var step1 = Math.floor(alumni / 200);
+            var step1 = Math.floor(alumni / 200)+1;
             var count_1 = setInterval(function() {
                 $('#alumni-number').html(i.toLocaleString('fr-FR'));
                 i = i + step1;
@@ -32,13 +31,13 @@
             }, 2);
 
             var j = 0;
-            var step2 = Math.floor(visitors / 200);
+            var step2 = Math.floor(visitors / 200)+1;
             var count_2 = setInterval(function() {
                 $('#visitor-number').html(j.toLocaleString('fr-FR'));
                 j = j + step2;
                 if (j > visitors) {
                     clearInterval(count_2);
-                    $('#alumni-visitor').html(parseInt(visitors, 10).toLocaleString('fr-FR'));
+                    $('#visitor-number').html(parseInt(visitors, 10).toLocaleString('fr-FR'));
                 }
             }, 2);
 

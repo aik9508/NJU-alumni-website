@@ -26,7 +26,8 @@ if ($master) {
 if ($doctorat) {
     Diploma::insertDiplomas($dbh, $id, 2, $_POST['promo_doctorat'], array_search($_POST['dept_doctorat'], $_SESSION["DEPARTEMENT_ARRAY"]));
 }
-echo User::countResults($dbh, "WHERE 1", null);
+$_SESSION["alumni_number"]=User::countResults($dbh, "WHERE 1", null);
+echo $_SESSION["alumni_number"];
 $dbh = null;
 
 
