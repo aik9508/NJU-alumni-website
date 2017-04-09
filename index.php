@@ -164,16 +164,16 @@ if (!isset($_SESSION['hasVisited']) || time() - $_SESSION["lastVisited"] > 1000)
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>AAENF</title>
         <link rel="stylesheet" href="css/master.css">
-        <link rel="stylesheet" href="css/profile.css?<?php echo date('l jS \of F Y h:i:s A'); ?>">
-        <link rel="stylesheet" href="css/personal.css?<?php echo date('l jS \of F Y h:i:s A'); ?>">
+        <link rel="stylesheet" href="css/profile.css?">
+        <link rel="stylesheet" href="css/personal.css?">
         <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Slabo+27px" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
-        <link href="css/community.css?<?php echo date('l jS \of F Y h:i:s A'); ?>" rel="stylesheet">
+        <link href="css/community.css" rel="stylesheet">
         <link href="css/unite-gallery.css" rel="stylesheet">
         <link href="css/ug-theme-default.css" rel="stylesheet">
         <link href="css/cropper.css" rel="stylesheet">
-        <link href="css/reponsive.css?<?php echo date('l jS \of F Y h:i:s A'); ?>" rel="stylesheet">
+        <link href="css/reponsive.css?" rel="stylesheet">
 
         <script src="js/jquery.js"></script>
         <script src="js/bootstrap.js"></script>
@@ -410,8 +410,8 @@ if (!isset($_SESSION['hasVisited']) || time() - $_SESSION["lastVisited"] > 1000)
                 </div>
                 <!--end footer-bottom-->
             </footer>
-            <script src="js/script.js?<?php echo date('l jS \of F Y h:i:s A'); ?>"></script>
-            <script src="js/index_sup.js?<?php echo date('l jS \of F Y h:i:s A'); ?>"></script>
+            <script src="js/script.js"></script>
+            <script src="js/index_sup.js"></script>
             <script src="js/unitegallery.min.js"></script>
             <script src="js/ug-theme-default.js"></script>
 

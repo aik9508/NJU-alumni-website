@@ -842,6 +842,7 @@ img.avatar {
     padding-right: 5px;
     cursor: pointer;
     font-size: 17px;
+    white-space: nowrap;
 }
 
 .activity-modal-link:hover {
