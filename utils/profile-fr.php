@@ -241,18 +241,18 @@ EOT;
                 <button class="profil-button" id="mdp-valider">Valider</button>
             </div>
             <div class="pwd-input-container">
+                <label for="ancien_mdp">Ancien mot de passe : </label>
                 <div class="tooltip">
-                    <label for="ancien_mdp">Ancien mot de passe : </label>
                     <input class="form-control" type="password" name="ancien-mdp" placeholder="Ancien mot de passe">
                     <span class="tooltiptext"></span>
                 </div>
+                <label for="nouveau_mdp">Nouveau mot de passe : </label>
                 <div class="tooltip">
-                    <label for="nouveau_mdp">Nouveau mot de passe : </label>
                     <input class="form-control" type="password" name="nouveau-mdp" placeholder="Mot de passe">
                     <span class="tooltiptext"></span>
                 </div>
+                <label for="confirmer_mdp">Confirmer votre nouveau mot de passe : </label>
                 <div class="tooltip">
-                    <label for="confirmer_mdp">Confirmer votre nouveau mot de passe : </label>
                     <input class="form-control" type="password" name="confirmer-mdp" placeholder="Mot de passe">
                     <span class="tooltiptext"></span>
                 </div>

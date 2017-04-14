@@ -11,7 +11,7 @@
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Les prévisions météo dit pluie. Juste au moment où nous sommes allés à Fontainebleau, huit arrondissements de Paris un parc de 11 personnes ont été frappées par la foudre. Nous avons été préoccupés par l'activité de la pluie Malgr Fontainebleau, celui-ci tout au soleil toute la journée. Notre lieu de rencontre est l'INSEAD, selon la réception des ondes M. quart de nos rapports, les Britanniques « Financial Times » cette école d'affaires au premier rang dans le monde.
 </p>
 
-<img src="images/activity2/m43.jpg" alt="activity photo">
+<img class="activity-photo" src="images/activity2/m43.jpg" alt="activity photo">
 
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;M. quart vague ancien directeur de la formation de l'école d'affaires cadres chinois INSEAD, est maintenant le Cheung Kong Graduate School doyenne adjointe, représentant en chef en Europe. M. Ji est une vague personne énergique, tout le corps est plein de vitalité. Tous les voyages sont organisés par lui. Même traîna articles de sport automobile, j'espère que vous livrez dans la forêt pendant un certain temps. Il a utilisé son enthousiasme tout le monde infecté. Il voulait venir ici tous se sentent heureux et satisfaits.
 </p>
@@ -25,7 +25,7 @@
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Quel professionnel a. L'Université de Nanjing est comme un petit mouvement ici. Tout le monde a répondu par des applaudissements chaleureux pour chaque personne de se présenter. Applaudissements indiqué une humeur. Comme la réunion d'amis, comme une famille se réunissent. Au moins, pense que mon coeur ainsi. Bien qu'ils ne viennent de rencontrer. Cependant, tout le monde se leva, je pense, il est de Nanjing, ah, il et elle aussi ah à Nanjing, vivant sur le campus. Où nous sommes tous encore professeur familier. En quittant le Sud, le Sud est devenu un concept abstrait. Et parce que le nom du Sud ensemble, les jeunes relancé immédiatement. Les différentes facultés, les étudiants de différents âges, ainsi que, en fait, est à la recherche d'un autre enregistrement vous. Le jeune homme lui-même, son propre avenir.
 </p>
 
-<img src="images/activity4/m4.jpg" alt="activity photo">
+<img class="activity-photo" src="images/activity4/m4.jpg" alt="activity photo">
 
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Professeur Luo Xiaowei introduit l'INSEAD. Ensuite, rendez-vous avec tout le monde accroché autour du campus, puis aller dîner, puis revenir à la réunion en salle de classe. Elle ne possède pas les signes extérieurs d'un professeur, elle était assise dans un coin reculé de la salle de classe dernière face, le visage avec un sourire, pour chaque haut-parleur, applaudi tranquillement.
 </p>
@@ -39,7 +39,7 @@
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Peut-être que pour son « honnêteté » a touché beaucoup de gens lèvent la main. Ces jeunes étudiants ah, mais aussi celui que nous faisons le réseau, je peux Outreach, les étudiants peuvent me contacter, pour le mettre très spécifique. J'ai toujours pensé, étudiant de l'Université de Nanjing, est idéalisée, est de la danse haute. Mais dans la scène d'aujourd'hui et nous avons vu, mais il est sincère. Nous espérons que les anciens font mieux de penser à ce qu'il pouvait faire pour les anciens élèves, de penser, mais aussi à l'autre, plus de gens la prochaine fois, la prochaine fois sera meilleure. La prochaine fois, le nom de l'Université de Nanjing, comme la ligne de vent est à Paris l'air.
 </p>
 
-<img src="images/activity4/m15.jpg" alt="activity photo">
+<img class="activity-photo" src="images/activity4/m15.jpg" alt="activity photo">
 
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Conférence dispersée, est allé dans les bois ensemble. Il y a volley-ball, croquet, football, pétanque. Je ne veux pas jouer, mais aussi se réunir pour parler. Le sujet est frais, pas le temps de discuter.
 </p>

@@ -1,4 +1,52 @@
+var getLang = function () {
+    var lang = "zh";
+    var url = document.location.toString();
+    if (url.indexOf('?') !== -1) {
+        var query = url
+                .replace(/^.*?\?/, '')
+                .replace(/#.*$/, '')
+                .split('&');
+        for (var i = 0, l = query.length; i < l; i++) {
+            var aux = decodeURIComponent(query[i]).split('=');
+            if (aux[0] == "lang") {
+                lang = aux[1];
+            }
+        }
+    }
+    return lang;
+};
+
+var msg;
+
 $(document).ready(function () {
+    var lang = getLang();
+    if (lang === "fr") {
+        msg = {
+            empty_error: "Ce champ est obligatoire!",
+            email_error: "Adresse e-mail invalide.",
+            email_existed: "Vous avez saisi une adresse e-mail déjà associée à un compte.",
+            short_password: "Les mots de passe courts sont faciles à deviner. Veuillez recommencer en utilisant au moins 8 caractères.",
+            incorrect_password: "Les mots de passe ne correspondent pas. Voulez-vous réessayer?",
+            telephone_error: "Ce format de numéro de téléphone n'est pas reconnu. Veuillez vérifier le numéro.",
+            school_error: "Veuillez choisir votre département",
+            class_error: "Veuillez indiquer votre promotion",
+            incorrect_class: "Veuillez vérifier votre promotion",
+            allvalid_error: "Veuillez choisir au moins un diplôme que vous avez obtenu à l'université de Nanjing et remplir votre promotion ainsi que votre département."
+        };
+    } else {
+        msg = {
+            empty_error: "此项不能为空。",
+            email_error: "您无法用此邮箱创建帐号。",
+            email_existed: "您输入的邮箱已被使用,请重新输入。",
+            short_password: "过短的密码很容易被猜到。请尝试使用至少包含 8 个字符的密码。",
+            incorrect_password: "两个密码不匹配。是否重试？",
+            telephone_error: "该电话号码的格式无法识别。",
+            school_error: "请选择您的院系。",
+            class_error: "请输入您的入学年份。",
+            incorrect_class: "请核对您的入学年份。",
+            allvalid_error: "请至少选择一段您在南京大学的学习经历,并注明入学年份和院系。"
+        };
+    }
     var inputs = new Array($("input[name='nom']"),
             $("input[name='prenom']"),
             $("input[name='email']"),
@@ -120,9 +168,7 @@ $(document).ready(function () {
         $(".profil-edit-wrapper").show();
     });
     $("#profil-valider").click(function () {
-        console.log("OK");
         if (isAllValid()) {
-            console.log("valid");
             if (hasChanged()) {
                 var postList = {};
                 for (var i = 0; i < inputs.length; i++) {
@@ -211,7 +257,7 @@ $(document).ready(function () {
     inputs[7].autocheck(isEntrepriseValid, toolTipError(inputs[7], "请注明就职单位。"));
     inputs[8].autocheck(isFonctionValid, toolTipError(inputs[8], "请注明就职单位。"));
 
-    $("input[name='ancien-mdp']").autocheck(isNonEmpty, toolTipError($(this), "请输入您现在的密码。"));
+    $("input[name='ancien-mdp']").autocheck(isNonEmpty, toolTipError($("input[name='ancien-mdp']"), "请输入您现在的密码。"));
     $("input[name='nouveau-mdp']").focusin(function () {
         $(this).css('border-color', 'rgb(102,175,233)');
     });
@@ -283,6 +329,7 @@ function isAllValid() {
             && isTelValid($("input[name='num']").val())
             && isEntrepriseValid($("input[name='entreprise']").val())
             && isFonctionValid($("input[name='fonction']").val());
+    
     if (allValid) {
         allValid = allValid &&
                 $("input[name='promo-licence']").val()

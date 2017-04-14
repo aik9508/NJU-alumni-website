@@ -6,18 +6,18 @@
 </p>
   <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Heureux temps vole toujours, ont été flashé à l'époque, à contrecœur, se réunir à nouveau la prochaine fois!
 </p>
-  <img src="images/activity4/m25.jpg" alt="activity photo">
+  <img class="activity-photo" src="images/activity4/m25.jpg" alt="activity photo">
   <p>Préparation ensemble</p>
-  <img src="images/activity4/m43.jpg" alt="activity photo">
+  <img class="activity-photo" src="images/activity4/m43.jpg" alt="activity photo">
   <p>Barbeque</p>
-  <img src="images/activity4/m33.jpg" alt="activity photo">
-  <img src="images/activity4/m30.jpg" alt="activity photo">
+  <img class="activity-photo" src="images/activity4/m33.jpg" alt="activity photo">
+  <img class="activity-photo" src="images/activity4/m30.jpg" alt="activity photo">
   <p>Jeux de card</p>
-  <img src="images/activity4/m13.jpg" alt="activity photo">
-  <img src="images/activity4/m10.jpg" alt="activity photo">
+  <img class="activity-photo" src="images/activity4/m13.jpg" alt="activity photo">
+  <img class="activity-photo" src="images/activity4/m10.jpg" alt="activity photo">
   <p>Ping-pong</p>
-  <img src="images/activity4/m4.jpg" alt="activity photo">
-  <img src="images/activity4/m7.jpg" alt="activity photo">
+  <img class="activity-photo" src="images/activity4/m4.jpg" alt="activity photo">
+  <img class="activity-photo" src="images/activity4/m7.jpg" alt="activity photo">
   <p>Photo ensemble</p>
 </div>
 <script>

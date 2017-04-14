@@ -11,7 +11,7 @@
 
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;天气预报说有大雨。就在我们去枫丹白露的时候，巴黎八区一个公园里有11个人受到了雷击。我们一直担心活动被雨阻断，然而枫丹白露，这一个整天都是艳阳高照。我们聚会的地方是INSEAD商学院，据接待我们的季波先生介绍，英国《金融时报》把这个商学院排名全球第一。</p>
 
-<img src="images/activity2/m43.jpg" alt="activity photo">
+<img class="activity-photo" src="images/activity2/m43.jpg" alt="activity photo">
 
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;季波先生原先是INSEAD商学院中国高管培训部总监，现在是长江商学院院长助理，欧洲首席代表。季波先生是一个精力旺盛的人，浑身充满活力。所有的行程都是由他安排。甚至拖了一车的体育用品来，希望大家到森林里去放纵一回。他用他的热情感染着所有的人。他想每一个来此的感到开心而满足。</p>
 
@@ -21,7 +21,7 @@
 
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;什么专业的都有。就像一个小型的南京大学搬动了这里。所有人都对每个自我介绍者报以热烈的掌声。掌声表明的是一种心情。就像好友重逢，就像亲人相聚。至少，我心里是这样想的。虽然大家才刚刚相识。可是，每一个人站起来，我就会想到，是从南京来的啊，他和她，都在南京，在那个校园里生活过啊。那里有我们都熟悉的老师呢。当离开了南大，南大就成了一个抽象的概念。而因为南大这个名字相聚，青春立即又复活了。不同系科，不同年龄的同学，聚在一起，其实也是在录找另一个自己。年轻时的自己，未来的自己。</p>
 
-<img src="images/activity4/m4.jpg" alt="activity photo">
+<img class="activity-photo" src="images/activity4/m4.jpg" alt="activity photo">
 
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;罗小薇老师简单介绍了INSEAD商学院。然后，带着大家一起去校园里游逛，然后，去吃饭，然后，再回到教室里开会。她已经完全没有了教授的派头，她就坐在教室最后面一个偏僻的角落里，脸上带着笑，为每一个发言者，悄悄地鼓掌。</p>
 
@@ -31,7 +31,7 @@
 
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;也许是为他的“诚”所感动，许多人都举手。那些年轻的学子啊，也一个个说，我们做网络，我能对外宣传，我可以联络同学，说得都很具体。我一直以为，南京大学的学生，是理想化的，是高蹈的。可是在今天的现场，看到的，却是诚恳。就希望这个校友会做得更好，就想着自己能为这个校友们会做什么，就想着，下次还要来，下次人更多，下次会更好。下一次，南京大学的名字，已经风一样行于巴黎的空中。</p>
 
-<img src="images/activity4/m15.jpg" alt="activity photo">
+<img class="activity-photo" src="images/activity4/m15.jpg" alt="activity photo">
 
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;会议散了，一起去了森林里。有排球、门球、足球、滚球。不想玩的，也聚在一起聊。话题都是新鲜的，来不及聊。</p>
 

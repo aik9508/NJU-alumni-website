@@ -29,12 +29,9 @@ $(document).ready(function () {
         var url = document.location.toString();
         if (url.indexOf('?') !== -1) {
             var query = url
-                    // get the query string
                     .replace(/^.*?\?/, '')
-                    // and remove any existing hash string (thanks, @vrijdenker)
                     .replace(/#.*$/, '')
                     .split('&');
-
             for (var i = 0, l = query.length; i < l; i++) {
                 var aux = decodeURIComponent(query[i]).split('=');
                 if (aux[0] == "lang") {
@@ -79,16 +76,7 @@ $(document).ready(function () {
     });
 
     $('#button-signup').click(function () {
-        $.post("utils/getSession.php", {
-            lang: true
-        }, function (response) {
-            var results = $.parseJSON(response);
-            var lang = results[1];
-            if (!lang || lang != "fr") {
-                lang = "zh";
-            }
-            window.open('utils/register-' + lang + '.php', '_self');
-        });
+        window.open('utils/register.php?lang='+getLang(), '_self');
     });
 
     $('#button-signin').click(function () {

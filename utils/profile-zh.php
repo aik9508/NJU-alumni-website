@@ -242,18 +242,19 @@ EOT;
                 <button class="profil-button" id="mdp-valider">确定</button>
             </div>
             <div class="pwd-input-container">
+
+                <label for="ancien_mdp">当前密码: </label>
                 <div class="tooltip">
-                    <label for="ancien_mdp">当前密码: </label>
                     <input class="form-control" type="password" name="ancien-mdp" placeholder="当前密码">
                     <span class="tooltiptext"></span>
                 </div>
+                <label for="nouveau_mdp">新密码: </label>
                 <div class="tooltip">
-                    <label for="nouveau_mdp">新密码: </label>
                     <input class="form-control" type="password" name="nouveau-mdp" placeholder="新密码">
                     <span class="tooltiptext"></span>
                 </div>
+                <label for="confirmer_mdp">确认密码: </label>
                 <div class="tooltip">
-                    <label for="confirmer_mdp">确认密码: </label>
                     <input class="form-control" type="password" name="confirmer-mdp" placeholder="确认密码">
                     <span class="tooltiptext"></span>
                 </div>

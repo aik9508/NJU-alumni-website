@@ -16,12 +16,12 @@
 
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Enfin, nous avons apprécié Cocktail Association Française Cordon Bleu a préparé une conclusion heureuse dans une atmosphère détendue.</p>
 
-<img src="images/activity1/m1.jpg" alt="activity photo">
-<img src="images/activity1/m2.jpg" alt="activity photo">
-<img src="images/activity1/m0.jpg" alt="activity photo">
-<img src="images/activity1/m3.jpg" alt="activity photo">
-<img src="images/activity1/m4.jpg" alt="activity photo">
-<img src="images/activity1/m5.jpg" alt="activity photo">
+<img class="activity-photo" src="images/activity1/m1.jpg" alt="activity photo">
+<img class="activity-photo" src="images/activity1/m2.jpg" alt="activity photo">
+<img class="activity-photo" src="images/activity1/m0.jpg" alt="activity photo">
+<img class="activity-photo" src="images/activity1/m3.jpg" alt="activity photo">
+<img class="activity-photo" src="images/activity1/m4.jpg" alt="activity photo">
+<img class="activity-photo" src="images/activity1/m5.jpg" alt="activity photo">
 </div>
 <script>
   $(".modal-box").css('display', 'block');

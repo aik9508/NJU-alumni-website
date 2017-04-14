@@ -13,12 +13,12 @@
 
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;最后，大家享用了法国蓝带协会准备的Cocktail，活动在轻松愉快的气氛中圆满结束。</p>
 
-<img src="images/activity1/m1.jpg" alt="activity photo">
-<img src="images/activity1/m2.jpg" alt="activity photo">
-<img src="images/activity1/m0.jpg" alt="activity photo">
-<img src="images/activity1/m3.jpg" alt="activity photo">
-<img src="images/activity1/m4.jpg" alt="activity photo">
-<img src="images/activity1/m5.jpg" alt="activity photo">
+<img class="activity-photo" src="images/activity1/m1.jpg" alt="activity photo">
+<img class="activity-photo" src="images/activity1/m2.jpg" alt="activity photo">
+<img class="activity-photo" src="images/activity1/m0.jpg" alt="activity photo">
+<img class="activity-photo" src="images/activity1/m3.jpg" alt="activity photo">
+<img class="activity-photo" src="images/activity1/m4.jpg" alt="activity photo">
+<img class="activity-photo" src="images/activity1/m5.jpg" alt="activity photo">
 </div>
 <script>
   $(".modal-box").css('display', 'block');

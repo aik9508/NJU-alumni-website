@@ -9,18 +9,15 @@ $(document).ready(function () {
         dataType: "html",
         success: function (html)
         {
-            var doc = document.implementation.createHTMLDocument('');
-            doc.open();
-            doc.write(html);
-            var news = doc.querySelectorAll(".content_small li a");
+            var doc = $.parseHTML(html);
+            var news = $(".content_small li a", doc);
             var url = "http://news.nju.edu.cn/";
             for (var i = 0; i < 10; i++) {
-                var text = news[i].text;
-                var href = news[i].getAttribute("href");
+                var text = $(news[i]).text();
+                var href = $(news[i]).attr("href");
                 var toAppend = "<a href='" + url + href + "' target='_blank'>" + text + "</a>";
                 $("#news" + i).append(toAppend);
             }
-            doc.close();
         }
     });
 });

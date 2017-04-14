@@ -149,6 +149,9 @@ if (!isset($_SESSION["lastVisited"])) {
 if (!isset($_SESSION['hasVisited']) || time() - $_SESSION["lastVisited"] > 1000) {
     $_SESSION['hasVisited'] = true;
     $_SESSION["lastVisited"] = time();
+    $file_visited = fopen($visited, "r");
+    $_SESSION["val_visited"] = fread($file_visited, filesize($visited));
+    fclose($file_visited);
     $_SESSION["val_visited"] = $_SESSION["val_visited"] + 1;
     $file_visited = fopen($visited, "w");
     fwrite($file_visited, $_SESSION["val_visited"]);
@@ -267,13 +270,8 @@ if (!isset($_SESSION['hasVisited']) || time() - $_SESSION["lastVisited"] > 1000)
                             <div id="button-lang" class="popup-trigger">
                                 <div class="glyphicon glyphicon-globe"></div>
                                 <div id="popup-lang" class="popup-content">
-
-
-                                    <div id="button-zh" class="button"><a <?php echo "href='$link_zh'" ?>>中文</a></div>
-
-
-                                    <div id="button-fr" class="button"><a <?php echo "href='$link_fr'" ?>>Français</a></div>
-
+                                    <a <?php echo "href='$link_zh'" ?>><div id="button-zh" class="button">中文</div></a>
+                                    <a <?php echo "href='$link_fr'" ?>><div id="button-fr" class="button">Français</div></a>
                                 </div>
                             </div>
                         </div>
@@ -338,7 +336,7 @@ if (!isset($_SESSION['hasVisited']) || time() - $_SESSION["lastVisited"] > 1000)
                 else if ($_GET['page'] == 'activity')
                     require 'snippets/activity-snippet.php';
                 else if ($_GET['page'] == 'community')
-                    require 'snippets/community-snippet-' . $_SESSION["lang"] . '.php';
+                    require 'snippets/community-snippet.php';
                 else
                     echo "<h1>No Such Page</h1>";
                 ?>
@@ -414,7 +412,6 @@ if (!isset($_SESSION['hasVisited']) || time() - $_SESSION["lastVisited"] > 1000)
             <script src="js/index_sup.js?<?php echo date('l jS \of F Y h:i:s A'); ?>"></script>
             <script src="js/unitegallery.min.js"></script>
             <script src="js/ug-theme-default.js"></script>
-
         </div>
     </body>
 </html>

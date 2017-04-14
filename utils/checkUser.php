@@ -12,9 +12,9 @@ if (isset($_POST['email'])) {
         }
     } else {
         if(User::checkPassword($dbh, $_POST['email'], $_POST['psw'])){
-            echo "1";
+            echo true;
         }else{
-            echo "";
+            echo false;
         }
     }
 }

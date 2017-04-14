@@ -1,45 +1,54 @@
 
-class selectForm {
-    constructor(button, list) {
-        const self = this;
+function selectForm(button, list, lang) {
+    const self = this;
 
-        self.button = $(button);
-        self.list = $(list);
-        self.list.prepend("<span class='text-center'>Effacer Tous</span>");
-        self.clearAndSelect = $(self.list.find("span")[0]);
+    self.lang = lang;
+    self.button = $(button);
+    self.list = $(list);
+    self.list.prepend("<span class='text-center'>Effacer Tous</span>");
+    self.clearAndSelect = $(self.list.find("span")[0]);
 
-        self.button.html("<span class='multiselect-button-content'></span><span class='arrow-down'></span>");
+    self.button.html("<span class='multiselect-button-content'></span><span class='arrow-down'></span>");
 
-        self.button.click(function (e) {
-            e.stopPropagation();
-            var position=self.button.position();
-            var height = self.button.outerHeight();            
-            self.list.css("top", position.top + height + 15).css("left", position.left).toggle();
-        });
+    self.button.click(function (e) {
+        e.stopPropagation();
+        var position = self.button.position();
+        var height = self.button.outerHeight();
+        self.list.css("top", position.top + height + 15).css("left", position.left).toggle();
+    });
 
-        self.content = self.button.find("span.multiselect-button-content");
-        self.list.addClass("multiselect-container").addClass("dropdown-menu");
-        self.labels = self.list.find("label");
-        self.options = self.list.find("input[type=checkbox]");
-        self.nbTotal = self.options.length;
-        self.nbChecked = 0;
-        if (self.nbTotal > 10) {
-            self.list.addClass("overflow-y-scroll");
-        }
-        self.init();
-        self.changeContent();
+    self.content = self.button.find("span.multiselect-button-content");
+    self.list.addClass("multiselect-container").addClass("dropdown-menu");
+    self.labels = self.list.find("label");
+    self.options = self.list.find("input[type=checkbox]");
+    self.nbTotal = self.options.length;
+    self.nbChecked = 0;
+    if (self.nbTotal > 10) {
+        self.list.addClass("overflow-y-scroll");
     }
+    self.init();
+    self.changeContent();
+}
 
-    init() {
-        const self = this;
+selectForm.prototype.init = function () {
+    const self = this;
 
-        self.labels.each(function () {
-            $(this).click(function (e) {
-                e.stopPropagation();
-            });
+    self.labels.each(function () {
+        $(this).click(function (e) {
+            e.stopPropagation();
         });
+    });
 
-        self.options.each(function () {
+    self.options.each(function () {
+        if ($(this)[0].checked) {
+            $(this).parent("label").addClass("active");
+            self.nbChecked += 1;
+        } else {
+            $(this).parent("label").removeClass("active");
+            self.nbChecked -= 1;
+        }
+
+        $(this).change(function () {
             if ($(this)[0].checked) {
                 $(this).parent("label").addClass("active");
                 self.nbChecked += 1;
@@ -47,94 +56,112 @@ class selectForm {
                 $(this).parent("label").removeClass("active");
                 self.nbChecked -= 1;
             }
-
-            $(this).change(function () {
-                if ($(this)[0].checked) {
-                    $(this).parent("label").addClass("active");
-                    self.nbChecked += 1;
-                } else {
-                    $(this).parent("label").removeClass("active");
-                    self.nbChecked -= 1;
-                }
-                self.changeContent();
-            });
+            self.changeContent();
         });
+    });
 
-        self.clearAndSelect.click(function (e) {
-            e.stopPropagation();
-            if ($(this).hasClass("active")) {
-                self.selectAll();
-                self.switchToClear();
-            } else {
-                self.clearAll();
-                self.switchToSelect();
-            }
-        });
-
-        $(window).resize(function () {
-            var position = self.button.position();
-            var height = self.button.outerHeight();
-            self.list.css("top", position.top + height + 15).css("left", position.left);
-        });
-
-    }
-
-    switchToClear() {
-        const self = this;
-        self.clearAndSelect.removeClass("active");
-        self.clearAndSelect.html("Effacer Tous");
-    }
-
-    switchToSelect() {
-        const self = this;
-        self.clearAndSelect.addClass("active");
-        self.clearAndSelect.html("Choisir Tous");
-    }
-
-    changeContent() {
-        const self = this;
-
-        if (self.nbChecked === 0) {
-            self.content.html("Aucune sélection");
-            self.switchToSelect();
-        } else if (self.nbChecked === 1) {
-            var labelText = String(self.list.find("input[type=checkbox]:checked").parent("label").text()).trim();
-            if (labelText.length > 38) {
-                labelText = labelText.substring(0, 35) + "...";
-            }
-            self.content.html(labelText);
-        } else if (self.nbChecked === self.nbTotal) {
-            self.content.html("Tous (" + self.nbChecked + ")");
+    self.clearAndSelect.click(function (e) {
+        e.stopPropagation();
+        if ($(this).hasClass("active")) {
+            self.selectAll();
             self.switchToClear();
         } else {
-            self.content.html(self.nbChecked + " sélectionné(e)s");
+            self.clearAll();
+            self.switchToSelect();
+        }
+    });
+
+    $(window).resize(function () {
+        var position = self.button.position();
+        var height = self.button.outerHeight();
+        self.list.css("top", position.top + height + 15).css("left", position.left);
+    });
+
+};
+
+selectForm.prototype.switchToClear = function () {
+    const self = this;
+    self.clearAndSelect.removeClass("active");
+    if (self.lang === "fr") {
+        self.clearAndSelect.html("Effacer Tous");
+    } else {
+        self.clearAndSelect.html("全部取消");
+    }
+};
+
+selectForm.prototype.switchToSelect = function () {
+    const self = this;
+    self.clearAndSelect.addClass("active");
+    if (self.lang === "fr") {
+        self.clearAndSelect.html("Choisir Tous");
+    } else {
+        self.clearAndSelect.html("全部选择");
+    }
+};
+
+selectForm.prototype.changeContent = function () {
+    const self = this;
+
+    if (self.nbChecked === 0) {
+        if (self.lang === "fr") {
+            self.content.html("Aucune sélection");
+        } else {
+            self.content.html("无");
+        }
+        self.switchToSelect();
+    } else if (self.nbChecked === 1) {
+        var labelText = String(self.list.find("input[type=checkbox]:checked").parent("label").text()).trim();
+        if (labelText.length > 38) {
+            labelText = labelText.substring(0, 35) + "...";
+        }
+        self.content.html(labelText);
+    } else if (self.nbChecked === self.nbTotal) {
+        if (self.lang === "fr") {
+            self.content.html("Tous (" + self.nbChecked + ")");
+        } else {
+            self.content.html("全部 (" + self.nbChecked + ")");
+        }
+        self.switchToClear();
+    } else {
+        if (self.lang === "fr") {
+            self.content.html("Tous (" + self.nbChecked + ")");
+        } else {
+            self.content.html("已选择 " + self.nbChecked + " 项");
         }
     }
+};
 
-    clearAll() {
-        const self = this;
-        self.nbChecked = 0;
-        self.labels.each(function () {
-            $(this).removeClass("active");
-        });
-        self.options.each(function () {
-            $(this).prop("checked", false);
-        });
+selectForm.prototype.clearAll = function () {
+    const self = this;
+    self.nbChecked = 0;
+    self.labels.each(function () {
+        $(this).removeClass("active");
+    });
+    self.options.each(function () {
+        $(this).prop("checked", false);
+    });
+    if (self.lang === "fr") {
         self.content.html("Aucune sélection");
+    } else {
+        self.content.html("无");
     }
+};
 
-    selectAll() {
-        const self = this;
-        self.nbChecked = self.nbTotal;
-        self.labels.each(function () {
-            $(this).addClass("active");
-        });
-        self.options.each(function () {
-            $(this).prop("checked", true);
-        });
-        self.content.html(self.nbChecked + " sélectionné(e)s");
+selectForm.prototype.selectAll = function () {
+    const self = this;
+    self.nbChecked = self.nbTotal;
+    self.labels.each(function () {
+        $(this).addClass("active");
+    });
+    self.options.each(function () {
+        $(this).prop("checked", true);
+    });
+    if (self.lang === "fr") {
+        self.content.html("Tous (" + self.nbChecked + ")");
+    } else {
+        self.content.html("全部 (" + self.nbChecked + ")");
     }
-}
+};
 
 function isShow($el) {
     var winH = $(window).height(), //获取窗口高度
@@ -165,6 +192,24 @@ function addListenerToProfiles() {
     });
 }
 
+var getLang = function () {
+    var lang = "zh";
+    var url = document.location.toString();
+    if (url.indexOf('?') !== -1) {
+        var query = url
+                .replace(/^.*?\?/, '')
+                .replace(/#.*$/, '')
+                .split('&');
+        for (var i = 0, l = query.length; i < l; i++) {
+            var aux = decodeURIComponent(query[i]).split('=');
+            if (aux[0] == "lang") {
+                lang = aux[1];
+            }
+        }
+    }
+    return lang;
+};
+
 this.disableScrollFn = function (e) {
     e.preventDefault();
     e.stopPropagation();
@@ -180,11 +225,12 @@ $(document).ready(function () {
     var promo_start_filter;
     var promo_end_filter;
     var isloading = false;
+    var lang = getLang();
 
     $(".multiselect-wrapper").each(function () {
         var list = $(this).find("ul");
         var button = $(this).find("button");
-        new selectForm(button, list);
+        new selectForm(button, list, lang);
     });
 
     $("body").click(function () {
@@ -219,7 +265,7 @@ $(document).ready(function () {
         promo_end_filter = $("#promo-filter2").val().trim();
         $("#response").html("");
         search(true);
-        if($(window).width()<768){
+        if ($(window).width() < 768) {
             $("#search-hide").click();
         }
     });
@@ -245,10 +291,13 @@ $(document).ready(function () {
                         $("#response").append(response);
                         if (count) {
                             nb_total = $("#count").html();
-                            $("#nb-results").html(nb_total + " résultats trouvés :");
+                            if(lang==="fr"){
+                                $("#nb-results").html(nb_total + " résultat(s) trouvé(s) :");
+                            }else{
+                                $("#nb-results").html("共找到 "+nb_total+" 个结果:" );
+                            }
                         }
                         nb_results = $(".profile-card").length;
-                        console.log("after search " + nb_results);
                         isloading = false;
                         addListenerToProfiles();
                     }
@@ -317,7 +366,7 @@ $(document).ready(function () {
             }
         }
     });
-    
+
     $("#button-recherche").click();
 
 });
