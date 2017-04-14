@@ -100,5 +100,4 @@ EOT;
 
     </div><!--End of activities block-->
 </div><!--End of home snippet-->
-<script src="js/countnumber.js?<?php echo date('l jS \of F Y h:i:s A'); ?>"></script>
 <script src="js/BBS.js"></script>

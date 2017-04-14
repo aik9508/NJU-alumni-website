@@ -16,34 +16,35 @@ var getLang = function () {
     return lang;
 };
 
-var msg;
-
 $(document).ready(function () {
     var lang = getLang();
+    var msg;
     if (lang === "fr") {
         msg = {
             empty_error: "Ce champ est obligatoire!",
             email_error: "Adresse e-mail invalide.",
-            email_existed: "Vous avez saisi une adresse e-mail déjà associée à un compte.",
             short_password: "Les mots de passe courts sont faciles à deviner. Veuillez recommencer en utilisant au moins 8 caractères.",
             incorrect_password: "Les mots de passe ne correspondent pas. Voulez-vous réessayer?",
-            telephone_error: "Ce format de numéro de téléphone n'est pas reconnu. Veuillez vérifier le numéro.",
-            school_error: "Veuillez choisir votre département",
-            class_error: "Veuillez indiquer votre promotion",
-            incorrect_class: "Veuillez vérifier votre promotion",
+            wrong_password: "Mot de passe incorrect.",
+            telephone_error: "Ce format de numéro de téléphone n'est pas reconnu.",
+            incorrect_class: "Veuillez vérifier votre promotion.",
+            class_error: "Promotion invalide",
+            logout_error: "Veuillez vous connecter!",
+            company_error: "Veuillez indiquer votre entreprise.",
             allvalid_error: "Veuillez choisir au moins un diplôme que vous avez obtenu à l'université de Nanjing et remplir votre promotion ainsi que votre département."
         };
     } else {
         msg = {
             empty_error: "此项不能为空。",
-            email_error: "您无法用此邮箱创建帐号。",
-            email_existed: "您输入的邮箱已被使用,请重新输入。",
+            email_error: "邮箱地址错误",
             short_password: "过短的密码很容易被猜到。请尝试使用至少包含 8 个字符的密码。",
             incorrect_password: "两个密码不匹配。是否重试？",
+            wrong_password: "密码错误。",
             telephone_error: "该电话号码的格式无法识别。",
-            school_error: "请选择您的院系。",
-            class_error: "请输入您的入学年份。",
             incorrect_class: "请核对您的入学年份。",
+            class_error: "入学年份有误",
+            logout_error: "请先登录!",
+            company_error: "请注明您的就职单位。",
             allvalid_error: "请至少选择一段您在南京大学的学习经历,并注明入学年份和院系。"
         };
     }
@@ -88,7 +89,7 @@ $(document).ready(function () {
                 if (output_format === "image/png") {
                     photo_obj = jic.compress($(this)[0], quality, "png").src;
                 } else {
-                    photo_obj = jic.compress($(this)[0], quality, "jpg").src;
+                    photo_obj = jic.compress($(this)[0], quality, "jpeg").src;
                 }
                 $("#temp-container").attr("src", photo_obj);
             } else {
@@ -190,7 +191,7 @@ $(document).ready(function () {
                         "utils/update_post.php",
                         postList,
                         function (response) {
-                            $("#profile-wrapper").load("utils/profile-zh.php");
+                            $("#profile-wrapper").load("utils/profile-"+lang+".php");
                         }
                 );
             }
@@ -231,7 +232,7 @@ $(document).ready(function () {
             }, function (response) {
                 if (!response) {
                     $("input[name='ancien-mdp']").css('border-color', 'red');
-                    toolTipError($("input[name='ancien-mdp']"), "密码错误。")();
+                    toolTipError($("input[name='ancien-mdp']"), "Mot de passe invalide.")();
                 } else if (response === "Not Login") {
                     alert("Veuillez vous connecter!");
                 } else {
@@ -247,27 +248,27 @@ $(document).ready(function () {
         }
     });
 
-    inputs[0].autocheck(isNonEmpty, toolTipError(inputs[0], '此项不能为空。'));
-    inputs[1].autocheck(isNonEmpty, toolTipError(inputs[1], '此项不能为空。'));
-    inputs[2].autocheck(isEmailValid, toolTipError(inputs[2], '邮件格式错误。'));
-    inputs[3].autocheck(isPromoValid, toolTipError(inputs[3], '请核实入学年份。'));
-    inputs[4].autocheck(isPromoValid, toolTipError(inputs[4], '请核实入学年份。'));
-    inputs[5].autocheck(isPromoValid, toolTipError(inputs[5], '请核实入学年份。'));
-    inputs[6].autocheck(isTelValid, toolTipError(inputs[6], "手机号码格式错误。"));
-    inputs[7].autocheck(isEntrepriseValid, toolTipError(inputs[7], "请注明就职单位。"));
-    inputs[8].autocheck(isFonctionValid, toolTipError(inputs[8], "请注明就职单位。"));
+    inputs[0].autocheck(isNonEmpty, toolTipError(inputs[0], msg.empty_error));
+    inputs[1].autocheck(isNonEmpty, toolTipError(inputs[1], msg.empty_error));
+    inputs[2].autocheck(isEmailValid, toolTipError(inputs[2], msg.email_error));
+    inputs[3].autocheck(isPromoValid, toolTipError(inputs[3], msg.class_error));
+    inputs[4].autocheck(isPromoValid, toolTipError(inputs[4], msg.class_error));
+    inputs[5].autocheck(isPromoValid, toolTipError(inputs[5], msg.class_error));
+    inputs[6].autocheck(isTelValid, toolTipError(inputs[6], msg.telephone_error));
+    inputs[7].autocheck(isEntrepriseValid, toolTipError(inputs[7], msg.company_error));
+    inputs[8].autocheck(isFonctionValid, toolTipError(inputs[8], msg.company_error));
 
-    $("input[name='ancien-mdp']").autocheck(isNonEmpty, toolTipError($("input[name='ancien-mdp']"), "请输入您现在的密码。"));
+    $("input[name='ancien-mdp']").autocheck(isNonEmpty, toolTipError($("input[name='ancien-mdp']"), msg.empty_error));
     $("input[name='nouveau-mdp']").focusin(function () {
         $(this).css('border-color', 'rgb(102,175,233)');
     });
     $("input[name='nouveau-mdp']").focusout(function () {
         if (!isNonEmpty($(this).val())) {
             $(this).css('border-color', 'red');
-            toolTipError($(this), "新密码不能为空。")();
+            toolTipError($(this), msg.empty_error)();
         } else if (!isPswValid($(this).val())) {
             $(this).css('border-color', 'red');
-            toolTipError($(this), "过短的密码很容易被猜到。请尝试使用至少包含 8 个字符的密码。")();
+            toolTipError($(this), msg.short_password)();
         } else {
             $(this).css('border-color', 'rgb(204,204,204)');
         }
@@ -278,10 +279,10 @@ $(document).ready(function () {
     $("input[name='confirmer-mdp']").focusout(function () {
         if (!isNonEmpty($(this).val())) {
             $(this).css('border-color', 'red');
-            toolTipError($(this), "请确认密码。")();
+            toolTipError($(this), msg.empty_error)();
         } else if (!isPswCorrect($(this).val())) {
             $(this).css('border-color', 'red');
-            toolTipError($(this), "两个密码不匹配。是否重试？")();
+            toolTipError($(this), msg.incorrect_password)();
         } else {
             $(this).css('border-color', 'rgb(204,204,204)');
         }
@@ -306,42 +307,151 @@ $(document).ready(function () {
             $(".flip-container").removeClass('hover');
         }
     });
+
     $("#photo").click(function () {
+        console.log("OK");
         if ($('.flip-container').is(':visible')) {
             $(".flip-container").addClass('hover');
         }
     });
-});
 
-function clearAllPassword() {
-    $("input[name='ancien-mdp']").val("").css("border-color", "rgb(204,204,204)");
-    $("input[name='nouveau-mdp']").val("").css("border-color", "rgb(204,204,204)");
-    $("input[name='confirmer-mdp']").val("").css("border-color", "rgb(204,204,204)");
-}
+    function clearAllPassword() {
+        $("input[name='ancien-mdp']").val("").css("border-color", "rgb(204,204,204)");
+        $("input[name='nouveau-mdp']").val("").css("border-color", "rgb(204,204,204)");
+        $("input[name='confirmer-mdp']").val("").css("border-color", "rgb(204,204,204)");
+    }
 
-function isAllValid() {
-    var allValid = isNonEmpty($("input[name='nom']").val())
-            && isNonEmpty($("input[name='prenom']").val())
-            && isEmailValid($("input[name='email']").val())
-            && isPromoValid($("input[name='promo-licence']").val())
-            && isPromoValid($("input[name='promo-master']").val())
-            && isPromoValid($("input[name='promo-doctorat']").val())
-            && isTelValid($("input[name='num']").val())
-            && isEntrepriseValid($("input[name='entreprise']").val())
-            && isFonctionValid($("input[name='fonction']").val());
-    
-    if (allValid) {
-        allValid = allValid &&
-                $("input[name='promo-licence']").val()
-                + $("input[name='promo-master']").val()
-                + $("input[name='promo-doctorat']").val().trim() != "";
-        if (!allValid) {
-            alert("请至少选择一段您在南京大学的学习经历,并注明入学年份和院系。");
+    function isAllValid() {
+        var allValid = isNonEmpty($("input[name='nom']").val())
+                && isNonEmpty($("input[name='prenom']").val())
+                && isEmailValid($("input[name='email']").val())
+                && isPromoValid($("input[name='promo-licence']").val())
+                && isPromoValid($("input[name='promo-master']").val())
+                && isPromoValid($("input[name='promo-doctorat']").val())
+                && isTelValid($("input[name='num']").val())
+                && isEntrepriseValid($("input[name='entreprise']").val())
+                && isFonctionValid($("input[name='fonction']").val());
+        if (allValid) {
+            allValid = allValid &&
+                    $("input[name='promo-licence']").val()
+                    + $("input[name='promo-master']").val()
+                    + $("input[name='promo-doctorat']").val().trim() != "";
+            if (!allValid) {
+                alert(msg.allvalid_error);
+            }
+        }
+        return allValid;
+    }
+
+    function isNonEmpty(val) {
+        if (val.trim() != "") {
+            return val.trim();
+        } else {
+            return false;
         }
     }
-    return allValid;
-}
 
+    function isPswValid(psw) {
+        if (psw.trim().length < 8 && psw.trim().length > 0) {
+            return false;
+        } else {
+            return psw;
+        }
+    }
+
+    function isPswCorrect(psw) {
+        if (psw === $("input[name='nouveau-mdp']").val().trim()) {
+            return psw;
+        } else {
+            return false;
+        }
+    }
+
+    function isPromoValid(promo) {
+        if (!promo) {
+            return true;
+        }
+        var thisYear = new Date().getFullYear();
+        if ($.isNumeric(promo)) {
+            if (!(promo <= thisYear && promo >= 1949)) {
+                if (promo >= 0 && promo < 100) {
+                    if (promo <= thisYear % 1000) {
+                        return (+promo) + 2000;
+                    } else if (promo >= 49) {
+                        return (+promo) + 1900;
+                    } else {
+                        return false;
+                    }
+                } else {
+                    return false;
+                }
+            } else {
+                return promo;
+            }
+        }
+    }
+
+    function isEmailValid(email) {
+        if (!email)
+            return true;
+        var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        if (re.test(email.trim())) {
+            return email;
+        } else {
+            return false;
+        }
+    }
+
+    function isEntrepriseValid(entreprise) {
+        if (entreprise.trim() == "") {
+            if ($("input[name='fonction']").val().trim() == "") {
+                $("input[name='fonction']").css('border-color', 'rgb(204,204,204)');
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            $("input[name='fonction']").css('border-color', 'rgb(204,204,204)');
+            return entreprise.trim();
+        }
+    }
+
+    function isFonctionValid(fonction) {
+        if (fonction.trim() == "") {
+            $("input[name='entreprise']").css('border-color', 'rgb(204,204,204)');
+            return true;
+        } else if ($("input[name='entreprise']").val().trim() == "") {
+            return false;
+        } else {
+            $("input[name='entreprise']").css('border-color', 'rgb(204,204,204)');
+            return fonction.trim();
+        }
+    }
+
+    function isTelValid(tel) {
+        if (!tel)
+            return true;
+        var re = /^(\+33 |0|\+33)[1-9]( \d\d|\d\d){4}$/;
+        if (re.test(tel.trim())) {
+            return telFormat(tel);
+        } else {
+            return false;
+        }
+    }
+
+    function telFormat(tel) {
+        tel = tel.replace(/ /g, "");
+        if (tel.charAt(0) !== '+') {
+            tel = "+33" + tel.substring(1);
+        }
+        tel = tel.splice(3, 0, " ");
+        tel = tel.splice(5, 0, " ");
+        tel = tel.splice(8, 0, " ");
+        tel = tel.splice(11, 0, " ");
+        tel = tel.splice(14, 0, " ");
+        return tel;
+    }
+});
 
 if (!String.prototype.splice) {
     String.prototype.splice = function (start, delCount, newSubStr) {
@@ -384,113 +494,3 @@ function toolTipError(element, text) {
         }, 3000);
     };
 }
-
-function isNonEmpty(val) {
-    if (val.trim() != "") {
-        return val.trim();
-    } else {
-        return false;
-    }
-}
-
-function isPswValid(psw) {
-    if (psw.trim().length < 8 && psw.trim().length > 0) {
-        return false;
-    } else {
-        return psw;
-    }
-}
-
-function isPswCorrect(psw) {
-    if (psw === $("input[name='nouveau-mdp']").val().trim()) {
-        return psw;
-    } else {
-        return false;
-    }
-}
-
-function isPromoValid(promo) {
-    if (!promo) {
-        return true;
-    }
-    var thisYear = new Date().getFullYear();
-    if ($.isNumeric(promo)) {
-        if (!(promo <= thisYear && promo >= 1949)) {
-            if (promo >= 0 && promo < 100) {
-                if (promo <= thisYear % 1000) {
-                    return (+promo) + 2000;
-                } else if (promo >= 49) {
-                    return (+promo) + 1900;
-                } else {
-                    return false;
-                }
-            } else {
-                return false;
-            }
-        } else {
-            return promo;
-        }
-    }
-}
-
-function isEmailValid(email) {
-    if (!email)
-        return true;
-    var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    if (re.test(email.trim())) {
-        return email;
-    } else {
-        return false;
-    }
-}
-
-function isEntrepriseValid(entreprise) {
-    if (entreprise.trim() == "") {
-        if ($("input[name='fonction']").val().trim() == "") {
-            $("input[name='fonction']").css('border-color', 'rgb(204,204,204)');
-            return true;
-        } else {
-            return false;
-        }
-    } else {
-        $("input[name='fonction']").css('border-color', 'rgb(204,204,204)');
-        return entreprise.trim();
-    }
-}
-
-function isFonctionValid(fonction) {
-    if (fonction.trim() == "") {
-        $("input[name='entreprise']").css('border-color', 'rgb(204,204,204)');
-        return true;
-    } else if ($("input[name='entreprise']").val().trim() == "") {
-        return false;
-    } else {
-        $("input[name='entreprise']").css('border-color', 'rgb(204,204,204)');
-        return fonction.trim();
-    }
-}
-
-function isTelValid(tel) {
-    if (!tel)
-        return true;
-    var re = /^(\+33 |0|\+33)[1-9]( \d\d|\d\d){4}$/;
-    if (re.test(tel.trim())) {
-        return telFormat(tel);
-    } else {
-        return false;
-    }
-}
-
-function telFormat(tel) {
-    tel = tel.replace(/ /g, "");
-    if (tel.charAt(0) !== '+') {
-        tel = "+33" + tel.substring(1);
-    }
-    tel = tel.splice(3, 0, " ");
-    tel = tel.splice(5, 0, " ");
-    tel = tel.splice(8, 0, " ");
-    tel = tel.splice(11, 0, " ");
-    tel = tel.splice(14, 0, " ");
-    return tel;
-}
-

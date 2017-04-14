@@ -76,11 +76,11 @@ $display = isset($_POST["alumni_id"]) && isset($_SESSION["currentUser"]) && $_PO
                     </ul>
                     <?php
                     $fonction = Info::getInfo($dbh, $id, 1);
-                    $entreprise = Info::getInfo($dbh, $id, 2);
-                    if ($fonction || $entreprise) {
+                    $enterprise = Info::getInfo($dbh, $id, 2);
+                    if ($fonction || $enterprise) {
                         echo "<p><span>职业: </span></p><ul>";
-                        if ($entreprise) {
-                            echo "<li> 就职单位: " . $entreprise . "</li>";
+                        if ($enterprise) {
+                            echo "<li> 就职单位: " . $enterprise . "</li>";
                         }
                         if ($fonction) {
                             echo "<li> 职位:&nbsp;&nbsp; " . $fonction . "</li>";
@@ -215,9 +215,9 @@ EOT;
             <div class="col-sm-6">
                 <label>就职单位: </label>
                 <div class="tooltip">
-                    <input class="input-short form-control" type="text" name="entreprise" placeholder="就职单位" <?php
-                    if ($entreprise) {
-                        echo "value=" . $entreprise;
+                    <input class="input-short form-control" type="text" name="enterprise" placeholder="就职单位" <?php
+                    if ($enterprise) {
+                        echo "value=\"" . $enterprise ."\"";
                     }
                     ?>>
                     <span class="tooltiptext"></span>
@@ -228,7 +228,7 @@ EOT;
                 <div class="tooltip">
                     <input class="input-short form-control" type="text" name="fonction" placeholder="职位"<?php
                     if ($fonction) {
-                        echo "value=" . $fonction;
+                        echo "value=\"" . $fonction ."\"";
                     }
                     ?>>
                     <span class="tooltiptext"></span>
@@ -262,7 +262,7 @@ EOT;
         </div>
         <script src="js/JIC.min.js"></script>
         <script src="js/cropper.js"></script>
-        <script src="js/profile-zh.js?<?php echo date('l jS \of F Y h:i:s A'); ?>"></script>
+        <script src="js/profile.js"></script>
     <?php }
     ?>
 </div>

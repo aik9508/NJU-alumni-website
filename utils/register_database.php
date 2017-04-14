@@ -32,7 +32,7 @@ class Diploma {
     }
     
     public static function getDiplomas($dbh, $id) {
-        $query = "SELECT * FROM `diplomas` WHERE id=?";
+        $query = "SELECT * FROM `diplomas` WHERE id=? ORDER BY diplome ASC";
         $sth = $dbh->prepare($query);
         $sth->setFetchMode(PDO::FETCH_CLASS, 'Diploma');
         $sth->execute(array($id));

@@ -255,11 +255,7 @@ if (!isset($_SESSION['hasVisited']) || time() - $_SESSION["lastVisited"] > 1000)
                                     ?>
                                 </div>
                             </div>
-                            <div id="userName" <?php
-                            if (isset($_SESSION["currentUser"])) {
-                                echo "userid=" . $_SESSION["currentUser"]["id"];
-                            }
-                            ?> >
+                            <div id="userName">
                                 <span><?php
                                     if (isset($_SESSION["currentUser"])) {
                                         echo ucfirst($_SESSION["currentUser"]["prenom"]) . " " . ucfirst($_SESSION["currentUser"]["nom"]);

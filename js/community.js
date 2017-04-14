@@ -174,7 +174,7 @@ function isShow($el) {
     }
 }
 
-function addListenerToProfiles() {
+function addListenerToProfiles(lang) {
     $(".profile-info>a").each(function () {
         $(this).click(function () {
             console.log("An element is created");
@@ -182,7 +182,7 @@ function addListenerToProfiles() {
                 $('body').append("<div id='profile-wrapper' class='vertical-center-parent background-wrapper'></div>");
                 document.body.style.overflow = 'hidden';
                 $('body').on('mousewheel', document.disableScrollFn);
-                $.post("utils/profile-fr.php", {
+                $.post("utils/profile-"+lang+".php", {
                     alumni_id: $(this).attr("id")
                 }, function (response) {
                     $("#profile-wrapper").html(response);
@@ -299,7 +299,7 @@ $(document).ready(function () {
                         }
                         nb_results = $(".profile-card").length;
                         isloading = false;
-                        addListenerToProfiles();
+                        addListenerToProfiles(lang);
                     }
             );
         }
