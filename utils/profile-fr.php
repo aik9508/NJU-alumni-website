@@ -76,14 +76,14 @@ $display = isset($_POST["alumni_id"]) && isset($_SESSION["currentUser"]) && $_PO
                     </ul>
                     <?php
                     $fonction = Info::getInfo($dbh, $id, 1);
-                    $enterprise = Info::getInfo($dbh, $id, 2);
-                    if ($fonction || $enterprise) {
+                    $entreprise = Info::getInfo($dbh, $id, 2);
+                    if ($fonction || $entreprise) {
                         echo "<p><span>Profession : </span></p><ul>";
-                        if ($enterprise) {
-                            echo "<li> Entreprise : " . $enterprise . "</li>";
+                        if ($entreprise) {
+                            echo "<li> Entreprise : " . htmlspecialchars($entreprise) . "</li>";
                         }
                         if ($fonction) {
-                            echo "<li> Fonction &nbsp;&nbsp;: " . $fonction . "</li>";
+                            echo "<li> Fonction &nbsp;&nbsp;: " . htmlspecialchars($fonction) . "</li>";
                         }
                         echo "</ul>";
                     }
@@ -214,9 +214,9 @@ EOT;
             <div class="col-sm-6">
                 <label>Entreprise : </label>
                 <div class="tooltip">
-                    <input class="input-short form-control" type="text" name="enterprise" placeholder="Entreprise" <?php
-                    if ($enterprise) {
-                        echo "value=\"" . htmlspecialchars($enterprise) ."\"";
+                    <input class="input-short form-control" type="text" name="entreprise" placeholder="Entreprise" <?php
+                    if ($entreprise) {
+                        echo "value=\"" . htmlspecialchars($entreprise) ."\"";
                     }
                     ?>>
                     <span class="tooltiptext"></span>
