@@ -22,7 +22,7 @@ $display = isset($_POST["alumni_id"]) && isset($_SESSION["currentUser"]) && $_PO
 <div id="profil" class="vertical-center">
     <div class="profil-header">
         <div class="profil-title">
-            <span id="profil-name"><?php echo ucfirst($alumnus->prenom) . " " . ucfirst($alumnus->nom); ?></span>
+            <span id="profil-name"><?php echo ucfirst(htmlspecialchars($alumnus->prenom)) . " " . htmlspecialchars(ucfirst($alumnus->nom)); ?></span>
             <?php
             if ($alumnus->numero != null) {
                 echo "<span id='profil-tel'><i>Mob</i> : $alumnus->numero</span>";
@@ -143,14 +143,14 @@ $display = isset($_POST["alumni_id"]) && isset($_SESSION["currentUser"]) && $_PO
             <div class="col-sm-6">
                 <label>Nom : </label>
                 <div class="tooltip">
-                    <input class="input-short form-control" type="text" name="nom" placeholder="Nom" <?php echo "value=" . $alumnus->nom ?>>
+                    <input class="input-short form-control" type="text" name="nom" placeholder="Nom" <?php echo "value=" . htmlspecialchars(ucfirst($alumnus->nom)) ?>>
                     <span class="tooltiptext"></span>
                 </div>
             </div>
             <div class="col-sm-6">
                 <label>Prénom : </label>
                 <div class="tooltip">
-                    <input class="input-short form-control" type="text" name="prenom" placeholder="Prénom" <?php echo "value=" . $alumnus->prenom ?>>
+                    <input class="input-short form-control" type="text" name="prenom" placeholder="Prénom" <?php echo "value=" . htmlspecialchars(ucfirst($alumnus->prenom)) ?>>
                     <span class="tooltiptext"></span>
                 </div>
             </div>
@@ -216,7 +216,7 @@ EOT;
                 <div class="tooltip">
                     <input class="input-short form-control" type="text" name="enterprise" placeholder="Entreprise" <?php
                     if ($enterprise) {
-                        echo "value=\"" . $enterprise ."\"";
+                        echo "value=\"" . htmlspecialchars($enterprise) ."\"";
                     }
                     ?>>
                     <span class="tooltiptext"></span>
@@ -227,7 +227,7 @@ EOT;
                 <div class="tooltip">
                     <input class="input-short form-control" type="text" name="fonction" placeholder="Fonction" <?php
                     if ($fonction) {
-                        echo "value=\"" . $fonction . "\"";
+                        echo "value=\"" . htmlspecialchars($fonction) . "\"";
                     }
                     ?>>
                     <span class="tooltiptext"></span>

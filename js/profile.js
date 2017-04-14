@@ -30,7 +30,7 @@ $(document).ready(function () {
             incorrect_class: "Veuillez vérifier votre promotion.",
             class_error: "Promotion invalide",
             logout_error: "Veuillez vous connecter!",
-            company_error: "Veuillez indiquer votre entreprise.",
+            company_error: "Veuillez indiquer votre enterprise.",
             allvalid_error: "Veuillez choisir au moins un diplôme que vous avez obtenu à l'université de Nanjing et remplir votre promotion ainsi que votre département."
         };
     } else {
@@ -55,7 +55,7 @@ $(document).ready(function () {
             $("input[name='promo-master']"),
             $("input[name='promo-doctorat']"),
             $("input[name='num']"),
-            $("input[name='entreprise']"),
+            $("input[name='enterprise']"),
             $("input[name='fonction']"),
             $("input[name='id']")
             );
@@ -169,8 +169,11 @@ $(document).ready(function () {
         $(".profil-edit-wrapper").show();
     });
     $("#profil-valider").click(function () {
+        console.log("0");
         if (isAllValid()) {
+            console.log("1");
             if (hasChanged()) {
+                console.log("2");
                 var postList = {};
                 for (var i = 0; i < inputs.length; i++) {
                     if (inputs[i].val().trim() !== initial_vals[i]) {
@@ -255,7 +258,7 @@ $(document).ready(function () {
     inputs[4].autocheck(isPromoValid, toolTipError(inputs[4], msg.class_error));
     inputs[5].autocheck(isPromoValid, toolTipError(inputs[5], msg.class_error));
     inputs[6].autocheck(isTelValid, toolTipError(inputs[6], msg.telephone_error));
-    inputs[7].autocheck(isEntrepriseValid, toolTipError(inputs[7], msg.company_error));
+    inputs[7].autocheck(isEnterpriseValid, toolTipError(inputs[7], msg.company_error));
     inputs[8].autocheck(isFonctionValid, toolTipError(inputs[8], msg.company_error));
 
     $("input[name='ancien-mdp']").autocheck(isNonEmpty, toolTipError($("input[name='ancien-mdp']"), msg.empty_error));
@@ -329,7 +332,7 @@ $(document).ready(function () {
                 && isPromoValid($("input[name='promo-master']").val())
                 && isPromoValid($("input[name='promo-doctorat']").val())
                 && isTelValid($("input[name='num']").val())
-                && isEntrepriseValid($("input[name='entreprise']").val())
+                && isEnterpriseValid($("input[name='enterprise']").val())
                 && isFonctionValid($("input[name='fonction']").val());
         if (allValid) {
             allValid = allValid &&
@@ -402,8 +405,8 @@ $(document).ready(function () {
         }
     }
 
-    function isEntrepriseValid(entreprise) {
-        if (entreprise.trim() == "") {
+    function isEnterpriseValid(enterprise) {
+        if (enterprise.trim() == "") {
             if ($("input[name='fonction']").val().trim() == "") {
                 $("input[name='fonction']").css('border-color', 'rgb(204,204,204)');
                 return true;
@@ -412,18 +415,18 @@ $(document).ready(function () {
             }
         } else {
             $("input[name='fonction']").css('border-color', 'rgb(204,204,204)');
-            return entreprise.trim();
+            return enterprise.trim();
         }
     }
 
     function isFonctionValid(fonction) {
         if (fonction.trim() == "") {
-            $("input[name='entreprise']").css('border-color', 'rgb(204,204,204)');
+            $("input[name='enterprise']").css('border-color', 'rgb(204,204,204)');
             return true;
-        } else if ($("input[name='entreprise']").val().trim() == "") {
+        } else if ($("input[name='enterprise']").val().trim() == "") {
             return false;
         } else {
-            $("input[name='entreprise']").css('border-color', 'rgb(204,204,204)');
+            $("input[name='enterprise']").css('border-color', 'rgb(204,204,204)');
             return fonction.trim();
         }
     }

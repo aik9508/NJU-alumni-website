@@ -81,6 +81,10 @@ header .glyphicon {
     background-color: #edeadf;
 }
 
+#logo img{
+    height: 60px;
+}
+
 img {
     max-width: 100%;
 }
