@@ -16,7 +16,7 @@ foreach ($articles as $article) {
   $author = $article->author;
   $date = $article->date;
   $caption = ($langIszh) ? $article->caption:$article->caption_fr;
-  $readmore = ($langIszh) ? "<nobr>阅读更多</nobr>":"<nobr>Lire la suite</nobr>";
+  $readmore = ($langIszh) ? "阅读更多":"Lire la suite";
     ?>
     <li class='activity-tile'>
       <img src='images/activity<?php echo $num; ?>/m0.jpg' alt='photo of activity'>
