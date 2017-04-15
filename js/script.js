@@ -56,7 +56,7 @@ $(document).ready(function () {
     }
     ;
 
-    if ($("#alumin-number").length > 0) {
+    if ($("#alumni-number").length > 0) {
         var alumni = $('#alumni-number').attr('data-count');
         var visitors = $('#visitor-number').attr('data-count');
         var fun = function () {
