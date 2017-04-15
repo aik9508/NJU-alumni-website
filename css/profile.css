@@ -10,7 +10,6 @@ and open the template in the editor.
 
 #profil{
     width: 630px;
-    margin: 0 auto;
     border: 1px solid rgba(204,204,204,0.75);
     background-color: white;
     height: 683px;
@@ -199,6 +198,10 @@ select {
     -ms-border-radius: 0px;
 }
 
+select::-ms-expand {
+    display: none;
+}
+
 .tooltip {
     position: relative;
     display: inline-block;
@@ -274,14 +277,6 @@ select {
 
 .cropper-wrapper{
     height: 332px;
-}
-.vertical-center-parent{
-    display: flex;
-    justify-content: center;
-}
-
-.vertical-center{
-    align-self: center;
 }
 
 #imgFile{

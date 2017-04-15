@@ -180,6 +180,18 @@ body{
     -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
     -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
     transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    -webkit-appearance: none;
+    -webkit-border-radius: 0px;
+    -moz-appearance: none;
+    -moz-border-radius: 0px;
+    -o-appearance: none;
+    -o-border-radius: 0px;
+    -ms-appearance: none;
+    -ms-border-radius: 0px;
+}
+
+select::-ms-expand {
+    display: none;
 }
 
 .custom-selectbox:after{
