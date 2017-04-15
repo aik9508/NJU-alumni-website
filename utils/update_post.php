@@ -84,14 +84,14 @@ if (isset($_POST["fonction"])) {
     if ($_POST["fonction"]) {
         Info::setInfo($dbh, $_POST["id"], 1, $_POST["fonction"]);
     } else {
-        Info::delete($dbh, $_POST["id"], 0);
+        Info::delete($dbh, $_POST["id"], 1);
     }
 }
 if (isset($_POST["entreprise"])) {
     if ($_POST["entreprise"]) {
         Info::setInfo($dbh, $_POST["id"], 2, $_POST["entreprise"]);
     } else {
-        Info::delete($dbh, $_POST["id"], 0);
+        Info::delete($dbh, $_POST["id"], 2);
     }
 }
 

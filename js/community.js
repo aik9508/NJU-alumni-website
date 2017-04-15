@@ -175,9 +175,8 @@ function isShow($el) {
 }
 
 function addListenerToProfiles(lang) {
-    $(".profile-info>a").each(function () {
+    $(".profile-card").each(function () {
         $(this).click(function () {
-            console.log("An element is created");
             if ($('body').find("#profile-wrapper").length === 0) {
                 $('body').append("<div id='profile-wrapper' class='vertical-center-parent background-wrapper'></div>");
                 document.body.style.overflow = 'hidden';
