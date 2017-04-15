@@ -154,125 +154,6 @@ $(document).ready(function () {
         }
         return allValid;
     }
-    
-    function focusInFunction(element) {
-        return function () {
-            element.html("");
-        };
-    }
-
-    function errorFunction(element, text) {
-        return function () {
-            element.html(text);
-        };
-    }
-    function promoError(diplome) {
-        return function () {
-            $("#error-diplome").html(msg.incorrect_class);
-            setTimeout(function () {
-                $("#" + diplome).click()
-            }, 50);
-        };
-    }
-
-    function isNonEmpty(val) {
-        if (val.trim() != "") {
-            return val.trim();
-        } else {
-            return false;
-        }
-    }
-
-    function isPswValid(psw) {
-        if (psw.trim().length < 8 && psw.trim().length > 0) {
-            return false;
-        } else {
-            return psw;
-        }
-    }
-
-    function isPswCorrect(psw) {
-        if (psw === $("#mdp").val().trim()) {
-            return psw;
-        } else {
-            return false;
-        }
-    }
-
-    function isPromoValid(promo) {
-        if (!promo) {
-            return true;
-        }
-        var thisYear = new Date().getFullYear();
-        if ($.isNumeric(promo)) {
-            if (!(promo <= thisYear && promo >= 1949)) {
-                if (promo >= 0 && promo < 100) {
-                    if (promo <= thisYear % 1000) {
-                        return (+promo) + 2000;
-                    } else if (promo >= 49) {
-                        return (+promo) + 1900;
-                    } else {
-                        return false;
-                    }
-                } else {
-                    return false;
-                }
-            } else {
-                return promo;
-            }
-        }
-    }
-
-    function isEmailValid(email) {
-        if (!email)
-            return true;
-        var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        if (re.test(email.trim())) {
-            $.post('checkUser.php', 'email=' + email.trim(), function (response) {
-                if (response === 'existed') {
-                    $('#email').css('border-color', 'red');
-                    $('#error-email').html(msg.email_existed);
-                    return false;
-                } else {
-                    return true;
-                }
-            });
-            return email;
-        } else {
-            return false;
-        }
-    }
-
-    if (!String.prototype.splice) {
-        String.prototype.splice = function (start, delCount, newSubStr) {
-            return this.slice(0, start) + newSubStr + this.slice(start + Math.abs(delCount));
-        };
-    }
-
-    function isTelValid(tel) {
-        if (!tel)
-            return true;
-        tel = tel.replace(/ /g, "");
-        var re = /^(0|\+33)[1-9](\d){8}$/;
-        if (re.test(tel.trim())) {
-            return telFormat(tel);
-        } else {
-            return false;
-        }
-    }
-
-    function telFormat(tel) {
-        tel = tel.replace(/ /g, "");
-        if (tel.charAt(0) !== '+') {
-            tel = "+33" + tel.substring(1);
-        }
-        tel = tel.splice(3, 0, " ");
-        tel = tel.splice(5, 0, " ");
-        tel = tel.splice(8, 0, " ");
-        tel = tel.splice(11, 0, " ");
-        tel = tel.splice(14, 0, " ");
-        return tel;
-    }
 });
 
 function Pair(validFunction, msg) {
@@ -315,5 +196,134 @@ if (!$.prototype.autocheck) {
             }
         });
     };
+}
+
+function focusInFunction(element) {
+    return function () {
+        element.html("");
+    };
+}
+
+function errorFunction(element, text) {
+    return function () {
+        element.html(text);
+    };
+}
+function promoError(diplome) {
+    return function () {
+        var lang=getLang();
+        if(lang==="fr"){
+            $("#error-diplome").html("Veuillez vérifier votre promotion");
+        }else{
+           $("#error-diplome").html("请核对您的入学年份"); 
+        }
+        setTimeout(function () {
+            $("#" + diplome).click()
+        }, 50);
+    };
+}
+
+function isNonEmpty(val) {
+    if (val.trim() != "") {
+        return val.trim();
+    } else {
+        return false;
+    }
+}
+
+function isPswValid(psw) {
+    if (psw.trim().length < 8 && psw.trim().length > 0) {
+        return false;
+    } else {
+        return psw;
+    }
+}
+
+function isPswCorrect(psw) {
+    if (psw === $("#mdp").val().trim()) {
+        return psw;
+    } else {
+        return false;
+    }
+}
+
+function isPromoValid(promo) {
+    if (!promo) {
+        return true;
+    }
+    var thisYear = new Date().getFullYear();
+    if ($.isNumeric(promo)) {
+        if (!(promo <= thisYear && promo >= 1949)) {
+            if (promo >= 0 && promo < 100) {
+                if (promo <= thisYear % 1000) {
+                    return (+promo) + 2000;
+                } else if (promo >= 49) {
+                    return (+promo) + 1900;
+                } else {
+                    return false;
+                }
+            } else {
+                return false;
+            }
+        } else {
+            return promo;
+        }
+    }
+}
+
+function isEmailValid(email) {
+    if (!email)
+        return true;
+    var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if (re.test(email.trim())) {
+        $.post('checkUser.php', 'email=' + email.trim(), function (response) {
+            if (response === 'existed') {
+                var lang = getLang();
+                $('#email').css('border-color', 'red');
+                if (lang === "fr") {
+                    $('#error-email').html("Vous avez saisi une adresse e-mail déjà associée à un compte.");
+                } else {
+                    $('#error-email').html("邮箱已被使用。");
+                }
+                return false;
+            } else {
+                return true;
+            }
+        });
+        return email;
+    } else {
+        return false;
+    }
+}
+
+if (!String.prototype.splice) {
+    String.prototype.splice = function (start, delCount, newSubStr) {
+        return this.slice(0, start) + newSubStr + this.slice(start + Math.abs(delCount));
+    };
+}
+
+function isTelValid(tel) {
+    if (!tel)
+        return true;
+    tel = tel.replace(/ /g, "");
+    var re = /^(0|\+33)[1-9](\d){8}$/;
+    if (re.test(tel.trim())) {
+        return telFormat(tel);
+    } else {
+        return false;
+    }
+}
+
+function telFormat(tel) {
+    tel = tel.replace(/ /g, "");
+    if (tel.charAt(0) !== '+') {
+        tel = "+33" + tel.substring(1);
+    }
+    tel = tel.splice(3, 0, " ");
+    tel = tel.splice(5, 0, " ");
+    tel = tel.splice(8, 0, " ");
+    tel = tel.splice(11, 0, " ");
+    tel = tel.splice(14, 0, " ");
+    return tel;
 }
 

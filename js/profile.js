@@ -50,7 +50,7 @@ $(document).ready(function () {
     }
     var inputs = new Array($("input[name='nom']"),
             $("input[name='prenom']"),
-            $("input[name='email']"),
+            $("#profil input[name='email']"),
             $("input[name='promo-licence']"),
             $("input[name='promo-master']"),
             $("input[name='promo-doctorat']"),
@@ -146,7 +146,6 @@ $(document).ready(function () {
                 imageData: cropimg,
                 type: output_format
             }, function (response) {
-                console.log(response);
             });
         }
     });
@@ -169,11 +168,8 @@ $(document).ready(function () {
         $(".profil-edit-wrapper").show();
     });
     $("#profil-valider").click(function () {
-        console.log("0");
         if (isAllValid()) {
-            console.log("1");
             if (hasChanged()) {
-                console.log("2");
                 var postList = {};
                 for (var i = 0; i < inputs.length; i++) {
                     if (inputs[i].val().trim() !== initial_vals[i]) {
@@ -194,7 +190,7 @@ $(document).ready(function () {
                         "utils/update_post.php",
                         postList,
                         function (response) {
-                            $("#profile-wrapper").load("utils/profile-"+lang+".php");
+                            $("#profile-wrapper").load("utils/profile-" + lang + ".php");
                         }
                 );
             }
@@ -312,7 +308,6 @@ $(document).ready(function () {
     });
 
     $("#photo").click(function () {
-        console.log("OK");
         if ($('.flip-container').is(':visible')) {
             $(".flip-container").addClass('hover');
         }

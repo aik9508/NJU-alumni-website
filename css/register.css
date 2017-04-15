@@ -113,6 +113,10 @@ body{
     margin-top: 12px;
 }
 
+#logo img{
+    height: 70px;
+}
+
 #connecter,#langue{
     float: right;
     margin-left: 15px;

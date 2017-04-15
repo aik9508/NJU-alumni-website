@@ -262,7 +262,7 @@ EOT;
         </div>
         <script src="js/JIC.min.js"></script>
         <script src="js/cropper.js"></script>
-        <script src="js/profile.js"></script>
+        <script src="js/profile.js?<?php echo time();?>"></script>
     <?php }
     ?>
 </div>

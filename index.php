@@ -404,7 +404,7 @@ if (!isset($_SESSION['hasVisited']) || time() - $_SESSION["lastVisited"] > 1000)
                 </div>
                 <!--end footer-bottom-->
             </footer>
-            <script src="js/script.js"></script>
+            <script src="js/script.js?<?php echo time();?>"></script>
             <script src="js/index_sup.js"></script>
             <script src="js/unitegallery.min.js"></script>
             <script src="js/ug-theme-default.js"></script>

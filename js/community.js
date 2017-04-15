@@ -124,7 +124,7 @@ selectForm.prototype.changeContent = function () {
         self.switchToClear();
     } else {
         if (self.lang === "fr") {
-            self.content.html("Tous (" + self.nbChecked + ")");
+            self.content.html(self.nbChecked + " sélectioné(es)");
         } else {
             self.content.html("已选择 " + self.nbChecked + " 项");
         }

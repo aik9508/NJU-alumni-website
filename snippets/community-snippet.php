@@ -3,7 +3,7 @@ if ($_SESSION["lang"] == "fr") {
     $msg = array(
         "last_name" => "Nom ",
         "first_name" => "Prénom ",
-        "search_criteria" => "Critère de recherche :",
+        "search_criteria" => "Critères de recherche :",
         "studies" => "Études :",
         "bachelor" =>"Étudiants de NJU",
         "master" => "Master de NJU",
