@@ -489,17 +489,17 @@ img.avatar {
 
 #home-right-column {
     float: right;
-    width: 380px;
+    width: 400px;
 }
 
 #information {
-    width: 380px;
+    width: 400px;
     padding-right: 0px;
 }
 
 #activities {
     width: auto;
-    padding-right: 380px;
+    padding-right: 400px;
     padding-left: 0px;
 }
 
@@ -694,6 +694,11 @@ img.avatar {
     padding-left: 0px;
 }
 
+
+#profile-menu>ul>li.active {
+    background-color: #edeadf;
+}
+
 #profile-content {
     margin: 20px 10px 20px 10px;
     width: auto;
@@ -746,6 +751,10 @@ img.avatar {
     width: 250px;
     float: left;
     padding-left: 0px;
+}
+
+#activity-menu>ul>li.active {
+    background-color: #edeadf;
 }
 
 #activity-content {

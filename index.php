@@ -173,8 +173,8 @@ if (!isset($_SESSION['hasVisited']) || time() - $_SESSION["lastVisited"] > 1000)
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>AAENF</title>
         <link rel="stylesheet" href="css/master.css">
-        <link rel="stylesheet" href="css/profile.css?">
-        <link rel="stylesheet" href="css/personal.css?">
+        <link rel="stylesheet" href="css/profile.css?<?php echo time();?>">
+        <link rel="stylesheet" href="css/personal.css?<?php echo time();?>">
         <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Slabo+27px" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">

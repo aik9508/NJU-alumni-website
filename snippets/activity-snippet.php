@@ -46,8 +46,10 @@ foreach ($items as $item) {?>
       <ul>
         <?php
 $i = 0;
-foreach ($items as $item) {?>
-            <li class="activity-menu-tile">
+foreach ($items as $item) {
+  $active = ($i==0)?"active":"";
+?>
+            <li class="activity-menu-tile <?php echo $active; ?>">
                 <span class="glyphicon glyphicon-paperclip"></span>
                 <span data-name='<?php echo $items[$i];?>'><?php echo $names[$i] ;?></span>
             </li>

@@ -144,6 +144,11 @@ $(document).ready(function () {
     $('#profile-menu>ul>li').each(function (i) {
         $(this).attr('id', 'profile-item' + i);
         $('#profile-item' + i).click(function () {
+            $('#profile-menu>ul>li').each(function() {
+                $(this).removeClass('active');
+            });
+            $(this).addClass('active');
+
             var lang = getLang();
             $($('.profile-content-title>span')[1]).html($('#profile-item' + i + ">span")[1].innerHTML);
             $('#profile-content').load("snippets/" + $('#profile-item' + i + ">span")[1].getAttribute("data-name") + "-snippet-" + lang + ".php");
@@ -164,6 +169,7 @@ $(document).ready(function () {
         $(this).attr('id', 'activity-head-item' + i);
         $('#activity-head-item' + i).click(function () {
             $(".accordion-menu").css('display', 'none');
+            
             var lang = getLang();
             $($('.activity-content-title>span')[1]).html($('#activity-head-item' + i + ">span")[1].innerHTML);
             $('#activity-content').load("snippets/" + $('#activity-head-item' + i + ">span")[1].getAttribute("data-name") + "-snippet.php", {
@@ -175,6 +181,11 @@ $(document).ready(function () {
     $('#activity-menu>ul>li').each(function (i) {
         $(this).attr('id', 'activity-item' + i);
         $('#activity-item' + i).click(function () {
+            $('#activity-menu>ul>li').each(function() {
+                $(this).removeClass('active');
+            });
+            $(this).addClass('active');
+
             var lang = getLang();
             $($('.activity-content-title>span')[1]).html($('#activity-item' + i + ">span")[1].innerHTML);
             $('#activity-content').load("snippets/" + $('#activity-item' + i + ">span")[1].getAttribute("data-name") + "-snippet.php", {

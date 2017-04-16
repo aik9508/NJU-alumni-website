@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: shiwen
- * Date: 2/21/2017
- * Time: 1:05
- */
 /* This is the profile page snippet to insert in the #main-content div of index.php */
 $pageTitle = $langIszh ? "关于我们" : "NOTRE PROFIL";
 $items = array("NJU", "Asso", "Chairmen", "Council", "Cert");
@@ -48,8 +42,9 @@ $names = $langIszh ? array("南大简介", "校友会简介", "主席团成员",
             <?php
             $i = 0;
             foreach ($items as $item) {
+                $active = ($i==0)?"active":"";
                 ?>
-                <li class="profile-menu-tile">
+                <li class="profile-menu-tile <?php echo $active; ?>">
                     <span class="glyphicon glyphicon-paperclip"></span>
                     <span data-name=<?php echo "'" . $items[$i] . "'>" . $names[$i]; ?></span>
                 </li>
