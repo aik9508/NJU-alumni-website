@@ -1,4 +1,5 @@
 <?php
+
 /* update personnal information */
 session_start();
 if (!isset($_POST) || !isset($_SESSION["currentUser"])) {
@@ -62,7 +63,9 @@ for ($i = 0; $i < count($diplomas); $i++) {
             array_push($update_study_array, $i);
             Diploma::update($dbh, $update_study_query, $update_study_array);
         } else {
-            Diploma::insertDiplomas($dbh, $_POST["id"], $i, $promo, $dpt);
+            if ($promo) {
+                Diploma::insertDiplomas($dbh, $_POST["id"], $i, $promo, $dpt);
+            }
         }
     } else if ($promo) {
         $update_study_query = "UPDATE `diplomas` SET `promotion`=? WHERE id=? AND diplome=?";

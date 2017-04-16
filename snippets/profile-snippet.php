@@ -2,7 +2,7 @@
 /* This is the profile page snippet to insert in the #main-content div of index.php */
 $pageTitle = $langIszh ? "关于我们" : "NOTRE PROFIL";
 $items = array("NJU", "Asso", "Chairmen", "Council", "Cert");
-$names = $langIszh ? array("南大简介", "校友会简介", "主席团成员", "理事会成员", "注册文件") : array("À propos de NJU", "À propos de l'AAENF", "Direction", "Conceil", "Déclaration");
+$names = $langIszh ? array("南大简介", "校友会简介", "主席团成员", "理事会成员", "注册文件") : array("À propos de NJU", "À propos de l'AAENF", "Direction", "Conseil", "Déclaration");
 ?>
 
 <div class="head-picture">

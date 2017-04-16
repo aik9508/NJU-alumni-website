@@ -1,5 +1,5 @@
 <?php
-/*Check the old password on database, and then update password. */
+/* Check the old password on database, and then update password. */
 session_start();
 if (!isset($_POST['pwd'])) {
     echo FALSE;

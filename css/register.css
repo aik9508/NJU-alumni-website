@@ -1,5 +1,5 @@
 .input-main{
-    width: 370px;
+    width: 400px;
     margin: 0 auto;
     background-color: white;
     border-radius: 5px;
@@ -155,7 +155,7 @@ body{
     background-color: #63065f;
     font-family: "Microsoft YaHei";
     font-size: 12px;
-    height: 30px;
+    height: 20px;
     border-top: 1px solid rgba(204,204,204,0.5);
 }
 

@@ -1,13 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="2">
+        <file>
+            <url>js/community.js</url>
+            <bookmark id="2">
+                <name/>
+                <line>0</line>
+                <key/>
+            </bookmark>
+        </file>
+        <file>
+            <url>utils/profile-fr.php</url>
+            <bookmark id="1">
+                <name/>
+                <line>0</line>
+                <key/>
+            </bookmark>
+        </file>
+    </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Applications/XAMPP/xamppfiles/htdocs/NJU-alumni-website/js/script.js</file>
+            <file>file:/Applications/XAMPP/xamppfiles/htdocs/NJU-alumni-website/utils/profile-fr.php</file>
+            <file>file:/Applications/XAMPP/xamppfiles/htdocs/NJU-alumni-website/utils/checkPassword.php</file>
+            <file>file:/Applications/XAMPP/xamppfiles/htdocs/NJU-alumni-website/README.txt</file>
+            <file>file:/Applications/XAMPP/xamppfiles/htdocs/NJU-alumni-website/utils/register_database.php</file>
             <file>file:/Applications/XAMPP/xamppfiles/htdocs/NJU-alumni-website/js/profile.js</file>
             <file>file:/Applications/XAMPP/xamppfiles/htdocs/NJU-alumni-website/index.php</file>
+            <file>file:/Applications/XAMPP/xamppfiles/htdocs/NJU-alumni-website/snippets/profile-snippet.php</file>
             <file>file:/Applications/XAMPP/xamppfiles/htdocs/NJU-alumni-website/utils/update_post.php</file>
-            <file>file:/Applications/XAMPP/xamppfiles/htdocs/NJU-alumni-website/js/community.js</file>
+            <file>file:/Applications/XAMPP/xamppfiles/htdocs/NJU-alumni-website/css/register.css</file>
             <file>file:/Applications/XAMPP/xamppfiles/htdocs/NJU-alumni-website/utils/profile-zh.php</file>
         </group>
     </open-files>

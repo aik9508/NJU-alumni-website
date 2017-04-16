@@ -15,3 +15,8 @@
         $ sudo chmod -R 0777 /var/XAMPP/root/NJU-alumni-website/photoDatabase/
 
         $ sudo chmod -R 0777 /var/XAMPP/root/NJU-alumni-website/utils/counterFolder/
+    
+
+    Although our site requires an email as user name, you can still sign in with user name : "olivier" and password : "lapin"
+    
+    and user name : "dominique" and password : "renard". We don't have administrative account.

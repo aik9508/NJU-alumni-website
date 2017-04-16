@@ -242,6 +242,7 @@ $(document).ready(function () {
                 }
             });
         } else {
+            console.log("invalid");
             $("input[name='ancien-mdp']").focusout();
             $("input[name='nouveau-mdp']").focusout();
             $("input[name='confirmer-mdp']").focusout();
@@ -258,7 +259,17 @@ $(document).ready(function () {
     inputs[7].autocheck(isEntrepriseValid, toolTipError(inputs[7], msg.company_error));
     inputs[8].autocheck(isFonctionValid, toolTipError(inputs[8], msg.company_error));
 
-    $("input[name='ancien-mdp']").autocheck(isNonEmpty, toolTipError($("input[name='ancien-mdp']"), msg.empty_error));
+    $("input[name='ancien-mdp']").focusout(function () {
+        if (!isNonEmpty($(this).val())) {
+            $(this).css('border-color', 'red');
+            toolTipError($(this), msg.empty_error)();
+        } else if (!isPswValid($(this).val())) {
+            $(this).css('border-color', 'red');
+            toolTipError($(this), msg.wrong_password)();
+        } else {
+            $(this).css('border-color', 'rgb(204,204,204)');
+        }
+    });
     $("input[name='nouveau-mdp']").focusin(function () {
         $(this).css('border-color', 'rgb(102,175,233)');
     });
