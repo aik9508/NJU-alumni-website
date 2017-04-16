@@ -83,7 +83,7 @@ body{
 
 @media screen and (min-width: 900px){
     #container-backgroud{
-        background-image: url('../sources/NJU_register_background_small.png');
+        background-image: url('../images/NJU_register_background_small.png');
         background-position-x: -100px;
         width: 1200px;
         height: 855px;

@@ -1,4 +1,4 @@
-
+//the javsscript for /utils/community-snippet.php
 function selectForm(button, list, lang) {
     const self = this;
 
@@ -164,13 +164,13 @@ selectForm.prototype.selectAll = function () {
 };
 
 function isShow($el) {
-    var winH = $(window).height(), //获取窗口高度
-            scrollH = $(window).scrollTop(), //获取窗口滚动高度
-            top = $el.offset().top + $el.outerHeight() + 20;//获取元素距离窗口顶部偏移高度
+    var winH = $(window).height(), 
+            scrollH = $(window).scrollTop(), 
+            top = $el.offset().top + $el.outerHeight() + 20;
     if (top < scrollH + winH) {
-        return true;//在可视范围
+        return true;
     } else {
-        return false;//不在可视范围
+        return false;
     }
 }
 
@@ -182,7 +182,7 @@ function addListenerToProfiles(lang) {
                 document.body.style.overflow = 'hidden';
                 $('body').on('mousewheel', document.disableScrollFn);
                 $.post("utils/profile-"+lang+".php", {
-                    alumni_id: $(this).attr("id")
+                    alumni_id: $(this).find(".profile-info>a").attr("id")
                 }, function (response) {
                     $("#profile-wrapper").html(response);
                 });

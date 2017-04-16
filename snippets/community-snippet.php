@@ -108,7 +108,7 @@ EOT;
                     <div class="bighr"></div>
                     <div id="response" ></div>
                     <div class="buffer full-width text-center">
-                        <img src="sources/loader.gif" alt="loader" class="display-none" id="loader">
+                        <img src="images/loader_1.gif" alt="loader" class="display-none" id="loader">
                     </div>
                 </div>
             </td>

@@ -1,29 +1,15 @@
 <?php
 session_start();
+$actual_link = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 if (isset($_POST["signout"])) {
     unset($_SESSION["currentUser"]);
+    header("Location: ".$actual_link);
 }
+
 if (!isset($_SESSION["alumni_number"])) {
     require "utils/register_database.php";
     $dbh = Database::connect();
     $_SESSION["alumni_number"] = User::countResults($dbh, "WHERE 1", null);
-}
-if (isset($_POST["email"]) and isset($_POST["psw"])) {
-    if (!class_exists("Database")) {
-        require "utils/register_database.php";
-    }
-    if(!isset($dbh) || $dbh==null){
-        $dbh = Database::connect();
-    }
-    if (User::checkPassword($dbh, $_POST["email"], $_POST["psw"])) {
-        $user = User::getUserByEmail($dbh, $_POST["email"]);
-        $_SESSION["currentUser"] = array(
-            "id" => $user->id,
-            "nom" => $user->nom,
-            "prenom" => $user->prenom,
-        );
-    }
-    $dbh = null;
 }
 
 if (!isset($_GET["lang"]) || $_GET["lang"] != "fr") {
@@ -112,7 +98,6 @@ $profile_names = $langIszh ? array("南大简介", "校友会简介", "主席团
 $activity_items = array("event", "photo");
 $activity_names = $langIszh ? array("活动交流", "相册影集") : array("Activités", "Photos & Vidéos");
 
-$actual_link = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 if (strpos($actual_link, 'lang=fr')) {
     $link_fr = $actual_link;
     $link_zh = str_replace("lang=fr", "lang=zh", $actual_link);
@@ -125,6 +110,27 @@ if (strpos($actual_link, 'lang=fr')) {
 } else {
     $link_zh = $actual_link . "?lang=zh";
     $link_fr = $actual_link . "?lang=fr";
+}
+
+if (isset($_POST["login_email"]) and isset($_POST["psw"])) {
+    if (!class_exists("Database")) {
+        require "utils/register_database.php";
+    }
+    if(!isset($dbh) || $dbh==null){
+        $dbh = Database::connect();
+    }
+    if (User::checkPassword($dbh, $_POST["login_email"], $_POST["psw"])) {
+        $user = User::getUserByEmail($dbh, $_POST["login_email"]);
+        $_SESSION["currentUser"] = array(
+            "id" => $user->id,
+            "nom" => $user->nom,
+            "prenom" => $user->prenom,
+        );
+        $dbh = null;
+        header("Location: ".$actual_link);
+    }
+    $dbh=null;
+    
 }
 
 $visited = "utils/counterFolder/visited.txt";
@@ -229,7 +235,7 @@ if (!isset($_SESSION['hasVisited']) || time() - $_SESSION["lastVisited"] > 1000)
                     <div class="row">
                         <div id="wrap-button" class="glyphicon glyphicon-th-list col-xs-1"></div>
                         <div id="logo" class="col-lg-4 col-md-4 col-sm-6 col-xs-9">
-                            <a href="index.php"><img src="images/nju-logo.png" alt="logo" /></a>
+                            <a <?php echo "href='index.php?page=home".$lang."'"?>><img src="images/nju-logo.png" alt="logo" /></a>
                         </div>
 
                         <div class="header-right col-lg-2 col-md-2 col-sm-4">
@@ -307,12 +313,11 @@ if (!isset($_SESSION['hasVisited']) || time() - $_SESSION["lastVisited"] > 1000)
                 <form id="loginform" method="post" action="javascript:void(0);">
                     <div class="imgcontainer">
                         <span id='close-login' class="close" title="Close Modal">&times;</span>
-                        <img src="sources/default.jpg" alt="Avatar" class="avatar">
+                        <img src="images/default.jpg" alt="Avatar" class="avatar">
                     </div>
 
                     <label><b><?php echo $langIszh ? "邮箱：" : "Email : "; ?></b></label>
-                    <input type="text" placeholder=<?php echo (!isset($_GET["lang"]) || $_GET["lang"] == "zh" ) ? "您的邮箱" : "Email"; ?> name="email" required>
-
+                    <input type="text" placeholder=<?php echo (!isset($_GET["lang"]) || $_GET["lang"] == "zh" ) ? "您的邮箱" : "Email"; ?> name="login_email" required>
                     <label><b><?php echo $langIszh ? "密码：" : "Mot de pass : "; ?></b></label>
                     <input type="password" placeholder=<?php echo $langIszh ? "您的密码" : "Password"; ?> name="psw" required>
                     <button type="submit" id="login-submit">
@@ -364,7 +369,6 @@ if (!isset($_SESSION['hasVisited']) || time() - $_SESSION["lastVisited"] > 1000)
                                     <span class="icon icon4"></span>
                                     <p>FN</p>
                                 </a>
-                                <!--<img src="sources/icon.png">-->
                             </div>
                             <!--end friendly links-->
 
@@ -388,7 +392,6 @@ if (!isset($_SESSION['hasVisited']) || time() - $_SESSION["lastVisited"] > 1000)
                                 <a class="icon-href" href="#">
                                     <span class="icon icon4"></span>
                                 </a>
-                                <!-- <img src="sources/shares.png"> -->
                             </div>
                             <!--end follow links-->
                         </div>
@@ -405,7 +408,6 @@ if (!isset($_SESSION['hasVisited']) || time() - $_SESSION["lastVisited"] > 1000)
                 <!--end footer-bottom-->
             </footer>
             <script src="js/script.js?<?php echo time();?>"></script>
-            <script src="js/index_sup.js"></script>
             <script src="js/unitegallery.min.js"></script>
             <script src="js/ug-theme-default.js"></script>
         </div>

@@ -1,4 +1,5 @@
 <?php
+/*Page of personnal profile in Chinese*/
 session_start();
 if (isset($_POST['alumni_id'])) {
     $id = $_POST['alumni_id'];
@@ -11,10 +12,7 @@ if (isset($_POST['alumni_id'])) {
     $dbh = Database::connect();
     $alumnus = User::getUserByID($dbh, $id);
 } else {
-    $id = 3;
-    require 'register_database.php';
-    $dbh = Database::connect();
-    $alumnus = User::getUserByID($dbh, $id);
+    exit(0);
 }
 $photoPath = Photo::getPhoto($dbh, $id);
 $display = isset($_POST["alumni_id"]) && isset($_SESSION["currentUser"]) && $_POST["alumni_id"] == $_SESSION["currentUser"]["id"] || isset($_SESSION["currentUser"]) && !isset($_POST["alumni_id"]);
@@ -33,7 +31,7 @@ $display = isset($_POST["alumni_id"]) && isset($_SESSION["currentUser"]) && $_PO
             <div id="img-container">
                 <img class="thumbnail"<?php
                 if ($photoPath == null) {
-                    echo "src='sources/default.jpg'";
+                    echo "src='images/default.jpg'";
                 } else {
                     echo "src='photoDAtaBase/" . $photoPath . "'";
                 }
@@ -122,7 +120,7 @@ $display = isset($_POST["alumni_id"]) && isset($_SESSION["currentUser"]) && $_PO
                             <div class="vertical-center">
                                 <img class="thumbnail" <?php
                                 if ($photoPath == null) {
-                                    echo "src='sources/default.jpg'";
+                                    echo "src='images/default.jpg'";
                                 } else {
                                     echo "src='photoDAtaBase/" . $photoPath . "'";
                                 }

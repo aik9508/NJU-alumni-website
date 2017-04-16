@@ -1,5 +1,5 @@
 <?php
-
+/*search alumni*/
 if (isset($_POST)) {
     $nom = $_POST["nom"];
     $prenom = $_POST["prenom"];
@@ -28,7 +28,7 @@ if (isset($_POST)) {
             $name = ucfirst($individu["prenom"]) . " " . ucfirst($individu["nom"]);
             $photo = Photo::getPhoto($dbh, $individu["id"]);
             if ($photo == null) {
-                $photo = "sources/default.jpg";
+                $photo = "images/default.jpg";
             } else {
                 $photo = "photoDatabase/" . $photo;
             }

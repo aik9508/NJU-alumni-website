@@ -563,6 +563,11 @@ img.avatar {
     justify-content: center;
 }
 
+.vertical-center-parent{
+    display: flex;
+    justify-content: center;
+}
+
 .vertical-center {
     align-self: center;
 }

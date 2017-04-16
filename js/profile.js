@@ -234,6 +234,7 @@ $(document).ready(function () {
                     toolTipError($("input[name='ancien-mdp']"), "Mot de passe invalide.")();
                 } else if (response === "Not Login") {
                     alert("Veuillez vous connecter!");
+                    location.reload();
                 } else {
                     $(".profil-edit-wrapper").show();
                     $(".pwd-edit-wrapper").hide();

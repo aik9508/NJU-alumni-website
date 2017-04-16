@@ -1,5 +1,5 @@
 <?php
-
+/* update personnal information */
 session_start();
 if (!isset($_POST) || !isset($_SESSION["currentUser"])) {
     exit(0);

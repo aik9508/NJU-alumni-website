@@ -1,4 +1,5 @@
 <?php
+/*Get the id of the currentUser and the language of website*/
 session_start();
 $results=[];
 if(isset($_SESSION["currentUser"]) && isset($_POST["id"]) ){

@@ -1,5 +1,5 @@
 <?php
-
+/*insert a new created user account into the database.*/
 session_start();
 if (!isset($_POST)) {
     exit(0);

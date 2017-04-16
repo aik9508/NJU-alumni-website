@@ -1,3 +1,5 @@
+//cross domain screen scraping script
+
 $(document).ready(function () {
     $("#information>ul>li").each(function(i){
        $(this).attr("id","news"+i) ;

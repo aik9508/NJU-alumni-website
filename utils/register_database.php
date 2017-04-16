@@ -1,10 +1,28 @@
 <?php
+/* Database 
+    5 tables :
+    1. "NJUers" qui stocke l’identité, le nom, le prénom, l’email, le mot de passe , 
+        le numéro de telephone (faculatif) et le sexe de l’utilisateur. Le mot de passe 
+        de toutes les personnes sauf Dominique et Olivier est 12345678. Afin de renforcer 
+        la sécurité de mot de passe, on ajoute un sel à la fin de chaque mot de passe et 
+        puis on applique la fonction de hachage SHA1 sur "mot de passe + salage".
+    2. "diplomas" qui stocke les informations des études que les alumni ont faites à 
+        l’Université de Nanjing. Le champ id est le même que celui de la table NJUers. 
+        La valeur du champ diplome varie de 0 à 2, qui correspond respectivement à 
+        licence, master et doctorat.
+    3. "infos" qui sert à stocker les informations supplémentaires des utilisateurs. 
+        Le champ type signifie le type d’information. Étant donné un utilisateur, 
+        0 représente son email supplé- mentaire, 1 représente sa fonction et 2 représente 
+        l’entreprise où il travaille.
+    4. "photos" qui stocke le chemin de la photo de profil des utilisateurs.
+*/
 
 define("SEL", "eureka");
+
 class Database {
-    
+
     public static function connect() {
-        $dsn = 'mysql:dbname=Modal_projet;host=127.0.0.1';
+        $dsn = 'mysql:dbname=Modal_projet_NJU;host=127.0.0.1';
         $user = 'root';
         $password = '';
         $dbh = null;
@@ -17,20 +35,20 @@ class Database {
         }
         return $dbh;
     }
-    
+
 }
 
 class Diploma {
-    
+
     public $id;
     public $diplome;
     public $promotion;
     public $departement;
-    
+
     public function __toString() {
         return "$this->id $this->diplome ($this->departement $this->promotion)";
     }
-    
+
     public static function getDiplomas($dbh, $id) {
         $query = "SELECT * FROM `diplomas` WHERE id=? ORDER BY diplome ASC";
         $sth = $dbh->prepare($query);
@@ -45,7 +63,7 @@ class Diploma {
             return $diplomes;
         }
     }
-    
+
     public static function getDiploma($dbh, $id, $diplome) {
         $query = "SELECT * FROM `diplomas` WHERE id=? AND diplome=?";
         $sth = $dbh->prepare($query);
@@ -60,35 +78,35 @@ class Diploma {
             return $result;
         }
     }
-    
+
     public static function insertDiplomas($dbh, $id, $diplome, $promotion, $departement) {
         $sth = $dbh->prepare("INSERT INTO `diplomas`(`id`,`diplome`,`promotion`,`departement`) VALUES(?,?,?,?)");
         $sth->execute(array($id, $diplome, $promotion, $departement));
         $dbh = null;
     }
-    
+
     public static function delete($dbh, $id, $diplome) {
         $sth = $dbh->prepare("DELETE FROM `diplomas` WHERE `id`=? AND `diplome`=? ");
         $sth->execute(array($id, $diplome));
         $dbh = null;
     }
-    
+
     public static function update($dbh, $query, $query_array) {
         $sth = $dbh->prepare($query);
         $sth->execute($query_array);
     }
-    
+
 }
 
 class Photo {
-    
+
     public $id;
     public $photoPath;
-    
+
     public function __toString() {
         return "$this->photoPath";
     }
-    
+
     public static function getPhoto($dbh, $id) {
         $query = "SELECT `photo` FROM `photos` WHERE id=?";
         $sth = $dbh->prepare($query);
@@ -103,7 +121,7 @@ class Photo {
             return $photo["photo"];
         }
     }
-    
+
     public static function setPhoto($dbh, $id, $photoPath) {
         if (Photo::getPhoto($dbh, $id) == null) {
             $query = "INSERT INTO `photos`(`photo`, `id`) VALUES(?,?)";
@@ -114,19 +132,19 @@ class Photo {
         $sth->execute(array($photoPath, $id));
         $dbh = null;
     }
-    
+
 }
 
 class Info {
-    
+
     public $id;
     public $type;
     public $content;
-    
+
     public function __toString() {
         return "$this->content";
     }
-    
+
     public static function getInfo($dbh, $id, $type) {
         $query = "SELECT `content` FROM `infos` WHERE id=? AND type=?";
         $sth = $dbh->prepare($query);
@@ -140,13 +158,13 @@ class Info {
             return $content["content"];
         }
     }
-    
-    public static function delete($dbh, $id, $type){
+
+    public static function delete($dbh, $id, $type) {
         $sth = $dbh->prepare("DELETE FROM `infos` WHERE `id`=? AND `type`=? ");
         $sth->execute(array($id, $type));
         $dbh = null;
     }
-    
+
     public static function setInfo($dbh, $id, $type, $content) {
         if (Info::getInfo($dbh, $id, $type) == null) {
             $query = "INSERT INTO `infos`(`content`,`type`, `id`) VALUES(?,?,?)";
@@ -157,11 +175,11 @@ class Info {
         $sth->execute(array($content, $type, $id));
         $dbh = null;
     }
-    
+
 }
 
 class User {
-    
+
     public $id;
     public $nom;
     public $prenom;
@@ -169,7 +187,7 @@ class User {
     public $mdp;
     public $numero;
     public $sexe;
-    
+
     public function __toString() {
         //$info = "[". $this->login ."] ". $this->prenom . " <b>". $this->nom . "</b>". " né(e) le ";
         $gender = '';
@@ -182,7 +200,7 @@ class User {
         $info = $info . "<br/>";
         return $info;
     }
-    
+
     public static function getUserByEmail($dbh, $email) {
         $query = "SELECT * FROM `NJUers` WHERE email=?";
         $sth = $dbh->prepare($query);
@@ -195,7 +213,7 @@ class User {
         $dbh = null;
         return $user;
     }
-    
+
     public static function getUserByID($dbh, $id) {
         $query = "SELECT * FROM `NJUers` WHERE id=?";
         $sth = $dbh->prepare($query);
@@ -208,7 +226,7 @@ class User {
         $dbh = null;
         return $user;
     }
-    
+
     public static function getUserByName($dbh, $nom, $prenom) {
         $query = "SELECT * FROM `NJUers` WHERE nom=? AND prenom=?";
         $sth = $dbh->prepare($query);
@@ -221,7 +239,7 @@ class User {
         $dbh = null;
         return $user;
     }
-    
+
     public static function getIDByEmail($dbh, $email) {
         $query = "SELECT `id` FROM `NJUers` WHERE email=?";
         $sth = $dbh->prepare($query);
@@ -234,7 +252,7 @@ class User {
         $dbh = null;
         return $id["id"];
     }
-    
+
     public static function afficherTous($dbh) {
         $query = "SELECT * FROM `NJUers`";
         $sth = $dbh->prepare($query);
@@ -246,21 +264,21 @@ class User {
             }
         }
     }
-    
+
     public static function insertUser($dbh, $nom, $prenom, $email, $mdp, $numero, $sexe) {
         if (User::getUserByEmail($dbh, $email) == null) {
             $sth = $dbh->prepare("INSERT INTO `NJUers`(`nom`, `prenom`, `email`, `mdp`, `numero`, `sexe`) VALUES(?,?,?,?,?,?)");
-            $sth->execute(array($nom, $prenom, $email, sha1($mdp.SEL), $numero, $sexe));
+            $sth->execute(array($nom, $prenom, $email, sha1($mdp . SEL), $numero, $sexe));
             return TRUE;
         } else {
             return null;
         }
     }
-    
+
     public static function checkPassword($dbh, $email, $mdp) {
         $user = User::getUserByEmail($dbh, $email);
         if ($user != null) {
-            if ($user->mdp == sha1($mdp.SEL)) {
+            if ($user->mdp == sha1($mdp . SEL)) {
                 return true;
             } else {
                 return false;
@@ -268,11 +286,11 @@ class User {
         }
         return false;
     }
-    
+
     public static function checkPasswordByID($dbh, $id, $mdp) {
         $user = User::getUserByID($dbh, $id);
         if ($user != null) {
-            if ($user->mdp == sha1($mdp.SEL)) {
+            if ($user->mdp == sha1($mdp . SEL)) {
                 return true;
             } else {
                 return false;
@@ -280,19 +298,19 @@ class User {
         }
         return false;
     }
-    
-    public static function changePassword($dbh, $id, $mdp){
-        $query="UPDATE `NJUers` SET `mdp`=? WHERE id=?";
-        $sth=$dbh->prepare($query);
-        $sth->execute(array(sha1($mdp.SEL),$id));
+
+    public static function changePassword($dbh, $id, $mdp) {
+        $query = "UPDATE `NJUers` SET `mdp`=? WHERE id=?";
+        $sth = $dbh->prepare($query);
+        $sth->execute(array(sha1($mdp . SEL), $id));
         return $sth->rowCount();
     }
-    
+
     public static function update($dbh, $query, $query_array) {
         $sth = $dbh->prepare($query);
         $sth->execute($query_array);
     }
-    
+
     public static function createQuery($nom, $prenom, $promo_start, $promo_end, $studies, $departements) {
         $query = "";
         if ($promo_start == "") {
@@ -301,7 +319,7 @@ class User {
         if ($promo_end == "") {
             $promo_end = date("Y");
         }
-        
+
         $query = $query . " WHERE 1=1";
         $query_array = [];
         if ($nom != "") {
@@ -312,7 +330,7 @@ class User {
             $query = $query . " AND prenom=?";
             array_push($query_array, $prenom);
         }
-        
+
         /* promotions */
         $joined = false;
         if (is_numeric($promo_start) AND is_numeric($promo_end) AND $promo_start <= $promo_end) {
@@ -322,7 +340,7 @@ class User {
                 $joined = true;
             }
         }
-        
+
         /* departements */
         if ($departements != null AND count($departements) < 29) {
             $joined = true;
@@ -332,7 +350,7 @@ class User {
             }
             $query = $query . ")";
         }
-        
+
         /* diplomes */
         if ($studies != null AND count($studies) < 3) {
             $joined = true;
@@ -342,16 +360,16 @@ class User {
             }
             $query = $query . ")";
         }
-        
+
         if ($joined) {
             $query = "JOIN `diplomas` ON diplomas.id=NJUers.id " . $query;
         }
-        
+
         $query = $query . " ORDER BY `NJUers`.`id` ASC";
-        
+
         return array($query, $query_array);
     }
-    
+
     public static function searchUser($dbh, $query, $query_array, $limit1, $limit2) {
         $query = "SELECT DISTINCT `NJUers`.`id`, `nom`, `prenom` FROM `NJUers`" . $query . " LIMIT " . $limit1 . " , " . $limit2;
         $sth = $dbh->prepare($query);
@@ -362,17 +380,18 @@ class User {
         }
         return $user;
     }
-    
+
     public static function countResults($dbh, $query, $query_array) {
         $query = "SELECT COUNT(DISTINCT(`NJUers`.id)) AS nbResults FROM `NJUers` " . $query;
         $sth = $dbh->prepare($query);
         $sth->execute($query_array);
         return $sth->fetch()["nbResults"];
     }
-    
+
 }
 
 class ActivityList {
+
     public $num;
     public $article;
     public $gallery;
@@ -383,7 +402,7 @@ class ActivityList {
     public $title_fr;
     public $tag_fr;
     public $caption_fr;
-    
+
     public static function getActivityInfo($dbh, $num) {
         $query = "SELECT * FROM `activities` WHERE num=?";
         $sth = $dbh->prepare($query);
@@ -398,12 +417,12 @@ class ActivityList {
             return $activityinfo;
         }
     }
-    
+
     public static function getActivityNumber($dbh) {
         $nRows = $dbh->query('select COUNT(*) from activities')->fetchColumn();
         return $nRows;
     }
-    
+
     public static function getGalleryActivities($dbh) {
         $query = "SELECT * FROM `activities` WHERE gallery=1";
         $sth = $dbh->prepare($query);
@@ -416,9 +435,9 @@ class ActivityList {
             $galleries = $sth->fetchAll();
             $dbh = null;
             return $galleries;
-            
         }
     }
+
     public static function getArticleActivities($dbh) {
         $query = "SELECT * FROM `activities` WHERE article=1";
         $sth = $dbh->prepare($query);
@@ -431,7 +450,7 @@ class ActivityList {
             $articles = $sth->fetchAll();
             $dbh = null;
             return $articles;
-            
         }
     }
+
 }
